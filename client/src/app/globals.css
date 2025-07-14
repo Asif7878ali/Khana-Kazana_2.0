@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Scrool Start */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Scrool End */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* For dark backgrounds */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #f9fafb inset !important;
+}
+
+  /* shadow */
+ .shadow-box {
+  box-shadow: 0 0 15px 3px rgba(224, 114, 114, 0.25);  
+}
