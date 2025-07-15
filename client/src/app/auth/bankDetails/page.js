@@ -72,7 +72,7 @@ const page = () => {
 
   return (
     <FormLayout image={images?.bank}>
-      <div className="flex flex-col  h-full">
+      <div className="flex flex-col h-full">
         <Heading heading="Add Bank Details" />
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div id="accounholdername">
