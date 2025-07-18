@@ -5,7 +5,7 @@ import FormLayout from "@/components/layouts/FormLayout";
 import { images } from "@/utils/imageConstant";
 import Input from "@/components/reasuableComponents/UI/Input";
 import FileUpload from "@/components/reasuableComponents/UI/FileUpload";
-import Button from "@/components/reasuableComponents/UI/Button";
+import { Button } from "@/components/reasuableComponents/UI/Button";
 import useAlert from "@/hooks/useAlert";
 import { useRouter } from "next/navigation";
 import { msg } from "@/utils/constaint";

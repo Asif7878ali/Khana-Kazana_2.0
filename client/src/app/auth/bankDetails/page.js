@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import Input from "@/components/reasuableComponents/UI/Input";
 import Dropdown from "@/components/reasuableComponents/UI/Dropdown";
 import FileUpload from "@/components/reasuableComponents/UI/FileUpload";
-import Button from "@/components/reasuableComponents/UI/Button";
+import { Button } from "@/components/reasuableComponents/UI/Button";
 import { banks } from "@/lib/homepageData";
 import { msg } from "@/utils/constaint";
 import { bankDetailValidation } from "@/lib/authValidations";

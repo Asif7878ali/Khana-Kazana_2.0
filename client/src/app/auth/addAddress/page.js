@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import FormLayout from "@/components/layouts/FormLayout";
 import { images } from "@/utils/imageConstant";
-import Button from "@/components/reasuableComponents/UI/Button";
+import { Button } from "@/components/reasuableComponents/UI/Button";
 import Dropdown from "@/components/reasuableComponents/UI/Dropdown";
 import Input from "@/components/reasuableComponents/UI/Input";
 import { indianCity, indianStates } from "@/lib/homepageData";

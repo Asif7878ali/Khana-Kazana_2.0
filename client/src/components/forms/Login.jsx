@@ -1,7 +1,8 @@
 
 import React, { useState } from "react";
 import Input from "../reasuableComponents/UI/Input";
-import Button from "../reasuableComponents/UI/Button";
+import { Button } from "../reasuableComponents/UI/Button";
+
 
 const Login = ({ role }) => {
   const [formData, setFormData] = useState({

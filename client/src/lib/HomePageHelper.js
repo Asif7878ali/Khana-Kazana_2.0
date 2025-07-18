@@ -8,7 +8,8 @@ import {
   DishesCard,
 } from "@/components/reasuableComponents/Cards";
 import { images } from "@/utils/imageConstant";
-import Button from "@/components/reasuableComponents/UI/Button";
+import { Button } from "@/components/reasuableComponents/UI/Button";
+
 
 export function HeroSection() {
   return (

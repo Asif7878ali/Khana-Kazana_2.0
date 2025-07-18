@@ -6,7 +6,7 @@ import { images } from "@/utils/imageConstant";
 import Dropdown from "@/components/reasuableComponents/UI/Dropdown";
 import Input from "@/components/reasuableComponents/UI/Input";
 import { securityquestion } from "@/lib/homepageData";
-import Button from "@/components/reasuableComponents/UI/Button";
+import { Button } from "@/components/reasuableComponents/UI/Button";
 import useAlert from "@/hooks/useAlert";
 import { useRouter } from "next/navigation";
 import { msg } from "@/utils/constaint";

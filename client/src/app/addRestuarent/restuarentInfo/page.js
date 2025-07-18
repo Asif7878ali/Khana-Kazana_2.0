@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import FormLayout from "@/components/layouts/FormLayout";
 import { images } from "@/utils/imageConstant";
-import Button from "@/components/reasuableComponents/UI/Button";
 import TextArea from "@/components/reasuableComponents/UI/TextArea";
 import Dropdown from "@/components/reasuableComponents/UI/Dropdown";
 import Input from "@/components/reasuableComponents/UI/Input";
@@ -14,6 +13,7 @@ import { restuarentInfoValidation } from "@/lib/restuarentValidation";
 import { msg } from "@/utils/constaint";
 import useAlert from "@/hooks/useAlert";
 import { Letters } from "@/lib/filtrations";
+import { Button } from "@/components/reasuableComponents/UI/Button";
 
 const page = () => {
   const [form, setForm] = useState({

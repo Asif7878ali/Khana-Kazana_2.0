@@ -5,7 +5,7 @@ import FormLayout from "@/components/layouts/FormLayout";
 import { images } from '@/utils/imageConstant';
 import VerifyOtp from '@/components/forms/VerifyOtp';
 import { useRouter } from 'next/navigation';
-import Button from '@/components/reasuableComponents/UI/Button';
+import { Button } from "@/components/reasuableComponents/UI/Button";
 import useAlert from '@/hooks/useAlert';
 import { msg } from '@/utils/constaint';
 import { Heading } from '@/components/reasuableComponents/HeadingParagraph';
