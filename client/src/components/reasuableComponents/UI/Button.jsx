@@ -1,7 +1,14 @@
+import Icons from "@/utils/Icons";
 import React from "react";
 
-export const Button = ({ variant = "primary", children, className = "", ...props }) => {
-  const baseStyles = "px-4 py-2 rounded-lg font-medium transition duration-200 ease-in-out transform active:scale-95 cursor-pointer";
+export const Button = ({
+  variant = "primary",
+  children,
+  className = "",
+  ...props
+}) => {
+  const baseStyles =
+    "px-4 py-2 rounded-lg font-medium transition duration-200 ease-in-out transform active:scale-95 cursor-pointer";
 
   const variants = {
     primary: "bg-rose-600 text-white hover:bg-rose-700 hover:shadow-lg",
@@ -19,19 +26,44 @@ export const Button = ({ variant = "primary", children, className = "", ...props
   );
 };
 
-
-export const BlurButton = ({
- name = "",
- className ="",
- onClick
-}) => {
+export const BlurButton = ({ name = "", className = "", onClick }) => {
   return (
-      <button className={`absolute text-white font-medium border-2 border-white 
+    <button
+      className={`absolute text-white font-medium border-2 border-white 
              backdrop-blur-xs bg-white/10 px-6 py-2 rounded-xl cursor-pointer
              hover:scale-105 hover:bg-white/20 transition-all duration-300 ease-in-out
-             shadow-lg hover:shadow-2xl animate-fade-in ${className}`} onClick={onClick}>
-  {name}
-</button>
-  )
-}
+             shadow-lg hover:shadow-2xl animate-fade-in ${className}`}
+      onClick={onClick}
+    >
+      {name}
+    </button>
+  );
+};
 
+export const NavigationButton = ({
+  onClick,
+  direction = "left", // "left" or "right"
+  className = "",
+  disabled = false,
+}) => {
+  const positionClass = direction === "left" ? "left-4" : "right-4";
+  const IconComponent = direction === "left" ? Icons.CheronLeft : Icons.CheronRight;
+
+  return (
+    <button
+      onClick={disabled ? undefined : onClick}
+      className={`absolute z-10 p-3 rounded-full transition-all duration-200
+        ${positionClass}
+        ${
+          disabled
+            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+            : "bg-white hover:bg-gray-50 text-black hover:scale-110 cursor-pointer"
+        }
+        ${className}
+      `}
+      disabled={disabled}
+    >
+      <IconComponent className="size-5" />
+    </button>
+  );
+};

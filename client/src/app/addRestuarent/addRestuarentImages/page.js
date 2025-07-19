@@ -16,7 +16,8 @@ const page = () => {
     isModalopen: false,
     banner: null,
   });
-  const [isOpen, setIsOpen] = useState(false);
+  const [openGallary, setOpenGallay] = useState(false);
+  const [pictures, setPictures] = useState([]);
   const fileInputRef = useRef(null);
 
   const handleImageUpload = (event) => {
@@ -27,40 +28,15 @@ const page = () => {
     }
   };
 
-  function imageModal (){
-      
+  function handleImageGallary(image) {
+    const imageArray = Array.isArray(image) ? image : [image];
+    setPictures(imageArray);
+    setOpenGallay(true);
   }
 
   const handleEditClick = () => {
     fileInputRef.current.click();
   };
-
-   const sampleImages = [
-    {
-      src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-      alt: "Mountain landscape"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
-      alt: "Forest path"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1476231682828-37e571bc172f?w=800&q=80",
-      alt: "Ocean waves"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&q=80",
-      alt: "Desert landscape"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&q=80",
-      alt: "City skyline"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-      alt: "Another mountain"
-    }
-  ];
 
   return (
     <>
@@ -79,14 +55,17 @@ const page = () => {
                     sizes="100vw"
                     priority
                   />
-                  <div onClick={handleEditClick} className="absolute top-2 right-2 bg-white p-2 rounded-full cursor-pointer hover:bg-gray-100 transition-colors">
+                  <div
+                    onClick={handleEditClick}
+                    className="absolute top-2 right-2 bg-white p-2 rounded-full cursor-pointer hover:bg-gray-100 transition-colors"
+                  >
                     <Icons.Edit className="size-5 text-rose-500" />
                   </div>
-                   <BlurButton
-                     name="View"
-                     className="top-20 right-40"
-                     onClick={imageModal}
-                   />
+                  <BlurButton
+                    name="View"
+                    className="top-20 right-40"
+                    onClick={() => handleImageGallary(image.banner)}
+                  />
                 </>
               ) : (
                 <div className="border border-rose-500 rounded-full p-2">
@@ -125,21 +104,27 @@ const page = () => {
         </div>
       </FormLayout>
 
-      <Modal
-        isOpen={image.isModalopen}
-        onClose={() => setImage((prev) => ({ ...prev, isModalopen: false }))}
-        title="Add Catagory"
-      >
-        <Dropdown
-          label={"Select Categories"}
-          name="bank"
-          options={restuarentImageCatogory}
-        />
-      </Modal>
+      {image.isModalopen && (
+        <Modal
+          isOpen={image.isModalopen}
+          onClose={() => setImage((prev) => ({ ...prev, isModalopen: false }))}
+          title="Add Catagory"
+        >
+          <Dropdown
+            label={"Select Categories"}
+            name="bank"
+            options={restuarentImageCatogory}
+          />
+        </Modal>
+      )}
 
-      <ImageGalleryModal
-        images={sampleImages}
-      />
+      {openGallary && (
+        <ImageGalleryModal
+          isOpen={openGallary}
+          images={pictures}
+          onClose={() => setOpenGallay(false)}
+        />
+      )}
     </>
   );
 };

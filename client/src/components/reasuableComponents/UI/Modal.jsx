@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Modal = ({ isOpen, onClose, title, children }) => {
+  
   return (
     <div className={`  fixed inset-0 z-50 flex items-center justify-center transition-all duration-300
         ${isOpen ? 'backdrop-blur-sm bg-transparent bg-opacity-30 visible opacity-100' : 'opacity-0 invisible'}
