@@ -133,8 +133,8 @@ const Password = ({
           className={`w-full h-10 px-4 py-2 rounded-md border transition-all duration-200  focus:outline-none focus:ring-1 pr-10
             ${
               error
-                ? "border-red-500 focus:ring-red-500 bg-red-50/50 text-red-900"
-                : "border-gray-300 focus:ring-gray-500 focus:border-transparent"
+                ? "border border-red-500 bg-red-50 text-red-700 placeholder-red-400 focus:ring-red-300"
+                : "border border-gray-300 text-gray-700 focus:ring-blue-100 focus:border-blue-200"
             } ${className}`}
           {...props}
         />

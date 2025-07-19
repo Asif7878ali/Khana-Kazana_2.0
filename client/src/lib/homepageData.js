@@ -10,45 +10,6 @@ export const categories = [
     { name: "Specials", icon: "✨", count: 12 },
   ];
 
-export const featuredDishes = [
-    {
-      id: 1,
-      name: "Butter Chicken",
-      description: "Tender chicken in a rich, creamy tomato sauce with aromatic spices",
-      price: "₹350",
-      image: images?.butterCheiken,
-      rating: 4.8,
-      reviews: 124,
-    },
-    {
-      id: 2,
-      name: "Paneer Tikka Masala",
-      description: "Grilled cottage cheese cubes in a spiced tomato gravy",
-      price: "₹280",
-      image: images?.pannerTikka,
-      rating: 4.7,
-      reviews: 98,
-    },
-    {
-      id: 3,
-      name: "Hyderabadi Biryani",
-      description: "Fragrant basmati rice layered with marinated meat and aromatic spices",
-      price: "₹320",
-      image: images?.biryani,
-      rating: 4.9,
-      reviews: 156,
-    },
-    {
-      id: 4,
-      name: "Masala Dosa",
-      description: "Crispy rice crepe filled with spiced potato filling, served with chutneys",
-      price: "₹180",
-      image: images?.masalaDosa,
-      rating: 4.6,
-      reviews: 87,
-    },
-  ];
-
  export const testimonials = [
     {
       id: 1,

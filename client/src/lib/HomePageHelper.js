@@ -1,12 +1,8 @@
 import Image from "next/image";
 import { categories } from "./homepageData";
-import { featuredDishes } from "./homepageData";
 import { testimonials } from "./homepageData";
 import Icons from "@/utils/Icons";
-import {
-  CategoiesTile,
-  DishesCard,
-} from "@/components/reasuableComponents/Cards";
+import { CategoiesTile } from "@/components/reasuableComponents/Cards";
 import { images } from "@/utils/imageConstant";
 import { Button } from "@/components/reasuableComponents/UI/Button";
 
@@ -78,35 +74,6 @@ export function PopularCategories() {
   );
 }
 
-export function FeatureDishes() {
-  return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-2 text-gray-800">
-            Featured Dishes
-          </h2>
-          <p className="text-lg text-gray-600">
-            Our chef&apos;s special selections that you can&apos;t miss
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {featuredDishes.map((dish, index) => (
-            <DishesCard
-              key={dish?.id || index}
-              image={dish?.image}
-              name={dish?.name}
-              price={dish?.price}
-              description={dish?.description}
-              rating={dish?.rating}
-              reviews={dish?.reviews}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 export function SpecialOffer() {
   return (
