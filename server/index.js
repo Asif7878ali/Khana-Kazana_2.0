@@ -17,13 +17,12 @@ app.use(
       credentials : true
     })
 );
+// required to read JSON body miidleware
+app.use(express.json({ limit: '10mb' }));
 
 //routes
 app.use('/api/route', Route);
 
-// app.listen(port, () => {
-//   console.log(`Server is running on port ${port}`);
-// });
 
 Connection().then(() => {
    app.listen(port, () => {

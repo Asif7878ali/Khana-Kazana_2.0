@@ -2,6 +2,13 @@ import mongoose from "mongoose";
 
 const user_schema = new mongoose.Schema(
   {
+
+     role: {
+      type: String,
+      enum: ["customer", "vendor"],
+      required: true,
+    },
+
     email: {
       type: String,
       unique: true,
@@ -14,9 +21,8 @@ const user_schema = new mongoose.Schema(
     },
 
     // Step 2: Personal Info
-
     info: {
-      image: { type: String },
+      profilePic: { type: String },
       firstName: { type: String },
       lastName: { type: String },
       phone: { type: Number, unique: true },
@@ -37,17 +43,19 @@ const user_schema = new mongoose.Schema(
 
     // Step 4: Bank Details
     bankDetails: {
-      accNumber: { type: Number },
-      accName: { type: String },
+      acountHolderName: { type: String },
+      accountNumber: { type: Number },
       bank: { type: String },
+      bankDocument: { type: String },
       ifsc: { type: String },
-      pdf: { type: String },
     },
 
     // Step 5: Documents
     documents: {
-      panCard: { type: String },
       aadharCard: { type: Number },
+      panCard: { type: String },
+      fssai : {type : Number},
+      gst : {type : Number}
     },
 
     // Step 6: Security Questions

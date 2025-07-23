@@ -44,11 +44,9 @@ const Signin = ({ role }) => {
     }
 
     const payload = {
+      role,
       email: formData.email,
       password: formData.password,
-      c_password: formData.c_password,
-      checked: formData.checked,
-      role,
     };
     localStorage.setItem("user", role);
     console.log("data", payload);
