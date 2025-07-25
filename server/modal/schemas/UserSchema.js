@@ -25,7 +25,7 @@ const user_schema = new mongoose.Schema(
       profilePic: { type: String },
       firstName: { type: String },
       lastName: { type: String },
-      phone: { type: Number, unique: true },
+      phone: { type: Number },
       dob: { type: Date },
       gender: { type: String },
     },

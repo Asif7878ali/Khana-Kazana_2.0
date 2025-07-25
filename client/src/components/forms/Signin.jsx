@@ -7,7 +7,8 @@ import Checkbox from "../reasuableComponents/UI/Checkbox";
 import { signInValidation } from "@/lib/authValidations";
 import Password from "../reasuableComponents/UI/Password";
 import { Button } from "../reasuableComponents/UI/Button";
-
+import { useFetchApi } from "@/hooks/useFetchApi";
+import endPoint from "@/utils/endpoints";
 
 const Signin = ({ role }) => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,7 @@ const Signin = ({ role }) => {
   const [errors, setErrors] = useState({});
   const showAlert = useAlert();
   const router = useRouter();
+  const fetchapi = useFetchApi();
 
   const handleChange = (e) => {
     const { name, type, checked, value } = e.target;
@@ -43,17 +45,34 @@ const Signin = ({ role }) => {
       return;
     }
 
-    const payload = {
+    const collectform = {
       role,
       email: formData.email,
       password: formData.password,
     };
     localStorage.setItem("user", role);
-    console.log("data", payload);
 
     if (isvalid == true) {
-      showAlert("Profile Succesfully Create", msg.sucs);
-      router.push("/auth/verifyEmail");
+      try {
+        const response = await fetchapi({
+          endpoint: endPoint.signin,
+          method: "POST",
+          payload: collectform,
+        });
+
+        const {data} = response
+
+        if (!data?.success) {
+          showAlert(data.msg || "Something went wrong!" , msg.err);
+          return;
+        }
+  
+        showAlert(data?.msg || "Sign in Success" , msg.sucs);
+        router.push("/auth/verifyEmail");
+      } catch (error) {
+        showAlert("Internal Server Error", msg.err);
+        console.error("Signin error:", error);
+      }
     }
   };
 
@@ -82,8 +101,8 @@ const Signin = ({ role }) => {
           onChange={handleChange}
           copy={true}
           error={errors?.password}
-          tooltip = {true}
-          hints ={true}
+          tooltip={true}
+          hints={true}
         />
       </div>
 
@@ -98,7 +117,7 @@ const Signin = ({ role }) => {
           paste={true}
           error={errors?.c_password}
           originalPass={formData.password}
-          confirmPassMatch = {true}
+          confirmPassMatch={true}
         />
       </div>
 
