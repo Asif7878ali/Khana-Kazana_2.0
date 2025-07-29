@@ -1,11 +1,12 @@
 import express from 'express';
-import {register} from '../controller/AuthController.js';
-import { validateRegister } from '../utils/validation/validateRegister.js';
+import {register_api , profile_api} from '../controller/AuthController.js'
+import { validateProfile, validateRegister } from '../utils/validation/validateRegister.js';
 
 const Route = express.Router();
 
 
 //All Routes
-Route.post('/auth/register', validateRegister,  register); // first is validation next is api
+Route.post('/auth/register', validateRegister,  register_api); // first is validation next is api
+Route.put('/auth/profile/:id' , validateProfile ,  profile_api);
 
 export default Route;

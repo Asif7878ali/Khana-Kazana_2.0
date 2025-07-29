@@ -13,7 +13,7 @@ const port = process.env.PORT || 2000;
 app.use(
     cors({
       origin : [process.env.ORIGIN],
-      methods : ['GET', 'POST', 'PATCH', 'DELETE'],
+      methods : ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
       credentials : true
     })
 );

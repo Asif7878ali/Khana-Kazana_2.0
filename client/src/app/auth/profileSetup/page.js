@@ -16,10 +16,13 @@ import { profileValidate } from "@/lib/authValidations";
 import { ErrorsMessage } from "@/components/reasuableComponents/Errors";
 import { Letters, Numbers } from "@/lib/filtrations";
 import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
+import { useFetchApi } from "@/hooks/useFetchApi";
+import endPoint from "@/utils/endpoints";
 
 const Page = () => {
   const [form, setForm] = useState({
     profilePic: "",
+    fileprofile: null,
     fname: "",
     lname: "",
     number: "",
@@ -30,6 +33,7 @@ const Page = () => {
   const [error, setError] = useState({});
   const showAlert = useAlert();
   const router = useRouter();
+  const fetchapi = useFetchApi();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -41,7 +45,7 @@ const Page = () => {
     }
     // // Allow only digits and limit to 10 characters for number
     if (name === "number") {
-      filteredValue = Numbers(value).slice(0,10);
+      filteredValue = Numbers(value).slice(0, 10);
     }
 
     setForm((prevForm) => ({
@@ -72,7 +76,7 @@ const Page = () => {
     setForm((prev) => ({
       ...prev,
       profilePic: imageUrl,
-      profileFile: file,
+      fileprofile: file,
     }));
     setError((prev) => ({ ...prev, profileImageUrl: "" }));
   }
@@ -83,8 +87,8 @@ const Page = () => {
     const { errors, isvalid } = profileValidate(form);
     setError(errors);
 
-    const payload = {
-      profilePic: form.profilePic,
+    const collectform = {
+      profilePic: form.fileprofile,
       firstName: form.fname,
       lastName: form.lname,
       phoneNumber: form.number,
@@ -92,17 +96,37 @@ const Page = () => {
       gender: form.gender,
     };
 
-    console.log("Submitting payload:", payload);
+    console.log("Submitting payload:", collectform);
     if (isvalid == true) {
-      showAlert("Profile Created Successfully", msg.sucs);
-      router.push("/auth/verifyMobile");
+      const { id } = JSON.parse(sessionStorage.getItem("user"));
+      console.log(id);
+
+      try {
+        const response = await fetchapi({
+          endpoint: `${endPoint.profile}/${id}`,
+          method: "PUT",
+          payload: collectform,
+        });
+
+        const { data } = response;
+        if (!data?.success) {
+          showAlert(data.msg || "Something went wrong!", msg.err);
+          return;
+        }
+
+        showAlert(data?.msg || "Profile Created Successfully", msg.sucs);
+        router.push("/auth/verifyMobile");
+      } catch (error) {
+        showAlert("Internal Server Error", msg.err);
+        console.error("Signin error:", error);
+      }
     }
   };
 
   return (
     <FormLayout image={images?.profileImage}>
       <div className="flex flex-col items-center justify-center h-full p-6">
-         <Heading heading="Profile Setup" />
+        <Heading heading="Profile Setup" />
         <form onSubmit={handleSubmit}>
           <div id="profilepic">
             <ProfileImage
@@ -135,7 +159,7 @@ const Page = () => {
                   value={form.lname}
                   onChange={handleChange}
                   required
-                  error={error?.lname} 
+                  error={error?.lname}
                 />
               </div>
             </div>

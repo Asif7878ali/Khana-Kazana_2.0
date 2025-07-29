@@ -50,7 +50,6 @@ const Signin = ({ role }) => {
       email: formData.email,
       password: formData.password,
     };
-    localStorage.setItem("user", role);
 
     if (isvalid == true) {
       try {
@@ -66,7 +65,8 @@ const Signin = ({ role }) => {
           showAlert(data.msg || "Something went wrong!" , msg.err);
           return;
         }
-  
+
+        sessionStorage.setItem("user", JSON.stringify(data.user));
         showAlert(data?.msg || "Sign in Success" , msg.sucs);
         router.push("/auth/verifyEmail");
       } catch (error) {

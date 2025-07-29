@@ -10,16 +10,31 @@ export const useFetchApi = () => {
   return async ({ endpoint, method = "GET", payload = null }) => {
     dispatch(setLoading(true));
 
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    await delay(5000);
+
     try {
-      const response = await axios({
+      const config = {
         method,
         url: `${baseURL}${endpoint}`,
-        data: payload,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      };
 
+      // detect files in payload
+      const hasFiles =
+        payload &&
+        Object.values(payload).some(
+          (value) => value instanceof File || value instanceof Blob
+        );
+
+      if (hasFiles) {
+        config.data = payload;
+        config.headers = { "Content-Type": "multipart/form-data" };
+      } else {
+        config.data = payload;
+        config.headers = { "Content-Type": "application/json" };
+      }
+
+      const response = await axios(config);
       return response;
     } catch (error) {
       throw error;
