@@ -17,6 +17,7 @@ const ProfileImage = ({ image, error, handlePicChange }) => {
         width={120} // Image width
         height={120} // Image height
         className={`rounded-full object-fill w-32 h-32 ${image || error?.profileImageUrl ? 'border-4 border-red-600' : ''}`}
+        priority={true}
     />
     <label className="absolute bottom-[-10] right-32 cursor-pointer" onClick={triggerFileInput}>
         <Image

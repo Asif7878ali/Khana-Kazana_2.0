@@ -39,8 +39,6 @@ export const validateRegister = (req, res, next) => {
 };
 
 export const validateProfile = (req, res, next) => {
-   console.log(req);
-    console.log(req.file);
   if (!req.body || Object.keys(req.body).length === 0) {
     console.log('Request body is missing');
     return res.status(400).json({ msg: "Request body is missing", success: false });
@@ -77,7 +75,7 @@ export const validateProfile = (req, res, next) => {
   if (!phoneNumber) {
     console.log('Mobile Number is required');
     return res.status(400).json({ msg: "Mobile Number is required.", success: false });
-  } else if (typeof phoneNumber !== 'string' || !/^\d{10}$/.test(number)) {
+  } else if (typeof phoneNumber !== 'string' || !/^\d{10}$/.test(phoneNumber)) {
     console.log('Mobile Number must be exactly 10 digits');
     return res.status(400).json({ 
       msg: "Mobile Number must be exactly 10 digits and contain only numbers", 

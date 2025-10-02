@@ -19,17 +19,12 @@ export const useFetchApi = () => {
         url: `${baseURL}${endpoint}`,
       };
 
-      // detect files in payload
-      const hasFiles =
-        payload &&
-        Object.values(payload).some(
-          (value) => value instanceof File || value instanceof Blob
-        );
-
-      if (hasFiles) {
+       if (payload instanceof FormData) {
+        // ✅ if payload is FormData
         config.data = payload;
         config.headers = { "Content-Type": "multipart/form-data" };
-      } else {
+      } else if (payload) {
+        // ✅ if payload is a plain object (JSON)
         config.data = payload;
         config.headers = { "Content-Type": "application/json" };
       }

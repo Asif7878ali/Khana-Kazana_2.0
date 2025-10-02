@@ -31,10 +31,6 @@ export function signInValidation(formData) {
 export function profileValidate(formData) {
   const errors = {};
 
-  if (!formData?.profilePic) {
-    errors.profilePic = "Profile Image is required";
-  }
-
   if (!formData?.fname) {
     errors.fname = "First Name is required";
   } else if (formData?.fname?.length < 3) {

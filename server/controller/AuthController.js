@@ -47,14 +47,62 @@ export const register_api = async (req, res) => {
   }
 };
 
-
 //PROFILE SETUP API
 export const profile_api = async (req, res) => {
   console.log("➡️ Profile API hit");
 
-   return res
-        .status(502)
-        .json({ msg: "Failed to register user", success: false });
-    
+  try {
+    const userId = req.params.id;
+    const profileData = req.body;
+    console.log(userId);
 
+    if (!profileData || Object.keys(profileData).length === 0) {
+      return res
+        .status(400)
+        .json({ msg: "No profile data provided", success: false });
+    }
+    console.log(profileData);
+    const { profilePic, firstName, lastName, phoneNumber, dob, gender } =
+      profileData;
+    // Update object matching your schema nested 'info' fields:
+    const update = {
+      "info.profilePic": profilePic,
+      "info.firstName": firstName,
+      "info.lastName": lastName,
+      "info.phone": phoneNumber,
+      "info.dob": dob,
+      "info.gender": gender,
+    };
+
+    // Remove undefined fields to prevent overwriting keys with undefined:
+    Object.keys(update).forEach(
+      (key) => update[key] === undefined && delete update[key]
+    );
+
+    const options = { new: true }; // Return the updated document
+
+    const updatedProfile = await Users.findOneAndUpdate(
+      { _id: userId }, // Mongoose casts string to ObjectId automatically
+      {
+        $set: update,
+        $inc: { onboardingStep: 1 },
+      },
+      options
+    );  
+   console.log(updatedProfile);
+    if (!updatedProfile) {
+      return res.status(404).json({ msg: "User not found", success: false });
+    }
+
+    return res.status(200).json({
+      msg: "Profile Saved Successfully",
+      success: true,
+    });
+  } catch (error) {
+    console.error("Profile update error:", error);
+    return res.status(500).json({
+      msg: "Failed to update profile",
+      success: false,
+    });
+  }
 };

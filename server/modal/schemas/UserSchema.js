@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 const user_schema = new mongoose.Schema(
   {
-
-     role: {
+    role: {
       type: String,
       enum: ["customer", "vendor"],
       required: true,
@@ -54,17 +53,21 @@ const user_schema = new mongoose.Schema(
     documents: {
       aadharCard: { type: Number },
       panCard: { type: String },
-      fssai : {type : Number},
-      gst : {type : Number}
+      fssai: { type: Number },
+      gst: { type: Number },
     },
 
     // Step 6: Security Questions
-    securityQuestions: [
-      {
-        question: String,
-        answer: String,
-      },
-    ],
+    securityQuestions: {
+      type: [
+        {
+          question: String,
+          answer: String,
+        },
+      ],
+      required: false,
+      default: undefined,
+    },
 
     // Step tracking
     onboardingStep: {

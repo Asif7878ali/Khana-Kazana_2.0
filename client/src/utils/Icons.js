@@ -1,16 +1,38 @@
 const Icons = {
-  AddUser: ({ className='' }) => (
+  AddUser: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
-      className={`w-6 h-6 ${className}`}
+      className={`${className}`}
     >
       <path d="M5.25 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM2.25 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM18.75 7.5a.75.75 0 0 0-1.5 0v2.25H15a.75.75 0 0 0 0 1.5h2.25v2.25a.75.75 0 0 0 1.5 0v-2.25H21a.75.75 0 0 0 0-1.5h-2.25V7.5Z" />
     </svg>
   ),
 
-  CheronUp: ({ className =''  }) => (
+  Camera: ({ className = "" }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className={`${className}`}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"
+      />
+    </svg>
+  ),
+
+  CheronUp: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -27,7 +49,7 @@ const Icons = {
     </svg>
   ),
 
-  CheronDown: ({ className  ='' }) => (
+  CheronDown: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -44,7 +66,7 @@ const Icons = {
     </svg>
   ),
 
-  CheronLeft: ({ className =''  }) => (
+  CheronLeft: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -61,7 +83,7 @@ const Icons = {
     </svg>
   ),
 
-  CheronRight: ({ className =''  }) => (
+  CheronRight: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -78,7 +100,7 @@ const Icons = {
     </svg>
   ),
 
-  Calender: ({ className =''  }) => (
+  Calender: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -94,7 +116,7 @@ const Icons = {
     </svg>
   ),
 
-  Checked: ({ className =''  }) => (
+  Checked: ({ className = "" }) => (
     <svg
       className={`${className}`}
       fill="none"
@@ -110,7 +132,7 @@ const Icons = {
     </svg>
   ),
 
-  Cross: ({ className =''  }) => (
+  Cross: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -127,7 +149,7 @@ const Icons = {
     </svg>
   ),
 
-  Dark: ({ className =''  }) => (
+  Dark: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -142,7 +164,7 @@ const Icons = {
     </svg>
   ),
 
-  Dial: ({ className =''  }) => (
+  Dial: ({ className = "" }) => (
     <svg
       viewBox="0 0 24 24"
       fill="none"
@@ -156,7 +178,7 @@ const Icons = {
     </svg>
   ),
 
-  Eye: ({ className =''  }) => (
+  Eye: ({ className = "" }) => (
     <svg
       className={`size-5 ${className}`}
       fill="none"
@@ -173,7 +195,7 @@ const Icons = {
     </svg>
   ),
 
-  EyeSlash: ({ className =''  }) => (
+  EyeSlash: ({ className = "" }) => (
     <svg
       className={`size-5 ${className}`}
       fill="none"
@@ -196,7 +218,7 @@ const Icons = {
     </svg>
   ),
 
-  Edit: ({ className =''  }) => (
+  Edit: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -213,7 +235,7 @@ const Icons = {
     </svg>
   ),
 
-  Error: ({ className =''  }) => (
+  Error: ({ className = "" }) => (
     <svg className={`${className}`} fill="currentColor" viewBox="0 0 20 20">
       <path
         fillRule="evenodd"
@@ -223,7 +245,7 @@ const Icons = {
     </svg>
   ),
 
-  FaceBook: ({ className =''  }) => (
+  FaceBook: ({ className = "" }) => (
     <svg
       className={`w-6 h-6 ${className}`}
       aria-hidden="true"
@@ -241,7 +263,7 @@ const Icons = {
     </svg>
   ),
 
-  Github: ({ className =''  }) => (
+  Github: ({ className = "" }) => (
     <svg
       className={`w-6 h-6 ${className}`}
       aria-hidden="true"
@@ -259,7 +281,7 @@ const Icons = {
     </svg>
   ),
 
-  Humberger: ({ className  ='' }) => (
+  Humberger: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -274,7 +296,7 @@ const Icons = {
     </svg>
   ),
 
-  Home: ({ className =''  }) => (
+  Home: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -286,7 +308,7 @@ const Icons = {
     </svg>
   ),
 
-  Instagram: ({ className =''  }) => (
+  Instagram: ({ className = "" }) => (
     <svg
       className={`w-6 h-6 ${className}`}
       aria-hidden="true"
@@ -305,7 +327,7 @@ const Icons = {
     </svg>
   ),
 
-  Info: ({ className =''  }) => (
+  Info: ({ className = "" }) => (
     <svg className={`${className}`} fill="currentColor" viewBox="0 0 20 20">
       <path
         fillRule="evenodd"
@@ -314,14 +336,24 @@ const Icons = {
       />
     </svg>
   ),
-  InfoIcon : ({className = ''}) => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`${className}`}>
-  <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-</svg>
-
+  InfoIcon: ({ className = "" }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className={`${className}`}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+      />
+    </svg>
   ),
 
-  Light: ({ className =''  }) => (
+  Light: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -332,7 +364,7 @@ const Icons = {
     </svg>
   ),
 
-  Location: ({ className =''  }) => (
+  Location: ({ className = "" }) => (
     <svg
       className={`size-6 ${className}`}
       viewBox="0 0 18 21"
@@ -346,7 +378,7 @@ const Icons = {
     </svg>
   ),
 
-  Meal: ({ className =''  }) => (
+  Meal: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -365,7 +397,7 @@ const Icons = {
     </svg>
   ),
 
-  Msg: ({ className =''  }) => (
+  Msg: ({ className = "" }) => (
     <svg
       className={`size-6 ${className}`}
       viewBox="0 0 20 15"
@@ -379,7 +411,7 @@ const Icons = {
     </svg>
   ),
 
-  Notification: ({ className =''  }) => (
+  Notification: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -395,7 +427,7 @@ const Icons = {
     </svg>
   ),
 
-  Success: ({ className =''  }) => (
+  Success: ({ className = "" }) => (
     <svg className={`${className}`} fill="currentColor" viewBox="0 0 20 20">
       <path
         fillRule="evenodd"
@@ -405,7 +437,7 @@ const Icons = {
     </svg>
   ),
 
-  Twitter: ({ className =''  }) => (
+  Twitter: ({ className = "" }) => (
     <svg
       className={`w-6 h-6 ${className}`}
       aria-hidden="true"
@@ -419,7 +451,7 @@ const Icons = {
     </svg>
   ),
 
-  UpComingMeal: ({ className =''  }) => (
+  UpComingMeal: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -435,7 +467,7 @@ const Icons = {
     </svg>
   ),
 
-  Upload: ({ className =''  }) => (
+  Upload: ({ className = "" }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -452,7 +484,7 @@ const Icons = {
     </svg>
   ),
 
-  Warning: ({ className =''  }) => (
+  Warning: ({ className = "" }) => (
     <svg className={`${className}`} fill="currentColor" viewBox="0 0 20 20">
       <path
         fillRule="evenodd"
