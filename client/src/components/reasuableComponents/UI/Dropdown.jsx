@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import Icons from "@/utils/Icons";
 import { ErrorsMessage } from "../Errors";
 
@@ -18,6 +18,9 @@ const Dropdown = ({
   defaultValue = "",
   value = "",
   onChange,
+  onSelect,
+  optionValueKey, 
+  optionLabelKey,
   className = "",
   classNameInput = "h-10",
   disabled = false,
@@ -31,6 +34,7 @@ const Dropdown = ({
     position: "bottom",
     width: 200,
   });
+  const [searchText, setSearchText] = useState("");
   const dropdownRef = useRef(null);
   const triggerRef = useRef(null);
 
@@ -94,41 +98,65 @@ const Dropdown = ({
 
   const handleOptionClick = (option) => {
     if (disabled) return;
-    setSelectedValue(option.value);
+    const val = option[optionValueKey];
+    setSelectedValue(val);
     setIsOpen(false);
-    onChange?.({ target: { name, value: option.value } });
+    onChange?.({ target: { name, value: val } });
+    onSelect?.(option);
   };
 
-  const selectedOption = options.find((opt) => opt.value === selectedValue) || {
-    label: placeholder,
-  };
+  // Filtered options for search
+  const filteredOptions = useMemo(() => {
+    if (!searchText.trim()) return options;
+    return options.filter((opt) =>
+      String(opt[optionLabelKey]).toLowerCase().includes(searchText.toLowerCase())
+    );
+  }, [searchText, options, optionLabelKey]);
+
+  const selectedOption =
+    options.find((opt) => opt[optionValueKey] === selectedValue) || {
+      [optionLabelKey]: placeholder,
+    };
 
   const dropdownOptions = (
     <div
       ref={dropdownRef}
-      className={`absolute z-[9999] bg-white border border-gray-300 rounded-lg shadow-2xl transition-all duration-300 ease-out transform ${isOpen
-          ? "opacity-100 scale-100"
-          : "opacity-0 scale-95 pointer-events-none"
-        } ${dropdownStyle.position === "top"
+      className={`absolute z-[9999] bg-white border border-gray-300 rounded-lg shadow-2xl transition-all duration-300 ease-out transform ${
+        isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+      } ${
+        dropdownStyle.position === "top"
           ? "bottom-[calc(100%+4px)]"
           : "top-[calc(100%+4px)]"
-        }`}
+      }`}
       style={{ width: dropdownStyle.width }}
     >
       <div className="max-h-60 overflow-y-auto py-1">
-        {options.map((option, index) => (
+        {options.length > 10 && (
+          <div className="p-2">
+            <input
+              type="text"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              placeholder="Search..."
+              className="w-full border p-2 rounded focus:outline-none"
+            />
+          </div>
+        )}
+        {filteredOptions.map((option, index) => (
           <button
             key={option?.id || index}
             type="button"
             onClick={() => handleOptionClick(option)}
-            className={`w-full cursor-pointer text-left block px-4 py-3 text-gray-900 hover:text-rose-700 hover:bg-rose-100 transition-all duration-200 transform ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
-              } ${selectedValue === option.value
+            className={`w-full cursor-pointer text-left block px-4 py-3 text-gray-900 hover:text-rose-700 hover:bg-rose-100 transition-all duration-200 transform ${
+              isOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+            } ${
+              selectedValue === option[optionValueKey]
                 ? "bg-rose-50 font-medium text-rose-700"
                 : ""
-              }`}
+            }`}
             style={{ transitionDelay: isOpen ? `${index * 50}ms` : "0ms" }}
           >
-            {option.label}
+            {option[optionLabelKey]}
           </button>
         ))}
       </div>
@@ -138,9 +166,7 @@ const Dropdown = ({
   return (
     <div className="relative w-full">
       {label && (
-        <label className="text-sm font-medium text-gray-700 mb-1 block">
-          {label}
-        </label>
+        <label className="text-sm font-medium text-gray-700 mb-1 block">{label}</label>
       )}
       <div className="relative">
         <button
@@ -149,36 +175,31 @@ const Dropdown = ({
           onClick={handleToggle}
           disabled={disabled}
           className={`w-full p-3 ${classNameInput} border rounded-lg text-left flex justify-between items-center focus:outline-none transition-all duration-200 
-          ${disabled
-              ? "bg-gray-100 cursor-not-allowed opacity-50"
-              : "active:scale-[0.98]"
-            } 
-          ${error
-              ? "border-red-500 focus:ring-red-500 bg-red-50/50"
-              : " border-gray-300 text-gray-700 focus:ring-blue-100 focus:border-blue-200"
-            }
+          ${disabled ? "bg-gray-100 cursor-not-allowed opacity-50" : "active:scale-[0.98]"} 
+          ${error ? "border-red-500 focus:ring-red-500 bg-red-50/50" : " border-gray-300 text-gray-700 focus:ring-blue-100 focus:border-blue-200"}
           ${isOpen ? "ring-1 ring-rose-500" : ""} ${className}`}
           {...props}
         >
-          <span className={`${error
+          <span
+            className={`${
+              error
                 ? "text-red-900"
                 : selectedValue && selectedValue !== placeholder
-                  ? "text-gray-900"
-                  : "text-gray-500"
-              }
-  `}
+                ? "text-gray-900"
+                : "text-gray-500"
+            }`}
           >
-            {selectedOption.label}
+            {selectedOption[optionLabelKey]}
           </span>
 
           <Icons.CheronDown
-            className={`w-5 h-5 text-gray-500 transform transition-all duration-300 ${isOpen ? "rotate-180 text-gray-500" : ""
-              }`}
+            className={`w-5 h-5 text-gray-500 transform transition-all duration-300 ${
+              isOpen ? "rotate-180 text-gray-500" : ""
+            }`}
           />
         </button>
         {isOpen && dropdownOptions}
       </div>
-
       {error && <ErrorsMessage error={error} />}
     </div>
   );

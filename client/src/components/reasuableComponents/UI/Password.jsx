@@ -118,7 +118,7 @@ const Password = ({
           )}
         </div>
       )}
-      <div className="relative">
+      <div className="relative group">
         <input
           type={isVisible ? "text" : "password"}
           id={name}
@@ -138,6 +138,7 @@ const Password = ({
             } ${className}`}
           {...props}
         />
+          <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-300 to-red-400 group-focus-within:w-full transition-all duration-500"></div>
         <button
           type="button"
           onClick={toggleVisibility}

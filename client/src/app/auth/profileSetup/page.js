@@ -104,7 +104,6 @@ const Page = () => {
 
     const imgresponce = await imageUploadSingle(selectedImage.file, dispatch);
     console.log(imgresponce);
-    debugger;
 
     if (!imgresponce?.data?.success) {
       showAlert("Image Upload Failed Due to Internal Server Error", msg.err);
@@ -127,7 +126,6 @@ const Page = () => {
         method: "PUT",
         payload: payload,
       });
-      debugger;
       if (!response?.data?.success) {
         showAlert("Failed to Save User Profile", msg.err);
       }

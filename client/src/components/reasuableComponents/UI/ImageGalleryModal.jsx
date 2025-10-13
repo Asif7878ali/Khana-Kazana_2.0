@@ -8,7 +8,6 @@ const ImageGalleryModal = ({
   onClose = () => {},
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  debugger;
   const next = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };

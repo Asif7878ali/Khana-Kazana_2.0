@@ -41,7 +41,7 @@ const Input = ({
   }, [value, originalInput, confirmInputMatch]);
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className=" relative group flex flex-col gap-1">
       {label && (
         <label htmlFor={name} className="text-sm font-medium text-gray-700">
           {label} {required && <span className="text-red-500">*</span>}
@@ -65,6 +65,7 @@ const Input = ({
         } ${className}`}
         {...props}
       />
+       <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-300 to-red-400 group-focus-within:w-full transition-all duration-500"></div>
       {confirmInputMatch && value.trim() !== "" && (
         <div
           className={`text-sm mt-2 font-medium ${
