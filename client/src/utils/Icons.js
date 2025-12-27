@@ -39,7 +39,7 @@ const Icons = {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className={`size-6 ${className}`}
+      className={` ${className}`}
     >
       <path
         strokeLinecap="round"
@@ -366,7 +366,7 @@ const Icons = {
 
   Location: ({ className = "" }) => (
     <svg
-      className={`size-6 ${className}`}
+      className={`${className}`}
       viewBox="0 0 18 21"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -399,7 +399,7 @@ const Icons = {
 
   Msg: ({ className = "" }) => (
     <svg
-      className={`size-6 ${className}`}
+      className={`${className}`}
       viewBox="0 0 20 15"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

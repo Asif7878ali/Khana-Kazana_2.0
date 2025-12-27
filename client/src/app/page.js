@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gray-50">
+      <div id="LandingPage">
         <HeroSection/>
         <PopularCategories/>
         <SpecialOffer />

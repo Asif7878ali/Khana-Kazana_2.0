@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 /* Scrool Start */
-/* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
-/* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 /* Scrool End */
 
+
+/* Start For dark backgrounds */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -20,12 +20,186 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: #000 !important;
 }
 
-/* For dark backgrounds */
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px #f9fafb inset !important;
 }
+/* End For dark backgrounds */
 
-  /* shadow */
+
+/* start shadow */
  .shadow-box {
   box-shadow: 0 0 15px 3px rgba(224, 114, 114, 0.25);  
 }
+/* end shadow */
+
+
+/* start color variable */
+@layer utilities {
+                                                   /***** backgorund color *******/
+.bgWhite {
+   @apply bg-white
+}
+
+.hover\:bgWhite:hover {
+    @apply bg-white;
+}
+
+.bgGray1 {
+  @apply bg-gray-100
+}
+
+.bgRose1 {
+  @apply bg-rose-100
+}
+
+.bgRose4 {
+  @apply bg-rose-400
+}
+.hover\:bgRose:hover {
+    @apply bg-rose-400;
+}
+
+
+
+
+                                                     /***** text color *******/
+.textRose {
+  @apply text-rose-500
+}
+
+.hover\:textRose:hover {
+    @apply text-rose-500;
+}
+
+.textWhite {
+  @apply text-white
+}
+
+.hover\:textWhite:hover {
+    @apply text-white;
+}
+
+.textgray8 {
+  @apply text-gray-800
+}
+
+.textgray6 {
+  @apply text-gray-600
+}
+
+.textYellow4 {
+  @apply text-yellow-400
+}
+
+
+
+
+
+                                                     /***** border color *******/
+.borderRose {
+  @apply border-rose-500
+}
+
+.borderWhite {
+  @apply border-white
+}
+
+}
+                                            
+
+
+/* end color variable */
+
+
+
+
+
+/* start  OwnContainer */
+.OwnContainer {
+  --bs-gutter-x: 1.5rem;   --bs-gutter-y: 0;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 320px) {
+  .OwnContainer {
+   max-width: 95%;
+  }
+}
+@media (min-width: 375px) {
+  .OwnContainer {
+   max-width: 92%;
+  }
+}
+@media (min-width: 425px) {
+  .OwnContainer {
+   max-width: 90%;
+  }
+}
+@media (min-width: 576px) {
+  .OwnContainer {
+   max-width: 90%;
+  }
+}
+@media (min-width: 768px) {
+  .OwnContainer {
+    max-width: 90%;
+  }
+}
+@media (min-width: 992px) {
+  .OwnContainer {
+    max-width: 90%;
+  }
+}
+@media (min-width: 1200px) {
+  .OwnContainer {
+    max-width: 90%;
+  }
+}
+@media (min-width: 1400px) {
+  .OwnContainer {
+    max-width: 90%;
+  }
+}
+@media (min-width: 1420px) {
+  .OwnContainer {
+    max-width: 88%;
+  }
+}
+@media (min-width: 1440px) {
+  .OwnContainer {
+    max-width: 86%;
+  }
+}
+@media (min-width: 1460px) {
+  .OwnContainer {
+    max-width: 84%;
+  }
+}
+@media (min-width: 1480px) {
+  .OwnContainer {
+    max-width: 82%;
+  }
+}
+@media (min-width: 1500px) {
+  .OwnContainer {
+    max-width: 80%;
+  }
+}
+@media (min-width: 1600px) {
+  .OwnContainer {
+    max-width: 78%;
+  }
+}
+@media (min-width: 1700px) {
+  .OwnContainer {
+    max-width: 76%;
+  }
+}
+@media (min-width: 1800px) {
+  .OwnContainer {
+    max-width: 75%;
+  }
+}
+/* end OwnContainer */

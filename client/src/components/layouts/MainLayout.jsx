@@ -6,12 +6,16 @@ import Footer from '../foundation/Footer'
 
 const MainLayout = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        {children}
+    <div id='MainLayout' className="flex flex-col h-screen">
+       <div id='Navbar'>
+              <Navbar />
+       </div>
+      <main id='scrollable' className='flex-1 overflow-y-auto'>
+             {children}
       </main>
-      <Footer />
+      <div id='Footer'>
+           <Footer />
+      </div>
     </div>
   )
 }

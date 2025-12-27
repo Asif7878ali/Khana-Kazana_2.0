@@ -20,23 +20,23 @@ export function HeroSection() {
       />
       <div className="absolute inset-0 bg-black/50"></div>
 
-      <div className="relative container mx-auto px-4 text-white">
+      <div className="relative container mx-auto px-4">
         <div className="max-w-2xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 textWhite">
             Experience the Authentic Flavors of India
           </h1>
-          <p className="text-xl mb-8">
+          <p className="text-xl mb-8 textWhite">
             Discover a culinary journey through the diverse and rich traditions
             of Indian cuisine
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button variant="primary" className="py-3">
+            <Button variant="primary" className="py-3 textWhite">
               Order Online
             </Button>
 
             <Button
               variant="outline"
-              className="text-white border-white py-3 hover:bg-white hover:text-rose-500"
+              className="textWhite border borderWhite py-3 hover:bgWhite hover:textRose"
             >
               Book a Table
             </Button>
@@ -49,13 +49,13 @@ export function HeroSection() {
 
 export function PopularCategories() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bgWhite">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-2 text-gray-800">
+          <h2 className="text-3xl font-bold mb-2 textgray8">
             Popular Categories
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg textgray6">
             Explore our diverse menu offerings
           </p>
         </div>
@@ -77,35 +77,35 @@ export function PopularCategories() {
 
 export function SpecialOffer() {
   return (
-    <section className="py-16 bg-rose-50">
+    <section className="py-16 bgRose1">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2 mb-8 md:mb-0">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">
+            <h2 className="text-3xl font-bold mb-4 textgray8">
               Special Offer
             </h2>
-            <h3 className="text-2xl font-semibold text-rose-500 mb-4">
+            <h3 className="text-2xl font-semibold textRose mb-4">
               20% OFF on Family Combos
             </h3>
-            <p className="text-lg mb-6 text-gray-600">
+            <p className="text-lg mb-6 textgray6">
               Enjoy a delightful family feast with our special combo meals.
               Perfect for gatherings and celebrations!
             </p>
-            <ul className="mb-8 text-gray-600">
+            <ul className="mb-8 textgray6">
               <li className="flex items-center mb-2">
-                <span className="text-rose-500 mr-2">✓</span> 4 Main Courses
+                <span className="textRose mr-2">✓</span> 4 Main Courses
               </li>
               <li className="flex items-center mb-2">
-                <span className="text-rose-500 mr-2">✓</span> 2 Side Dishes
+                <span className="textRose mr-2">✓</span> 2 Side Dishes
               </li>
               <li className="flex items-center mb-2">
-                <span className="text-rose-500 mr-2">✓</span> 4 Desserts
+                <span className="textRose mr-2">✓</span> 4 Desserts
               </li>
               <li className="flex items-center">
-                <span className="text-rose-500 mr-2">✓</span> 4 Beverages
+                <span className="textRose mr-2">✓</span> 4 Beverages
               </li>
             </ul>
-            <button className="bg-rose-500 hover:bg-rose-600 text-white py-3 px-6 rounded-md font-medium transition-colors">
+            <button className="bgRose4 hover:bg-rose-500 textWhite cursor-pointer py-3 px-6 rounded-md font-medium transition-colors">
               Order Now
             </button>
           </div>
@@ -128,19 +128,19 @@ export function SpecialOffer() {
 
 export function Testimonials() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bgWhite">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-2 text-gray-800">
+          <h2 className="text-3xl font-bold mb-2 textgray8">
             What Our Customers Say
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg textgray6">
             Don&apos;t just take our word for it
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="p-6 rounded-lg bg-gray-50">
+            <div key={testimonial.id} className="p-6 rounded-lg bgGray1">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
                   <Image
@@ -151,17 +151,17 @@ export function Testimonials() {
                   />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-800">
+                  <h3 className="font-semibold textgray8">
                     {testimonial?.name}
                   </h3>
-                  <div className="flex text-yellow-400">
+                  <div className="flex textYellow4">
                     {[...Array(5)].map((_, i) => (
                       <span key={i}>{i < testimonial.rating ? "★" : "☆"}</span>
                     ))}
                   </div>
                 </div>
               </div>
-              <p className="italic text-gray-600">
+              <p className="italic textgray6">
                 &quot;{testimonial.comment}&quot;
               </p>
             </div>
@@ -174,23 +174,15 @@ export function Testimonials() {
 
 export function CalltoAction() {
   return (
-    <section className="py-16 bg-rose-500">
+    <section className="py-16 bgRose1">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold mb-4 text-gray-600">
+        <h2 className="text-3xl font-bold mb-4 textgray8">
           Ready to Experience the Flavors?
         </h2>
-        <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-600">
+        <p className="text-xl max-w-2xl mx-auto textRose">
           Join us for a culinary journey or order online for a delightful meal
           at home
         </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <button className="bg-white hover:bg-gray-100 text-rose-500 py-3 px-8 rounded-md font-medium transition-colors">
-            Book a Table
-          </button>
-          <button className="bg-transparent hover:bg-rose-600 text-white border-2 border-white py-3 px-8 rounded-md font-medium transition-colors">
-            Order Online
-          </button>
-        </div>
       </div>
     </section>
   );
@@ -198,41 +190,41 @@ export function CalltoAction() {
 
 export function Features() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bgWhite">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center">
-            <div className="text-rose-500 text-4xl mb-4 flex justify-center">
+            <div className="textRose text-4xl mb-4 flex justify-center">
               <Icons.Meal />
             </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">
+            <h3 className="text-xl font-semibold mb-2 textgray8">
               Fresh Ingredients
             </h3>
-            <p className="text-gray-600">
+            <p className="textgray6">
               We source only the freshest ingredients to ensure authentic
               flavors in every dish.
             </p>
           </div>
           <div className="text-center">
-            <div className="text-rose-500 text-4xl mb-4 flex justify-center">
+            <div className="textRose text-4xl mb-4 flex justify-center">
               <Icons.UpComingMeal />
             </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">
+            <h3 className="text-xl font-semibold mb-2 textgray8">
               Fast Delivery
             </h3>
-            <p className="text-gray-600">
+            <p className="textgray6">
               Our efficient delivery service ensures your food arrives hot and
               fresh at your doorstep.
             </p>
           </div>
           <div className="text-center">
-            <div className="text-rose-500 text-4xl mb-4 flex justify-center">
+            <div className="textRose text-4xl mb-4 flex justify-center">
               <Icons.Notification />
             </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">
+            <h3 className="text-xl font-semibold mb-2 textgray8">
               Special Events
             </h3>
-            <p className="text-gray-600">
+            <p className="textgray6">
               We cater to special events and celebrations with customized menus
               and services.
             </p>

@@ -2,7 +2,7 @@ import Icons from '@/utils/Icons';
 
 const DrawerFooter = ({ open, handleDrawer }) => {
   return (
-     <footer className={`fixed bottom-0 left-0 right-0 bg-gradient-to-br from-rose-500 via-rose-600 to-rose-700 shadow-2xl transition-all duration-700 ease-in-out ${
+     <footer id='DrawerFooter' className={`fixed bottom-0 left-0 right-0 bg-gradient-to-br from-rose-400 via-rose-600 to-rose-700 shadow-2xl transition-all duration-700 ease-in-out ${
       open 
         ? 'translate-y-0 opacity-100' 
         : 'translate-y-full opacity-0'
@@ -21,17 +21,15 @@ const DrawerFooter = ({ open, handleDrawer }) => {
           {/* Brand Section */}
           <div className="md:w-80 animate-fade-in-up">
             <div className="flex justify-between items-baseline">
-              <div>
-                <p className="font-bold text-white text-3xl">
-                  Khana 
-                  <span className="text-white italic text-lg ml-1 opacity-90">Kazana</span>
-                </p>           
-              </div>            
+              <div className="flex items-baseline">
+            <p className='font-mono text-2xl bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-green-500 to-indigo-400'>Khana</p>
+            <span className="textWhite italic text-sm ml-1">Kazana</span>
+          </div>        
               <span 
                 onClick={() => setDynamicFooter(false)} 
                 className="cursor-pointer block md:hidden p-2 hover:bg-white/10 rounded-full transition-all duration-300"
               >
-                <Icons.CheronUp className={'text-white hover:scale-110 transition-transform'} />
+                <Icons.CheronUp className='textWhite hover:scale-110 transition-transform size-6' />
               </span>   
             </div>
             
@@ -45,16 +43,16 @@ const DrawerFooter = ({ open, handleDrawer }) => {
             
             <div className="mt-6 flex gap-4">
               <a className="hover:scale-125 transition-transform duration-300 p-2 hover:bg-white/10 rounded-full" target="_blank" href="#">
-                <Icons.FaceBook className={"text-white w-5 h-5"} />
+                <Icons.FaceBook className="textWhite w-5 h-5" />
               </a>
               <a className="hover:scale-125 transition-transform duration-300 p-2 hover:bg-white/10 rounded-full" target="_blank" href="/">
-                <Icons.Instagram className={"text-white w-5 h-5"} />
+                <Icons.Instagram className="textWhite w-5 h-5" />
               </a>
               <a className="hover:scale-125 transition-transform duration-300 p-2 hover:bg-white/10 rounded-full" target="_blank" href="">
-                <Icons.Twitter className={"text-white w-5 h-5"} />
+                <Icons.Twitter className="textWhite w-5 h-5" />
               </a>
               <a className="hover:scale-125 transition-transform duration-300 p-2 hover:bg-white/10 rounded-full" target="_blank" href="https://www.youtube.com/">
-                <Icons.Github className={"text-white w-5 h-5"} />
+                <Icons.Github className="textWhite w-5 h-5" />
               </a>
             </div>
           </div>
@@ -63,12 +61,12 @@ const DrawerFooter = ({ open, handleDrawer }) => {
           <div className="md:w-80 animate-fade-in-up delay-200">
             <div className="mt-6 flex items-center group hover:bg-white/5 p-3 rounded-lg transition-all duration-300">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 group-hover:bg-white/20 transition-all duration-300">
-                <Icons.Dial className="text-white" />
+                <Icons.Dial className="textWhite" />
               </div>
               <div className="ml-4">
                 <a
                   href="tel:+911800123444"
-                  className="font-Inter text-sm font-medium text-white hover:text-rose-200 transition-colors"
+                  className="font-Inter text-sm font-medium textWhite hover:text-rose-200 transition-colors"
                 >
                   +91 1800123444
                 </a>
@@ -80,12 +78,12 @@ const DrawerFooter = ({ open, handleDrawer }) => {
             
             <div className="mt-4 flex items-center group hover:bg-white/5 p-3 rounded-lg transition-all duration-300">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 group-hover:bg-white/20 transition-all duration-300">
-                <Icons.Msg className="text-white" />
+                <Icons.Msg className="textWhite size-6" />
               </div>
               <div className="ml-4">
                 <a
                   href="mailto:help@lorem.com"
-                  className="font-Inter text-sm font-medium text-white hover:text-rose-200 transition-colors"
+                  className="font-Inter text-sm font-medium textWhite hover:text-rose-200 transition-colors"
                 >
                   help@lorem.com
                 </a>
@@ -97,12 +95,12 @@ const DrawerFooter = ({ open, handleDrawer }) => {
             
             <div className="mt-4 flex items-center group hover:bg-white/5 p-3 rounded-lg transition-all duration-300">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 group-hover:bg-white/20 transition-all duration-300">
-                <Icons.Location className="text-white" />
+                <Icons.Location className="textWhite size-6" />
               </div>
               <div className="ml-4">
                 <a
                   href="#"
-                  className="font-Inter text-sm font-medium text-white hover:text-rose-200 transition-colors"
+                  className="font-Inter text-sm font-medium textWhite hover:text-rose-200 transition-colors"
                 >
                   Vasundhara, Ghazibad, India, 201012
                 </a>
@@ -114,15 +112,15 @@ const DrawerFooter = ({ open, handleDrawer }) => {
           </div>
           
           {/* Links and App Downloads */}
-          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:max-w-sm animate-fade-in-up delay-300">
+          <div className="mt-6 flex w-full flex-col justify-between sm:flex-row md:mt-0 md:max-w-sm animate-fade-in-up delay-300">
             <div>
-              <p className="text-white font-inter text-lg font-semibold leading-normal mb-2">
+              <p className="textWhite font-inter text-lg font-semibold leading-normal mb-2">
                 Pages
               </p>
               <ul className='grid grid-cols-2 md:grid-cols-1 gap-1'>
                 {['Home', 'News', 'Contact', 'Plans and pricing'].map((item, index) => (
                   <li key={index} className="mt-3">
-                    <span className="text-white hover:text-rose-200 font-inter text-sm font-normal hover:font-semibold cursor-pointer transition-all duration-300 hover:translate-x-1">
+                    <span className="textWhite hover:text-rose-200 font-inter text-sm font-normal hover:font-semibold cursor-pointer transition-all duration-300 hover:translate-x-1">
                       {item}
                     </span>
                   </li>
@@ -131,7 +129,7 @@ const DrawerFooter = ({ open, handleDrawer }) => {
             </div>
             
             <div className="mt-6 flex flex-col gap-4 sm:mt-0">
-              <p className="text-white font-inter text-lg font-semibold">
+              <p className="textWhite font-inter text-lg font-semibold">
                 Download the app
               </p>
               <div className="flex gap-3 sm:flex-col">
@@ -145,7 +143,7 @@ const DrawerFooter = ({ open, handleDrawer }) => {
                   />
                   <div className="text-left ml-3">
                     <p className="text-xs text-gray-200">Download on </p>
-                    <p className="text-sm md:text-base font-medium"> Google Play Store </p>
+                    <p className="text-sm md:text-base font-medium textWhite"> Google Play Store </p>
                   </div>
                 </div>
                 
@@ -159,7 +157,7 @@ const DrawerFooter = ({ open, handleDrawer }) => {
                   />
                   <div className="text-left ml-3">
                     <p className="text-xs text-gray-200">Download on </p>
-                    <p className="text-sm md:text-base font-medium">Apple Store</p>
+                    <p className="text-sm md:text-base font-medium textWhite">Apple Store</p>
                   </div>
                 </div>
               </div>
@@ -169,14 +167,14 @@ const DrawerFooter = ({ open, handleDrawer }) => {
               onClick={() => handleDrawer(false)} 
               className="cursor-pointer hidden md:block p-2 rounded-full transition-all duration-300 hover:scale-110"
             >
-              <Icons.CheronUp className="text-white" />
+              <Icons.CheronUp className="text-white size-6" />
             </span>
           </div>
         </div>
         
         <hr className="mt-8 border-white/20" />
         <div className="flex items-center justify-center pb-6 pt-4 md:py-6">
-          <p className="text-xs font-normal text-white/90 md:text-sm text-center">
+          <p className="text-xs font-normal textWhite md:text-sm text-center">
             © Copyright {new Date().getFullYear()}, All Rights Reserved by Khana
             Kazana. PVT. LTD
           </p>
