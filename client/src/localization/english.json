@@ -3,9 +3,21 @@
     "home": "Home",
     "meal": "Meal",
     "upcoming": "Upcoming",
-    "joinUs": "Join Us"
+    "joinUs": "Join Us",
+    "khana": "Khana",
+    "kazana" : "Kazana",
+    "allRightReserved": "All Rights Reserved",
+    "support": "Support",
+    "number": "Number",
+    "email": "Email",
+    "address" : "Address",
+    "pages" : "Pages",
+    "downloadApp" : " Download the App",
+    "dounloadOn" : "Download on"
   },
-  "long": {},
+  "long": {
+    "ExploreOurCulinaryExcellence": "Explore our meticulously curated menu that showcases a symphony of flavors, each dish a testament to the artistry of our skilled chefs. From mouthwatering appetizers that tantalize your taste buds to decadent desserts that provide a sweet crescendo to your meal, every bite is a celebration of culinary excellence"
+  },
 
   "error": {}
 }

@@ -65,7 +65,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <button onClick={handleClick} className='hidden w-full md:flex items-center gap-2 bg-transparent textRose py-2 px-4 rounded-md hover:bgRose hover:textWhite cursor-pointer border borderRose'>
               <Icons.AddUser className="size-6" />
-              Join Us
+              {translate('sort.joinUs')}
             </button>
 
             {/* Hamburger Icon for Mobile */}
@@ -88,12 +88,12 @@ const Navbar = () => {
           <div className="px-4 py-2">
             <div className="flex gap-1 group  rounded-2xl p-3 hover:bgRose hover:textWhite cursor-pointer">
               <Icons.Home className='textRose group-hover:text-white' />
-              <p className='block textRose group-hover:text-white'>Home</p>
+              <p className='block textRose group-hover:text-white'>{translate('sort.home')}</p>
             </div>
 
             <div className="flex gap-2 group hover:bgRose hover:textWhite  rounded-2xl p-3 cursor-pointer">
               <Icons.Meal className='textRose group-hover:text-white' />
-              <p className='block textRose group-hover:text-white'>Meal</p>
+              <p className='block textRose group-hover:text-white'>{translate('sort.meal')}</p>
             </div>
 
             <div className="flex gap-1 group  rounded-2xl p-3 hover:bgRose hover:textWhite cursor-pointer">
@@ -101,13 +101,13 @@ const Navbar = () => {
                 className='textRose group-hover:text-white'
               />
               <p className='block textRose group-hover:text-white'>
-                Upcoming Meal
+                {translate('sort.upcoming')} {translate('sort.meal')}
               </p>
             </div>
             <div className="flex justify-end">
               <button className='flex items-center gap-2 bg-transparent textRose py-2 px-4 rounded-md hover:bgRose hover:textWhite cursor-pointer border-[1px] border-rose-500'>
                 <Icons.AddUser className="size-6" />
-                Join Us
+               {translate('sort.joinUs')}
               </button>
             </div>
           </div>

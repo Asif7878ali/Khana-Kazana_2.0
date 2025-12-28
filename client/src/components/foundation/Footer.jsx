@@ -8,7 +8,7 @@ const Footer = () => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const { language, setLanguage } = useTranslator();
+  const { translate, language, setLanguage } = useTranslator();
 
   function handleLanguageChange(langCode) {
     if (typeof window !== "undefined") {
@@ -42,7 +42,7 @@ const Footer = () => {
       >
         <div className="OwnContainer  flex flex-col-reverse md:flex-row justify-between items-center px-4">
           <div className="md:order-first mt-2 md:mt-0 font-bold bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-green-500 to-indigo-400 text-sm">
-            © {new Date().getFullYear()} Khana-Kazana All rights reserved.
+            © {new Date().getFullYear()} {translate("sort.khana")} {translate("sort.kazana")} {translate("sort.allRightReserved")}
           </div>
 
           <div className="text-sm flex text-center md:text-right gap-3">

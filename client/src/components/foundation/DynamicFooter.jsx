@@ -1,12 +1,16 @@
-import Icons from '@/utils/Icons';
+import useTranslator from "@/hooks/useTranslator";
+import Icons from "@/utils/Icons";
 
 const DrawerFooter = ({ open, handleDrawer }) => {
+  const { translate } = useTranslator();
+
   return (
-     <footer id='DrawerFooter' className={`fixed bottom-0 left-0 right-0 bg-gradient-to-br from-rose-400 via-rose-600 to-rose-700 shadow-2xl transition-all duration-700 ease-in-out ${
-      open 
-        ? 'translate-y-0 opacity-100' 
-        : 'translate-y-full opacity-0'
-    }`}>
+    <footer
+      id="DrawerFooter"
+      className={`fixed bottom-0 left-0 right-0 bg-gradient-to-br from-rose-400 via-rose-600 to-rose-700 shadow-2xl transition-all duration-700 ease-in-out ${
+        open ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+      }`}
+    >
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_70%)]"></div>
@@ -17,46 +21,62 @@ const DrawerFooter = ({ open, handleDrawer }) => {
 
       <div className="relative mx-auto w-full max-w-[1166px] px-4 xl:px-0 pt-8">
         <div className="flex flex-col justify-between sm:px-4 md:flex-row md:px-10">
-          
           {/* Brand Section */}
           <div className="md:w-80 animate-fade-in-up">
             <div className="flex justify-between items-baseline">
               <div className="flex items-baseline">
-            <p className='font-mono text-2xl bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-green-500 to-indigo-400'>Khana</p>
-            <span className="textWhite italic text-sm ml-1">Kazana</span>
-          </div>        
-              <span 
-                onClick={() => setDynamicFooter(false)} 
+                <p className="font-mono text-2xl bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-green-500 to-indigo-400">
+                  {" "}
+                  {translate("sort.khana")}
+                </p>
+                <span className="textWhite italic text-sm ml-1">
+                  {translate("sort.kazana")}
+                </span>
+              </div>
+              <span
+                onClick={() => setDynamicFooter(false)}
                 className="cursor-pointer block md:hidden p-2 hover:bg-white/10 rounded-full transition-all duration-300"
               >
-                <Icons.CheronUp className='textWhite hover:scale-110 transition-transform size-6' />
-              </span>   
+                <Icons.CheronUp className="textWhite hover:scale-110 transition-transform size-6" />
+              </span>
             </div>
-            
+
             <p className="mt-6 text-sm font-normal text-white/90 leading-relaxed">
-              Explore our meticulously curated menu that showcases a symphony of
-              flavors, each dish a testament to the artistry of our skilled
-              chefs. From mouthwatering appetizers that tantalize your taste
-              buds to decadent desserts that provide a sweet crescendo to your
-              meal, every bite is a celebration of culinary excellence.
+              {translate("long.ExploreOurCulinaryExcellence")}
             </p>
-            
+
             <div className="mt-6 flex gap-4">
-              <a className="hover:scale-125 transition-transform duration-300 p-2 hover:bg-white/10 rounded-full" target="_blank" href="#">
+              <a
+                className="hover:scale-125 transition-transform duration-300 p-2 hover:bg-white/10 rounded-full"
+                target="_blank"
+                href="#"
+              >
                 <Icons.FaceBook className="textWhite w-5 h-5" />
               </a>
-              <a className="hover:scale-125 transition-transform duration-300 p-2 hover:bg-white/10 rounded-full" target="_blank" href="/">
+              <a
+                className="hover:scale-125 transition-transform duration-300 p-2 hover:bg-white/10 rounded-full"
+                target="_blank"
+                href="/"
+              >
                 <Icons.Instagram className="textWhite w-5 h-5" />
               </a>
-              <a className="hover:scale-125 transition-transform duration-300 p-2 hover:bg-white/10 rounded-full" target="_blank" href="">
+              <a
+                className="hover:scale-125 transition-transform duration-300 p-2 hover:bg-white/10 rounded-full"
+                target="_blank"
+                href=""
+              >
                 <Icons.Twitter className="textWhite w-5 h-5" />
               </a>
-              <a className="hover:scale-125 transition-transform duration-300 p-2 hover:bg-white/10 rounded-full" target="_blank" href="https://www.youtube.com/">
+              <a
+                className="hover:scale-125 transition-transform duration-300 p-2 hover:bg-white/10 rounded-full"
+                target="_blank"
+                href="https://www.youtube.com/"
+              >
                 <Icons.Github className="textWhite w-5 h-5" />
               </a>
             </div>
           </div>
-          
+
           {/* Contact Section */}
           <div className="md:w-80 animate-fade-in-up delay-200">
             <div className="mt-6 flex items-center group hover:bg-white/5 p-3 rounded-lg transition-all duration-300">
@@ -71,11 +91,11 @@ const DrawerFooter = ({ open, handleDrawer }) => {
                   +91 1800123444
                 </a>
                 <p className="font-Inter text-xs font-medium text-white/80">
-                  Support Number
+                  {translate("sort.support")} {translate("sort.number")}
                 </p>
               </div>
             </div>
-            
+
             <div className="mt-4 flex items-center group hover:bg-white/5 p-3 rounded-lg transition-all duration-300">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 group-hover:bg-white/20 transition-all duration-300">
                 <Icons.Msg className="textWhite size-6" />
@@ -88,11 +108,11 @@ const DrawerFooter = ({ open, handleDrawer }) => {
                   help@lorem.com
                 </a>
                 <p className="font-Inter text-xs font-medium text-white/80">
-                  Support Email
+                  {translate("sort.support")} {translate("sort.email")}
                 </p>
               </div>
             </div>
-            
+
             <div className="mt-4 flex items-center group hover:bg-white/5 p-3 rounded-lg transition-all duration-300">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 group-hover:bg-white/20 transition-all duration-300">
                 <Icons.Location className="textWhite size-6" />
@@ -105,32 +125,34 @@ const DrawerFooter = ({ open, handleDrawer }) => {
                   Vasundhara, Ghazibad, India, 201012
                 </a>
                 <p className="font-Inter text-xs font-medium text-white/80">
-                  Address
+                  {translate("sort.address")}
                 </p>
               </div>
             </div>
           </div>
-          
+
           {/* Links and App Downloads */}
           <div className="mt-6 flex w-full flex-col justify-between sm:flex-row md:mt-0 md:max-w-sm animate-fade-in-up delay-300">
             <div>
               <p className="textWhite font-inter text-lg font-semibold leading-normal mb-2">
-                Pages
+                {translate("sort.Pages")}
               </p>
-              <ul className='grid grid-cols-2 md:grid-cols-1 gap-1'>
-                {['Home', 'News', 'Contact', 'Plans and pricing'].map((item, index) => (
-                  <li key={index} className="mt-3">
-                    <span className="textWhite hover:text-rose-200 font-inter text-sm font-normal hover:font-semibold cursor-pointer transition-all duration-300 hover:translate-x-1">
-                      {item}
-                    </span>
-                  </li>
-                ))}
+              <ul className="grid grid-cols-2 md:grid-cols-1 gap-1">
+                {["Home", "News", "Contact", "Plans and pricing"].map(
+                  (item, index) => (
+                    <li key={index} className="mt-3">
+                      <span className="textWhite hover:text-rose-200 font-inter text-sm font-normal hover:font-semibold cursor-pointer transition-all duration-300 hover:translate-x-1">
+                        {item}
+                      </span>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
-            
+
             <div className="mt-6 flex flex-col gap-4 sm:mt-0">
               <p className="textWhite font-inter text-lg font-semibold">
-                Download the app
+                {translate("sort.downloadApp")}
               </p>
               <div className="flex gap-3 sm:flex-col">
                 <div className="flex items-center border border-white/20 rounded-xl px-4 py-3 w-52 mx-2 hover:border-white/40 hover:bg-white/5 transition-all duration-300 cursor-pointer group">
@@ -142,11 +164,17 @@ const DrawerFooter = ({ open, handleDrawer }) => {
                     alt="Google Play"
                   />
                   <div className="text-left ml-3">
-                    <p className="text-xs text-gray-200">Download on </p>
-                    <p className="text-sm md:text-base font-medium textWhite"> Google Play Store </p>
+                    <p className="text-xs text-gray-200">
+                      {" "}
+                      {translate("sort.dounloadOn")}{" "}
+                    </p>
+                    <p className="text-sm md:text-base font-medium textWhite">
+                      {" "}
+                      Google Play Store{" "}
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center border border-white/20 rounded-xl px-4 py-3 w-52 mx-2 hover:border-white/40 hover:bg-white/5 transition-all duration-300 cursor-pointer group">
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/888/888841.png"
@@ -156,27 +184,31 @@ const DrawerFooter = ({ open, handleDrawer }) => {
                     alt="Apple Store"
                   />
                   <div className="text-left ml-3">
-                    <p className="text-xs text-gray-200">Download on </p>
-                    <p className="text-sm md:text-base font-medium textWhite">Apple Store</p>
+                    <p className="text-xs text-gray-200">
+                      {translate("sort.dounloadOn")}{" "}
+                    </p>
+                    <p className="text-sm md:text-base font-medium textWhite">
+                      Apple Store
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>            
-            
-            <span 
-              onClick={() => handleDrawer(false)} 
+            </div>
+
+            <span
+              onClick={() => handleDrawer(false)}
               className="cursor-pointer hidden md:block p-2 rounded-full transition-all duration-300 hover:scale-110"
             >
               <Icons.CheronUp className="text-white size-6" />
             </span>
           </div>
         </div>
-        
+
         <hr className="mt-8 border-white/20" />
         <div className="flex items-center justify-center pb-6 pt-4 md:py-6">
           <p className="text-xs font-normal textWhite md:text-sm text-center">
-            © Copyright {new Date().getFullYear()}, All Rights Reserved by Khana
-            Kazana. PVT. LTD
+            © Copyright {new Date().getFullYear()},{" "}
+            {translate("sort.allRightReserved")} {translate("sort.khana")} {translate("sort.kazana")}. PVT. LTD
           </p>
         </div>
       </div>
