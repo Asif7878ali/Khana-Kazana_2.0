@@ -20,7 +20,7 @@ export function HeroSection() {
       />
       <div className="absolute inset-0 bg-black/50"></div>
 
-      <div className="relative container mx-auto px-4">
+      <div className="relative OwnContainer mx-auto">
         <div className="max-w-2xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 textWhite">
             Experience the Authentic Flavors of India
@@ -50,7 +50,7 @@ export function HeroSection() {
 export function PopularCategories() {
   return (
     <section className="py-16 bgWhite">
-      <div className="container mx-auto px-4">
+      <div className="OwnContainer mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-2 textgray8">
             Popular Categories
@@ -78,7 +78,7 @@ export function PopularCategories() {
 export function SpecialOffer() {
   return (
     <section className="py-16 bgRose1">
-      <div className="container mx-auto px-4">
+      <div className="OwnContainer mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2 mb-8 md:mb-0">
             <h2 className="text-3xl font-bold mb-4 textgray8">
@@ -129,7 +129,7 @@ export function SpecialOffer() {
 export function Testimonials() {
   return (
     <section className="py-16 bgWhite">
-      <div className="container mx-auto px-4">
+      <div className="OwnContainer mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-2 textgray8">
             What Our Customers Say
@@ -175,7 +175,7 @@ export function Testimonials() {
 export function CalltoAction() {
   return (
     <section className="py-16 bgRose1">
-      <div className="container mx-auto px-4 text-center">
+      <div className="OwnContainer mx-auto text-center">
         <h2 className="text-3xl font-bold mb-4 textgray8">
           Ready to Experience the Flavors?
         </h2>
@@ -191,7 +191,7 @@ export function CalltoAction() {
 export function Features() {
   return (
     <section className="py-16 bgWhite">
-      <div className="container mx-auto px-4">
+      <div className="OwnContainer mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center">
             <div className="textRose text-4xl mb-4 flex justify-center">

@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation.js";
 import Icons from "@/utils/Icons";
+import useTranslator from "@/hooks/useTranslator";
 
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const {translate} = useTranslator();
   const router = useRouter();
 
   function handleClick(){
@@ -19,29 +21,28 @@ const Navbar = () => {
   
   return (
       <nav id="Header" className='w-full bgWhite shadow-md'>
-        <div id="WebMenu" className="flex OwnContainer items-center justify-between py-3">
+        <div id="WebMenu" className="OwnContainer flex items-center justify-between py-3">
           {/* Left - Logo */}
           <div className="flex items-baseline">
             <p className='font-mono text-2xl bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-green-500 to-indigo-400'>Khana</p>
             <span className="textRose italic text-sm ml-1">Kazana</span>
           </div>
 
-          {/* Middle - Logo & Links in the Center */}
-          <div className="flex-1 flex justify-center items-center space-x-6">
+         
             {/* Links */}
-            <div className="hidden md:flex">
+            <div className="hidden md:flex flex-row">
               <div className="flex gap-1 group hover:bgRose hover:textWhite rounded-2xl p-3 cursor-pointer">
                 <Icons.Home
                   className="textRose group-hover:text-white"
                 />
-                <p className='textRose group-hover:text-white'>Home</p>
+                <p className='textRose group-hover:text-white'>{translate('sort.home')}</p>
               </div>
 
               <div className="flex gap-2 group hover:bgRose hover:textWhite rounded-2xl p-3 cursor-pointer">
                 <Icons.Meal
                   className="textRose group-hover:text-white"
                 />
-                <p className='textRose group-hover:text-white'>Meal</p>
+                <p className='textRose group-hover:text-white'>{translate('sort.meal')}</p>
               </div>
 
               <div className="flex gap-1 group hover:bgRose hover:textWhite rounded-2xl p-3 cursor-pointer">
@@ -49,7 +50,7 @@ const Navbar = () => {
                   className="textRose group-hover:text-white"
                 />
                 <p className='textRose group-hover:text-white'>
-                  Upcoming Meal
+                 {translate('sort.upcoming')} {translate('sort.meal')}
                 </p>
               </div>
 
@@ -59,7 +60,6 @@ const Navbar = () => {
                 />
               </span>
             </div>
-          </div>
 
           {/* Right - Join Us Button */}
           <div className="flex items-center">

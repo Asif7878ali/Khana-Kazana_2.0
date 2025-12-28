@@ -1,0 +1,11 @@
+{
+  "sort": {
+    "home": "Home",
+    "meal": "Meal",
+    "upcoming": "Upcoming",
+    "joinUs": "Join Us"
+  },
+  "long": {},
+
+  "error": {}
+}
