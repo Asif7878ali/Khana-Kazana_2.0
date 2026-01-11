@@ -1,3 +1,4 @@
+"use client";
 import { useState, useCallback, useEffect } from "react";
 import english from "../localization/english.json";
 import hindi from "../localization/hindi.json";

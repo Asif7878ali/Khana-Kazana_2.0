@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { categories } from "./homepageData";
 import { testimonials } from "./homepageData";
@@ -5,9 +7,13 @@ import Icons from "@/utils/Icons";
 import { CategoiesTile } from "@/components/reasuableComponents/Cards";
 import { images } from "@/utils/imageConstant";
 import { Button } from "@/components/reasuableComponents/UI/Button";
+import useTranslator from "@/hooks/useTranslator";
 
 
 export function HeroSection() {
+  
+  const {translate} = useTranslator();
+
   return (
     <section className="relative h-[70vh] flex items-center">
       <Image
@@ -23,22 +29,21 @@ export function HeroSection() {
       <div className="relative OwnContainer mx-auto">
         <div className="max-w-2xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 textWhite">
-            Experience the Authentic Flavors of India
+            {translate('long.experienceAuthenticFlavorsIndia')}
           </h1>
           <p className="text-xl mb-8 textWhite">
-            Discover a culinary journey through the diverse and rich traditions
-            of Indian cuisine
+             {translate('long.discoverjourneyIndiancuisine')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button variant="primary" className="py-3 textWhite">
-              Order Online
+               {translate('sort.orderOnline')}
             </Button>
 
             <Button
               variant="outline"
               className="textWhite border borderWhite py-3 hover:bgWhite hover:textRose"
             >
-              Book a Table
+              {translate('sort.bookTable')}
             </Button>
           </div>
         </div>
@@ -48,15 +53,17 @@ export function HeroSection() {
 }
 
 export function PopularCategories() {
+   const {translate} = useTranslator();
+
   return (
     <section className="py-16 bgWhite">
       <div className="OwnContainer mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-2 textgray8">
-            Popular Categories
+           {translate('sort.popularCategories')}
           </h2>
           <p className="text-lg textgray6">
-            Explore our diverse menu offerings
+            {translate('long.exploreDiverseOfferings')}
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -76,37 +83,37 @@ export function PopularCategories() {
 
 
 export function SpecialOffer() {
+   const {translate} = useTranslator();
   return (
     <section className="py-16 bgRose1">
       <div className="OwnContainer mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2 mb-8 md:mb-0">
             <h2 className="text-3xl font-bold mb-4 textgray8">
-              Special Offer
+              {translate('sort.specialOffer')}
             </h2>
             <h3 className="text-2xl font-semibold textRose mb-4">
-              20% OFF on Family Combos
+              20% {translate('sort.oFFamilyCombos')}
             </h3>
             <p className="text-lg mb-6 textgray6">
-              Enjoy a delightful family feast with our special combo meals.
-              Perfect for gatherings and celebrations!
+                {translate('long.enjoyDelightfulfeastPerfectCelebrations')}
             </p>
             <ul className="mb-8 textgray6">
               <li className="flex items-center mb-2">
-                <span className="textRose mr-2">✓</span> 4 Main Courses
+                <span className="textRose mr-2">✓</span> 4 {translate('sort.mainCourses')}
               </li>
               <li className="flex items-center mb-2">
-                <span className="textRose mr-2">✓</span> 2 Side Dishes
+                <span className="textRose mr-2">✓</span> 2 {translate('sort.sideDishes')}
               </li>
               <li className="flex items-center mb-2">
-                <span className="textRose mr-2">✓</span> 4 Desserts
+                <span className="textRose mr-2">✓</span> 4 {translate('sort.desserts')}
               </li>
               <li className="flex items-center">
-                <span className="textRose mr-2">✓</span> 4 Beverages
+                <span className="textRose mr-2">✓</span> 4 {translate('sort.beverages')}
               </li>
             </ul>
             <button className="bgRose4 hover:bg-rose-500 textWhite cursor-pointer py-3 px-6 rounded-md font-medium transition-colors">
-              Order Now
+             {translate('sort.orderNow')}
             </button>
           </div>
           <div className="md:w-1/2">
@@ -127,15 +134,16 @@ export function SpecialOffer() {
 }
 
 export function Testimonials() {
+    const {translate} = useTranslator();
   return (
     <section className="py-16 bgWhite">
       <div className="OwnContainer mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-2 textgray8">
-            What Our Customers Say
+             {translate('long.whatCustomersSay')}
           </h2>
           <p className="text-lg textgray6">
-            Don&apos;t just take our word for it
+          {translate('long.dontJustForIt')}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -173,15 +181,15 @@ export function Testimonials() {
 }
 
 export function CalltoAction() {
+   const {translate} = useTranslator();
   return (
     <section className="py-16 bgRose1">
       <div className="OwnContainer mx-auto text-center">
         <h2 className="text-3xl font-bold mb-4 textgray8">
-          Ready to Experience the Flavors?
+           {translate('long.readyExperienceFlavors')}
         </h2>
         <p className="text-xl max-w-2xl mx-auto textRose">
-          Join us for a culinary journey or order online for a delightful meal
-          at home
+          {translate('long.joinCulinaryJourneyHome')}
         </p>
       </div>
     </section>
@@ -189,6 +197,7 @@ export function CalltoAction() {
 }
 
 export function Features() {
+   const {translate} = useTranslator();
   return (
     <section className="py-16 bgWhite">
       <div className="OwnContainer mx-auto">
@@ -198,11 +207,10 @@ export function Features() {
               <Icons.Meal />
             </div>
             <h3 className="text-xl font-semibold mb-2 textgray8">
-              Fresh Ingredients
+              {translate('sort.freshIngredients')}
             </h3>
             <p className="textgray6">
-              We source only the freshest ingredients to ensure authentic
-              flavors in every dish.
+             {translate('long.weSourceAuthenticflavorsDish')}
             </p>
           </div>
           <div className="text-center">
@@ -210,11 +218,10 @@ export function Features() {
               <Icons.UpComingMeal />
             </div>
             <h3 className="text-xl font-semibold mb-2 textgray8">
-              Fast Delivery
+             {translate('sort.fastDelivery')}
             </h3>
             <p className="textgray6">
-              Our efficient delivery service ensures your food arrives hot and
-              fresh at your doorstep.
+              {translate('long.ourDeliveryEnsuresDoorstep')}
             </p>
           </div>
           <div className="text-center">
@@ -222,11 +229,10 @@ export function Features() {
               <Icons.Notification />
             </div>
             <h3 className="text-xl font-semibold mb-2 textgray8">
-              Special Events
+              {translate('sort.specialEvents')}
             </h3>
             <p className="textgray6">
-              We cater to special events and celebrations with customized menus
-              and services.
+               {translate('long.weSpecialCelebrationsMenusServices')}
             </p>
           </div>
         </div>

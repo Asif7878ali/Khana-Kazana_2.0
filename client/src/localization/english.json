@@ -13,10 +13,34 @@
     "address" : "Address",
     "pages" : "Pages",
     "downloadApp" : " Download the App",
-    "dounloadOn" : "Download on"
+    "dounloadOn" : "Download on",
+    "orderOnline" : "Order Online",
+    "bookTable" : "Book a Table",
+    "popularCategories" : "Popular Categories",
+    "specialOffer" : "Special Offer",
+    "oFFamilyCombos" : "OFF on Family Combos",
+    "mainCourses" : "Main Courses",
+    "sideDishes" : "Side Dishes",
+    "desserts" : "Desserts",
+    "beverages" : "Beverages",
+    "orderNow" : "Order Now",
+    "freshIngredients" : "Fresh Ingredients",
+    "fastDelivery" : "Fast Delivery",
+    "specialEvents" : " Special Events"
   },
   "long": {
-    "ExploreOurCulinaryExcellence": "Explore our meticulously curated menu that showcases a symphony of flavors, each dish a testament to the artistry of our skilled chefs. From mouthwatering appetizers that tantalize your taste buds to decadent desserts that provide a sweet crescendo to your meal, every bite is a celebration of culinary excellence"
+    "exploreOurCulinaryExcellence": "Explore our meticulously curated menu that showcases a symphony of flavors, each dish a testament to the artistry of our skilled chefs. From mouthwatering appetizers that tantalize your taste buds to decadent desserts that provide a sweet crescendo to your meal, every bite is a celebration of culinary excellence",
+    "experienceAuthenticFlavorsIndia" : "Experience the Authentic Flavors of India",
+    "discoverjourneyIndiancuisine" : " Discover a culinary journey through the diverse and rich traditions of Indian cuisine",
+    "exploreDiverseOfferings" : "Explore our diverse menu offerings",
+    "enjoyDelightfulfeastPerfectCelebrations" : "Enjoy a delightful family feast with our special combo meals. Perfect for gatherings and celebrations!",
+    "whatCustomersSay" : "What Our Customers Say",
+    "dontJustForIt" : " Don't just take our word for it",
+    "readyExperienceFlavors" : "Ready to Experience the Flavors?",
+    "joinCulinaryJourneyHome" :"Join us for a culinary journey or order online for a delightful meal at home",
+    "weSourceAuthenticflavorsDish" : " We source only the freshest ingredients to ensure authentic flavors in every dish.",
+    "ourDeliveryEnsuresDoorstep" : "Our efficient delivery service ensures your food arrives hot and fresh at your doorstep.",
+    "weSpecialCelebrationsMenusServices"  : "We cater to special events and celebrations with customized menus and services."
   },
 
   "error": {}
