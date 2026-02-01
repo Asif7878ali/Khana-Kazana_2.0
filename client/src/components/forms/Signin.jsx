@@ -9,6 +9,7 @@ import Password from "../reasuableComponents/UI/Password";
 import { Button } from "../reasuableComponents/UI/Button";
 import { useFetchApi } from "@/hooks/useFetchApi";
 import endPoint from "@/utils/endpoints";
+import useTranslator from "@/hooks/useTranslator";
 
 const Signin = ({ role }) => {
   const [formData, setFormData] = useState({
@@ -21,6 +22,7 @@ const Signin = ({ role }) => {
   const showAlert = useAlert();
   const router = useRouter();
   const fetchapi = useFetchApi();
+  const { translate } = useTranslator();
 
   const handleChange = (e) => {
     const { name, type, checked, value } = e.target;
@@ -59,15 +61,15 @@ const Signin = ({ role }) => {
           payload: collectform,
         });
 
-        const {data} = response
+        const { data } = response;
 
         if (!data?.success) {
-          showAlert(data.msg || "Something went wrong!" , msg.err);
+          showAlert(data.msg || "Something went wrong!", msg.err);
           return;
         }
 
         sessionStorage.setItem("user", JSON.stringify(data.user));
-        showAlert(data?.msg || "Sign in Success" , msg.sucs);
+        showAlert(data?.msg || "Sign in Success", msg.sucs);
         router.push("/auth/verifyEmail");
       } catch (error) {
         showAlert("Internal Server Error", msg.err);
@@ -82,8 +84,8 @@ const Signin = ({ role }) => {
         <Input
           type="email"
           name="email"
-          label="Email"
-          placeholder="Enter E-mail"
+          label={translate("sort.email")}
+          placeholder={translate("sort.enterEmail")}
           required
           value={formData.email}
           onChange={handleChange}
@@ -94,8 +96,8 @@ const Signin = ({ role }) => {
       <div id="password">
         <Password
           name="password"
-          label="Password"
-          placeholder="Enter Your Password"
+          label={translate("sort.password")}
+          placeholder={translate("sort.enterPassword")}
           required
           value={formData.password}
           onChange={handleChange}
@@ -109,8 +111,8 @@ const Signin = ({ role }) => {
       <div id="c_password">
         <Password
           name="c_password"
-          label="Confirm Password"
-          placeholder="Confirm Your Password"
+          label={translate("sort.confirmPassword")}
+          placeholder={translate("sort.confirmYourPassword")}
           required
           value={formData.c_password}
           onChange={handleChange}
@@ -125,7 +127,7 @@ const Signin = ({ role }) => {
         <Checkbox
           id="terms"
           name="checked"
-          label="Accept Our Terms & Condition"
+          label={translate("long.acceptOurTermsCondition")}
           checked={formData.checked}
           onChange={handleChange}
           error={errors?.checked}
@@ -133,9 +135,9 @@ const Signin = ({ role }) => {
       </div>
 
       <Button className="w-full cursor-pointer" variant="primary">
-        Sign in
+       {translate('sort.signUp')}
       </Button>
-      <p className="text-sm  text-center">Already have an account?</p>
+      <p className="text-sm  text-center">{translate('long.alreadyAccount')}</p>
     </form>
   );
 };

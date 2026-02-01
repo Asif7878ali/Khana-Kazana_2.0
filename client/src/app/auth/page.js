@@ -12,11 +12,10 @@ const Page = () => {
   const [selectedRole, setSelectedRole] = useState("");
   const {translate} = useTranslator();
   const roleOptions = [
-    { id: "c1", value: "customer", label: "Customer" },
-    { id: "v1", value: "vendor", label: "Vendor" },
+    { id: "c1", value: "customer", label: translate('sort.customer') },
+    { id: "v1", value: "vendor", label: translate('sort.vendor') },
   ];
 
-  console.log('wgwe', roleOptions)
 
   return (
     <FormLayout image={images?.auth}>
@@ -33,8 +32,11 @@ const Page = () => {
         <Dropdown
           name="role"
           options={roleOptions}
+          optionLabelKey="label"
+          optionValueKey="value"
           onChange={(e) => setSelectedRole(e.target.value)}
           classNameInput="bg-transparent"
+          placeholder={translate('sort.selectOption')}
         />
 
         {/* Tabs */}

@@ -1,8 +1,7 @@
-
 import React, { useState } from "react";
 import Input from "../reasuableComponents/UI/Input";
 import { Button } from "../reasuableComponents/UI/Button";
-
+import useTranslator from "@/hooks/useTranslator";
 
 const Login = ({ role }) => {
   const [formData, setFormData] = useState({
@@ -10,6 +9,8 @@ const Login = ({ role }) => {
     password: "",
     registrationNumber: "", // For vendor registration number
   });
+  const { translate } = useTranslator();
+
   function handleChange(e) {
     const { name, value } = e.target;
     if (name === "registrationNumber") {
@@ -34,71 +35,75 @@ const Login = ({ role }) => {
     };
     console.log("data", payload);
   };
- 
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} id="LoginForm">
       {role === "customer" ? (
-        <>
+        <div id="customer" className="flex flex-col gap-4">
           <Input
             type="email"
-            label="Email"
+            label={translate("sort.email")}
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="Enter your email"
+            placeholder={translate("sort.enterEmail")}
             required
           />
           <Input
             type="password"
-            label="Password"
+            label={translate("sort.password")}
             name="password"
             value={formData.password}
             onChange={handleChange}
-            placeholder="Enter your password"
+            placeholder={translate("sort.enterPassword")}
             required
           />
           <Button className="w-full cursor-pointer" variant="primary">
-            Log in
+            {translate("sort.login")}
           </Button>
-          <p className="text-sm text-center">Forgot Password?</p>
-        </>
+          <p className="text-sm text-center">
+            {translate("sort.forgot")} {translate("sort.password")}?
+          </p>
+        </div>
       ) : (
-        <>
+        <div id="vender" className="flex flex-col gap-4">
           <Input
             type="text"
-            label="Registration Number"
+             label={`${translate("sort.registration")} ${translate("sort.number")}`}
             name="registrationNumber"
             value={formData.registrationNumber}
             onChange={handleChange}
-            placeholder="Enter Number"
-            maxLength={8} 
-            pattern="[0-9]*" 
+            placeholder={translate("sort.enterRegistrationNumber")}
+            maxLength={8}
+            pattern="[0-9]*"
             inputMode="numeric"
             required
           />
           <Input
             type="email"
-            label="Email"
+            label={translate("sort.email")}
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="Enter your email"
+            placeholder={translate("sort.enterEmail")}
             required
           />
           <Input
             type="password"
-            label="Password"
+            label={translate("sort.password")}
             name="password"
             value={formData.password}
             onChange={handleChange}
-            placeholder="Enter your password"
+            placeholder={translate("sort.enterPassword")}
             required
           />
           <Button className="w-full cursor-pointer" variant="primary">
-            Log in
+            {translate("sort.login")}
           </Button>
-          <p className="text-sm text-center">Forgot Password?</p>
-        </>
+          <p className="text-sm text-center">
+            {translate("sort.forgot")} {translate("sort.password")}?
+          </p>
+        </div>
       )}
     </form>
   );

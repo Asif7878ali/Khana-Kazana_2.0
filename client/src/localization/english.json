@@ -29,7 +29,18 @@
     "fastDelivery" : "Fast Delivery",
     "specialEvents" : "Special Events",
     "login" : "Login",
-    "signUp" : "Sign Up"
+    "signUp" : "Sign Up",
+    "customer"  : "Customer",
+    "vendor" : "Vender",
+    "selectOption" : "Select an Option",
+    "password" : "Password",
+    "forgot"  : "Forgot",
+    "registration" : "Registration",
+    "enterEmail" : "Enter your Email",
+    "enterPassword" : "Enter your Password",
+    "enterRegistrationNumber" : "Enter Registration Number",
+    "confirmPassword"  : "Confirm Password",
+    "confirmYourPassword" : "Confirm Your Password"
   },
   "long": {
     "exploreOurCulinaryExcellence": "Explore our meticulously curated menu that showcases a symphony of flavors, each dish a testament to the artistry of our skilled chefs. From mouthwatering appetizers that tantalize your taste buds to decadent desserts that provide a sweet crescendo to your meal, every bite is a celebration of culinary excellence",
@@ -43,7 +54,9 @@
     "joinCulinaryJourneyHome" :"Join us for a culinary journey or order online for a delightful meal at home",
     "weSourceAuthenticflavorsDish" : " We source only the freshest ingredients to ensure authentic flavors in every dish.",
     "ourDeliveryEnsuresDoorstep" : "Our efficient delivery service ensures your food arrives hot and fresh at your doorstep.",
-    "weSpecialCelebrationsMenusServices"  : "We cater to special events and celebrations with customized menus and services."
+    "weSpecialCelebrationsMenusServices"  : "We cater to special events and celebrations with customized menus and services.",
+    "acceptOurTermsCondition"  :"Accept Our Terms & Condition",
+    "alreadyAccount" : "Already have an Account"
   },
 
   "error": {}
