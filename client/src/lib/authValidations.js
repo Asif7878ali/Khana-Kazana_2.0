@@ -3,25 +3,25 @@ export function signInValidation(formData) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!formData?.email) {
-    errors.email = "Email is required.";
+    errors.email = "error.emailReq";
   } else if (!emailRegex.test(formData?.email)) {
-    errors.email = "Please enter a valid email.";
+    errors.email = "error.enterValidEmail";
   }
 
   if (!formData?.password) {
-    errors.password = "Password is required.";
+    errors.password = "error.passReq";
   } else if (formData?.password?.length < 6) {
-    errors.password = "Password must be at least 6 characters.";
+    errors.password = "error.passLeastSixchar";
   }
 
   if (!formData?.c_password) {
-    errors.c_password = "Confirm password is required.";
+    errors.c_password = "error.confirmPassReq";
   } else if (formData?.password !== formData?.c_password) {
     errors.c_password = "";
   }
 
   if (!formData?.checked) {
-    errors.checked = "You must accept the Terms & Conditions.";
+    errors.checked = "error.youAcceptTermsConditions";
   }
 
   const isvalid = Object.keys(errors).length === 0;
@@ -32,29 +32,29 @@ export function profileValidate(formData) {
   const errors = {};
 
   if (!formData?.fname) {
-    errors.fname = "First Name is required";
+    errors.fname = "error.firstNameReq";
   } else if (formData?.fname?.length < 3) {
-    errors.fname = "First Name must be at least 3 characters";
+    errors.fname = "error.firstNameMustLeastThreeChar";
   }
 
   if (!formData?.lname) {
-    errors.lname = "Last Name is required";
+    errors.lname = "error.lastNameReq";
   } else if (formData?.lname?.length < 3) {
-    errors.lname = "Last Name must be at least 3 characters";
+    errors.lname = "error.lastNameMustLeastThreeChar";
   }
 
   if (!formData?.number) {
-    errors.number = "Phone number is required";
+    errors.number = "error.phoneNumberReq";
   } else if (!/^\d{10}$/.test(formData?.number)) {
-    errors.number = "Phone number must be exactly 10 digits";
+    errors.number = "error.phoneNumberExactlyTenDig";
   }
 
   if (!formData?.dob) {
-    errors.dob = "Date of Birth is required";
+    errors.dob = "error.dateBirthReq";
   }
 
   if (!formData?.gender) {
-    errors.gender = "Gender is required";
+    errors.gender = "error.genderReq";
   }
 
   const isvalid = Object.keys(errors).length === 0;
@@ -65,29 +65,29 @@ export function addAdressValidate(formData) {
   const errors = {};
 
   if (!formData?.zip) {
-    errors.zip = "Pincode is required";
+    errors.zip = "error.pinReq";
   } else if (!/^\d{6}$/.test(formData?.zip)) {
     errors.zip = "Pincode must be 6 digits";
   }
 
   if (!formData?.house) {
-    errors.house = "House is required";
+    errors.house = "error.houseReq";
   }
 
   if (!formData?.street) {
-    errors.street = "Street Address is required";
+    errors.street = "error.streetAddressReq";
   }
 
   if (!formData?.area) {
-    errors.area = "Area/Sector is required";
+    errors.area = "error.areaSectorReq";
   }
 
   if (!formData?.state) {
-    errors.state = "Please Select a State";
+    errors.state = "error.selState";
   }
 
   if (!formData?.city) {
-    errors.city = "Plaese Select a City";
+    errors.city = "error.selCity";
   }
 
   const isvalid = Object.keys(errors).length === 0;
@@ -98,37 +98,37 @@ export function securityQuestionValidation(formData) {
   const errors = {};
 
   if (!formData?.que1) {
-    errors.que1 = "Please Select a Secuirity Question";
+    errors.que1 = "error.selSecQues";
   }
 
   if (!formData?.ans1) {
-    errors.ans1 = "Answer is Required";
+    errors.ans1 = "error.ansReq";
   } else if (formData?.ans1?.length < 3) {
-    errors.ans1 = "Please enter a meaningful answer with at least 3 characters";
+    errors.ans1 = "error.enterMeaningfulAnsLeastThreeChar";
   }
 
   if (!formData?.que2) {
-    errors.que2 = "Please Select a Secuirity Question";
+    errors.que2 = "error.selSecQues";
   } else if (formData?.que2 === formData?.que1) {
-    errors.que2 = "Please select a different security question";
+    errors.que2 = "error.selDifferentSecQues";
   }
 
   if (!formData?.ans2) {
-    errors.ans2 = "Answer is Required";
+    errors.ans2 = "error.ansReq";
   } else if (formData?.ans2?.length < 3) {
-    errors.ans2 = "Please enter a meaningful answer with at least 3 characters";
+    errors.ans2 = "error.enterMeaningfulAnsLeastThreeChar";
   }
 
   if (!formData?.que3) {
-    errors.que3 = "Please Select a Secuirity Question";
+    errors.que3 = "error.selSecQues";
   } else if (formData?.que3 === formData?.que1 || formData?.que3 === formData?.que2) {
-    errors.que3 = "Please select a different security question";
+    errors.que3 = "error.selDifferentSecQues";
   }
 
   if (!formData?.ans3) {
-    errors.ans3 = "Answer is Required";
+    errors.ans3 = "error.ansReq";
   } else if (formData?.ans3?.length < 3) {
-    errors.ans3 = "Please enter a meaningful answer with at least 3 characters";
+    errors.ans3 = "error.enterMeaningfulAnsLeastThreeChar";
   }
   const isvalid = Object.keys(errors).length === 0;
   return { errors, isvalid };
@@ -138,13 +138,13 @@ export function bankDetailValidation(formData) {
   const errors = {};
 
   if (!formData?.acountHolderName) {
-    errors.acountHolderName = "Account Holder Name is Required";
+    errors.acountHolderName = "error.accHolderNameReq";
   } else if (formData?.acountHolderName?.length < 3) {
-    errors.acountHolderName = "Account Holder Name must be 3 Characters long";
+    errors.acountHolderName = "error.accHolderNameThreeCharLong";
   }
 
   if (!formData?.accountNumber) {
-    errors.accountNumber = "Account Number is Required";
+    errors.accountNumber = "error.accNumberReq";
   } else {
     const accountNumber = formData.accountNumber.trim();
     // Check if the account number is numeric or alphanumeric
@@ -152,18 +152,16 @@ export function bankDetailValidation(formData) {
     const isAlphanumeric = /^[A-Za-z0-9]+$/.test(accountNumber);
 
     if (!isNumeric && !isAlphanumeric) {
-      errors.accountNumber =
-        "Account Number must contain only letters and/or numbers";
+      errors.accountNumber = "error.accNumberLettersNum";
     } else if (isNumeric) {
       // Numeric account number: Check length (9–18 digits for most Indian banks)
       if (accountNumber.length < 9 || accountNumber.length > 18) {
-        errors.accountNumber = "Account Number must be between 9 and 18 digits";
+        errors.accountNumber = "error.accNumbeNineDigits";
       }
     } else if (isAlphanumeric) {
       // Allow 6–20 characters for alphanumeric accounts
       if (accountNumber.length < 6 || accountNumber.length > 20) {
-        errors.accountNumber =
-          "Alphanumeric Account Number must be between 6 and 20 characters";
+        errors.accountNumber = "error.alphanumericAccNumberSixChar";
       }
     }
   }
@@ -175,20 +173,20 @@ export function bankDetailValidation(formData) {
   }
 
   if (!formData?.bank) {
-    errors.bank = "Please Select a Bank";
+    errors.bank = "error.selBank";
   }
 
   if (!formData?.ifsc) {
-    errors.ifsc = "IFSC is Required";
+    errors.ifsc = "error.ifscReq";
   } else {
     const ifsc = formData.ifsc.trim();
     if (!/^[A-Za-z]{4}0[A-Za-z0-9]{6}$/.test(ifsc)) {
-      errors.ifsc = "Invalid IFSC format Ex - SBIN0001234";
+      errors.ifsc = "error.invalidIFSCFormatEx";
     }
   }
 
   if (!formData?.bankDocumentUpload) {
-    errors.bankDocumentUpload = "Bank Documents Required";
+    errors.bankDocumentUpload = "error.bankDocReq";
   }
 
   const isvalid = Object.keys(errors).length === 0;
@@ -198,65 +196,64 @@ export function bankDetailValidation(formData) {
 export function verificationDocumentValidation(formData) {
   const errors = {};
   if (!formData?.aadhar) {
-    errors.aadhar = "Aadhar Number Required";
+    errors.aadhar = "error.aadharNumReq";
   } else if (!/^[2-9]{1}[0-9]{11}$/.test(formData.aadhar)) {
-    errors.aadhar =
-      "Invalid Aadhar Number must be 12 digits and not start with 0 or 1";
+    errors.aadhar = "error.invalidAadharumbDigitsStartZeroOne";
   }
 
   if (!formData?.c_aadhar) {
-    errors.c_aadhar = "Confirm Aadhar is required.";
+    errors.c_aadhar = "error.confirmAadhar";
   } else if (formData?.aadhar !== formData?.c_aadhar) {
     errors.c_aadhar = "";
   }
 
   if (!formData?.aadharfile) {
-    errors.aadharfile = "Aadhar Card  Required";
+    errors.aadharfile = "error.aadharDocReq";
   }
   if (!formData?.pancard) {
-    errors.pancard = "PAN Number Required";
+    errors.pancard = "error.panNumReq";
   } else if (!/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(formData.pancard)) {
-    errors.pancard = "Invalid PAN Number Ex- ABCDE1234F)";
+    errors.pancard = "error.invalidPANNumEx";
   }
 
   if (!formData?.c_pancard) {
-    errors.pancard = "Confirm Pancard is required.";
+    errors.pancard = "error.ConfirmPancard";
   } else if (formData?.pancard !== formData?.c_pancard) {
     errors.c_pancard = "";
   }
 
   if (!formData?.pancardfile) {
-    errors.pancardfile = "Pancard  Required";
+    errors.pancardfile = "error.panDocReq";
   }
 
   if (!formData?.fssai) {
-    errors.fssai = "FSSAI Number Required";
+    errors.fssai = "error.fssaiNumReq";
   } else if (!/^[0-9]{14}$/.test(formData.fssai)) {
-    errors.fssai = "Invalid FSSAI Number must be 14 digits";
+    errors.fssai = "error.invalidFSSAINumForteenDigits";
   }
 
   if (!formData?.c_fssai) {
-    errors.c_fssai = "Confirm Pancard is required.";
+    errors.c_fssai = "error.confirmPan";
   } else if (formData?.fssai !== formData?.c_fssai) {
     errors.c_fssai = "";
   }
 
   if (!formData?.fssaifile) {
-    errors.fssaifile = "Fssai  Required";
+    errors.fssaifile = "error.fssaiDocReq";
   }
 
   if (!formData?.gst) {
-    errors.gst = "GST Number Required";
+    errors.gst = "error.gstNumReq";
   } else if (
     !/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/.test(
       formData.gst.toUpperCase()
     )
   ) {
-    errors.gst = "Invalid GST Number Ex- 22ABCDE1234F1Z5)";
+    errors.gst = "error.invalidGSTNumEx";
   }
 
   if (!formData?.c_gst) {
-    errors.c_gst = "Confirm Pancard is required.";
+    errors.c_gst = "error.confirmGSTNum";
   } else if (formData?.gst !== formData?.c_gst) {
     errors.c_gst = "";
   }

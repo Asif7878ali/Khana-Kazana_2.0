@@ -43,7 +43,7 @@ const Signin = ({ role }) => {
     setErrors(errors);
 
     if (!role) {
-      showAlert("Please Select a Role", msg.warn);
+      showAlert(translate("error.selectRole"), msg.warn);
       return;
     }
 
@@ -89,7 +89,7 @@ const Signin = ({ role }) => {
           required
           value={formData.email}
           onChange={handleChange}
-          error={errors?.email}
+          error={errors?.email ? translate(errors.email) : ""}
         />
       </div>
 
@@ -102,7 +102,7 @@ const Signin = ({ role }) => {
           value={formData.password}
           onChange={handleChange}
           copy={true}
-          error={errors?.password}
+          error={errors?.password ? translate(errors.password) : ""}
           tooltip={true}
           hints={true}
         />
@@ -117,7 +117,7 @@ const Signin = ({ role }) => {
           value={formData.c_password}
           onChange={handleChange}
           paste={true}
-          error={errors?.c_password}
+          error={errors?.c_password ? translate(errors.c_password) : ""}
           originalPass={formData.password}
           confirmPassMatch={true}
         />
@@ -130,14 +130,14 @@ const Signin = ({ role }) => {
           label={translate("long.acceptOurTermsCondition")}
           checked={formData.checked}
           onChange={handleChange}
-          error={errors?.checked}
+          error={errors?.checked ? translate(errors.checked) : ""}
         />
       </div>
 
       <Button className="w-full cursor-pointer" variant="primary">
-       {translate('sort.signUp')}
+        {translate("sort.signUp")}
       </Button>
-      <p className="text-sm  text-center">{translate('long.alreadyAccount')}</p>
+      <p className="text-sm  text-center">{translate("long.alreadyAccount")}</p>
     </form>
   );
 };
