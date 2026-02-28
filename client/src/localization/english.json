@@ -40,7 +40,22 @@
     "enterPassword" : "Enter your Password",
     "enterRegistrationNumber" : "Enter Registration Number",
     "confirmPassword"  : "Confirm Password",
-    "confirmYourPassword" : "Confirm Your Password"
+    "confirmYourPassword" : "Confirm Your Password",
+    "verifyYourEmail" : "Verify Your Email",
+    "didntGetIt" : "Didn't get it",
+    "resendCode" : "Resend the Code",
+    "verify" : "Verify",
+    "profileSetup" : "Profile Setup",
+    "clickUplImg" : "Click to Upload Image",
+    "firstName" : "First Name",
+    "lastName" : "Last Name",
+    "phoneNumber" : "Phone Number",
+    "dob" : "Date of Birth",
+    "Male" : "Male",
+    "Female" : "Female",
+    "Other" : "Other",
+    "save" : "Save",
+    "verifyMobileOTP" : "Verify Mobile OTP"
   },
   "long": {
     "exploreOurCulinaryExcellence": "Explore our meticulously curated menu that showcases a symphony of flavors, each dish a testament to the artistry of our skilled chefs. From mouthwatering appetizers that tantalize your taste buds to decadent desserts that provide a sweet crescendo to your meal, every bite is a celebration of culinary excellence",
@@ -56,7 +71,13 @@
     "ourDeliveryEnsuresDoorstep" : "Our efficient delivery service ensures your food arrives hot and fresh at your doorstep.",
     "weSpecialCelebrationsMenusServices"  : "We cater to special events and celebrations with customized menus and services.",
     "acceptOurTermsCondition"  :"Accept Our Terms & Condition",
-    "alreadyAccount" : "Already have an Account"
+    "alreadyAccount" : "Already have an Account",
+    "enterSixDigitOTPDentEmail" : "Enter the 6-digit OTP Sent to Your Email",
+    "emailOtpVerifySuccessfully" : "Email OTP Verify Successfully!",
+    "signSuccessfully" : "Sign in Successfully!",
+    "profileSavedSuccessfully" : "Profile Saved Successfully!",
+    "weSentVerificationOTPMobile" : " We have Sent the Verification OTP to Your Mobile",
+    "mobileOtpVerifySuccessfully" : "Mobile Otp Verify Successfully!"
   },
 
   "error": {
@@ -109,6 +130,13 @@
     "fssaiDocReq" : "FSSAI documents required",
     "gstNumReq" : "GST number required",
     "invalidGSTNumEx" : "Invalid GST number Ex- (22ABCDE1234F1Z5)",
-    "confirmGSTNum" : "Confirm GST number"
+    "confirmGSTNum" : "Confirm GST number",
+    "ise" : "Internal Server Error",
+    "swt" : "Something Went Wrong",
+    "enterOtp" : "Enter OTP",
+    "uploadPNGJPGJPEGfileUptoSize" : "Upload a PNG, JPG, or JPEG file, Upto 5mb Size",
+    "userIDNotFound" : "User ID not found",
+    "imageUploadFailedDueISE" : "Image Upload Failed Due to Internal Server Error",
+    "failedSaveUserProfile" : "Failed to Save User Profile"
   }
 }

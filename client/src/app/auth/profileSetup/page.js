@@ -20,6 +20,7 @@ import endPoint from "@/utils/endpoints";
 import Icons from "@/utils/Icons";
 import { imageUploadSingle } from "@/utils/imageUpload";
 import { useDispatch } from "react-redux";
+import useTranslator from "@/hooks/useTranslator";
 
 const Page = () => {
   const [form, setForm] = useState({
@@ -39,6 +40,7 @@ const Page = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const fetchapi = useFetchApi();
+  const { translate } = useTranslator();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -68,10 +70,7 @@ const Page = () => {
     if (!file) return;
 
     if (!isValidFileType(file)) {
-      showAlert(
-        "Please upload a PNG, JPG, or JPEG file, Upto 5mb Size",
-        msg.err
-      );
+      showAlert(translate("error.uploadPNGJPGJPEGfileUptoSize"), msg.err);
       setSelectedImage({ file: null, preview: null });
       return;
     }
@@ -98,7 +97,7 @@ const Page = () => {
     const user_id = sessionStorage.getItem("user");
     // Check if user data exists
     if (!user_id) {
-      showAlert("User ID not found", msg.err);
+      showAlert(translate("error.userIDNotFound"), msg.err);
       return;
     }
 
@@ -106,7 +105,7 @@ const Page = () => {
     console.log(imgresponce);
 
     if (!imgresponce?.data?.success) {
-      showAlert("Image Upload Failed Due to Internal Server Error", msg.err);
+      showAlert(translate("error.imageUploadFailedDueISE"), msg.err);
     }
 
     const { id } = JSON.parse(user_id);
@@ -127,12 +126,15 @@ const Page = () => {
         payload: payload,
       });
       if (!response?.data?.success) {
-        showAlert("Failed to Save User Profile", msg.err);
+        showAlert(translate("error.failedSaveUserProfile"), msg.err);
       }
-      showAlert(response?.data?.msg || "Profile Saved Successfully", msg.sucs);
+      showAlert(
+        response?.data?.msg || translate("long.profileSavedSuccessfully"),
+        msg.sucs,
+      );
       router.push("/auth/verifyMobile");
     } catch (error) {
-      showAlert("Internal Server Error", msg.err);
+      showAlert(translate("error.ise"), msg.err);
       console.error("Updated error:", error);
     }
   };
@@ -140,7 +142,7 @@ const Page = () => {
   return (
     <FormLayout image={images?.profileImage}>
       <div className="flex flex-col items-center justify-center h-full p-6">
-        <Heading heading="Profile Setup" />
+        <Heading heading={translate("sort.profileSetup")} />
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col items-center">
             <div className="relative group">
@@ -171,7 +173,7 @@ const Page = () => {
             </div>
             {error && <ErrorsMessage error={error?.profilePic} />}
             <p className="mt-1 text-red-600 font-medium">
-              Click to upload image
+              {translate("sort.clickUplImg")}
             </p>
           </div>
 
@@ -180,12 +182,12 @@ const Page = () => {
               <div id="fname">
                 <Input
                   type="text"
-                  placeholder="First Name"
+                  placeholder={translate("sort.firstName")}
                   name="fname"
                   value={form.fname}
                   onChange={handleChange}
                   required
-                  error={error?.fname}
+                  error={error?.fname ? translate(error.fname) : ""}
                 />
               </div>
 
@@ -193,11 +195,11 @@ const Page = () => {
                 <Input
                   type="text"
                   name="lname"
-                  placeholder="Last Name"
+                  placeholder={translate("sort.lastName")}
                   value={form.lname}
                   onChange={handleChange}
                   required
-                  error={error?.lname}
+                  error={error?.lname ? translate(error.lname) : ""}
                 />
               </div>
             </div>
@@ -205,23 +207,23 @@ const Page = () => {
             <div id="number">
               <Input
                 type="tel"
-                placeholder="Phone Number"
+                placeholder={translate("sort.phoneNumber")}
                 name="number"
                 value={form.number}
                 onChange={handleChange}
                 required
-                error={error?.number}
+                error={error?.number ? translate(error.number) : ""}
               />
             </div>
 
             <div id="dob">
               <Calendar
                 name="dob"
-                placeholder="Date of Birth"
+                placeholder={translate("sort.dob")}
                 value={form.dob}
                 onChange={handleChange}
                 max={today}
-                error={error?.dob}
+                error={error?.dob ? translate(error.dob) : ""}
               />
             </div>
 
@@ -235,16 +237,20 @@ const Page = () => {
                     value={option.value}
                     checked={form.gender === option.value}
                     onChange={handleChange}
-                    label={option.label}
+                    label={translate(`sort.${option.label}`)}
                     required
                   />
                 ))}
               </div>
-              {error && <ErrorsMessage error={error?.gender} />}
+              {error && (
+                <ErrorsMessage
+                  error={error?.gender ? translate(error.gender) : ""}
+                />
+              )}
             </div>
 
             <Button type="submit" className="w-full" variant="primary">
-              Save
+              {translate("sort.save")}
             </Button>
           </div>
         </form>

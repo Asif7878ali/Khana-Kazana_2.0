@@ -9,12 +9,14 @@ import useAlert from "@/hooks/useAlert";
 import { msg } from "@/utils/constaint";
 import { Button } from "@/components/reasuableComponents/UI/Button";
 import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
+import useTranslator from "@/hooks/useTranslator";
 
 const page = () => {
   const router = useRouter();
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const inputRefs = useRef([]);
   const showAlert = useAlert();
+  const { translate } = useTranslator();
 
   const handleChange = (index, e) => {
     const value = e.target.value;
@@ -38,22 +40,22 @@ const page = () => {
   const handleSubmit = () => {
     const otpCode = otp.join("");
     if (otpCode.length < 6) {
-      showAlert("Please Enter Opt", msg.warn);
+      showAlert(translate('error.enterOtp'), msg.warn);
       return;
     }
 
     // Call your verify API here
     console.log("Verifying OTP: ", otpCode);
-    showAlert("Mobile Otp Verify Successfully", msg.sucs);
+    showAlert(translate('long.mobileOtpVerifySuccessfully'), msg.sucs);
     router.push("/auth/addAddress");
   };
 
   return (
     <FormLayout image={images?.mobile}>
       <div className="flex flex-col items-center justify-center h-full p-6">
-         <Heading heading="Verify Mobile OTP" />
+         <Heading heading={translate('sort.verifyMobileOTP')} />
         <p className="text-gray-600 mb-4">
-          We have sent the verification OTP to your Mobile
+         {translate('long.weSentVerificationOTPMobile')}
         </p>
         <VerifyOtp
           otp={otp}
@@ -63,9 +65,9 @@ const page = () => {
         />
 
         <p className="my-3">
-          Didn't get it?{" "}
+         {translate('sort.didntGetIt')}?{" "}
           <span className="underline cursor-pointer text-red-500">
-            Resend the Code
+           {translate('sort.resendCode')}
           </span>
         </p>
 
@@ -74,7 +76,7 @@ const page = () => {
           variant="primary"
           onClick={handleSubmit}
         >
-          Verify
+          {translate('sort.verify')}
         </Button>
       </div>
     </FormLayout>

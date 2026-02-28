@@ -64,15 +64,15 @@ const Signin = ({ role }) => {
         const { data } = response;
 
         if (!data?.success) {
-          showAlert(data.msg || "Something went wrong!", msg.err);
+          showAlert(data.msg || translate('error.swt'), msg.err);
           return;
         }
 
         sessionStorage.setItem("user", JSON.stringify(data.user));
-        showAlert(data?.msg || "Sign in Success", msg.sucs);
+        showAlert(data?.msg || translate('long.signSuccessfully'), msg.sucs);
         router.push("/auth/verifyEmail");
       } catch (error) {
-        showAlert("Internal Server Error", msg.err);
+        showAlert(translate('error.ise'), msg.err);
         console.error("Signin error:", error);
       }
     }
