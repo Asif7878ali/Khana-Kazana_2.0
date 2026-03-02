@@ -55,7 +55,18 @@
     "Female" : "Female",
     "Other" : "Other",
     "save" : "Save",
-    "verifyMobileOTP" : "Verify Mobile OTP"
+    "verifyMobileOTP" : "Verify Mobile OTP",
+    "addYourAddress"  :"Add Your Address",
+    "pincodeZIPCode" : "Pincode/ZIP Code",
+    "houseFlatNo" : "House/Flat No",
+    "street" : "Street",
+    "areaSector" : "Area/Sector",
+    "landmark" : "Landmark",
+    "state" : "State",
+    "city" : "City",
+    "addSecurityQuestions" : "Add Security Questions",
+    "ans" : "Answer",
+    "next" : "Next"
   },
   "long": {
     "exploreOurCulinaryExcellence": "Explore our meticulously curated menu that showcases a symphony of flavors, each dish a testament to the artistry of our skilled chefs. From mouthwatering appetizers that tantalize your taste buds to decadent desserts that provide a sweet crescendo to your meal, every bite is a celebration of culinary excellence",
@@ -77,7 +88,18 @@
     "signSuccessfully" : "Sign in Successfully!",
     "profileSavedSuccessfully" : "Profile Saved Successfully!",
     "weSentVerificationOTPMobile" : " We have Sent the Verification OTP to Your Mobile",
-    "mobileOtpVerifySuccessfully" : "Mobile Otp Verify Successfully!"
+    "mobileOtpVerifySuccessfully" : "Mobile Otp Verify Successfully!",
+    "addressSavedSuccessfully" : "Address Saved Successfully!",
+    "answerSavedSuccessfully"  : "Answer Saved Successfully!",
+    "inCaseForgetPasswordCustomerhooseThreeSecQuestAnsMemorable" : "In Case you Forget your Password or Contact Customer Support, Choose 3 Security Questions. Make sure your Answers are Memorable",
+    "bankDetailsSavedSuccessfully" : "Bank Details Saved Successfully!",
+    "addBankDetails" : "Add Bank Details",
+    "accountHolderName" : "Account Holder Name",
+    "enterSixteenDigitAccNumber" : "Enter 16 Digit Account Number",
+    "confirmAccNum" : "Confirm Account Number",
+    "selectBank" : "Select Bank",
+    "enterIFSCCode" : "Enter IFSC Code",
+    "passbookCancelledCheque" : "Passbook/Cancelled Cheque"
   },
 
   "error": {
@@ -137,6 +159,7 @@
     "uploadPNGJPGJPEGfileUptoSize" : "Upload a PNG, JPG, or JPEG file, Upto 5mb Size",
     "userIDNotFound" : "User ID not found",
     "imageUploadFailedDueISE" : "Image Upload Failed Due to Internal Server Error",
-    "failedSaveUserProfile" : "Failed to Save User Profile"
+    "failedSaveUserProfile" : "Failed to Save User Profile",
+    "pincodeSixDigits"  :"Pincode must be 6 digits"
   }
 }

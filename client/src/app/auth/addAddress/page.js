@@ -15,6 +15,7 @@ import TextArea from "@/components/reasuableComponents/UI/TextArea";
 import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
 import { useFetchApi } from "@/hooks/useFetchApi";
 import endPoint from "@/utils/endpoints";
+import useTranslator from "@/hooks/useTranslator";
 
 const page = () => {
   const [form, setForm] = useState({
@@ -33,6 +34,7 @@ const page = () => {
   const showAlert = useAlert();
   const router = useRouter();
   const fetchapi = useFetchApi();
+  const { translate } = useTranslator();
 
   const getState = async () => {
     try {
@@ -41,12 +43,12 @@ const page = () => {
       });
       const { data } = response;
       if (!data?.success) {
-        showAlert(data.msg || "Something went wrong!", msg.err);
+        showAlert(data.msg || translate("error.swt"), msg.err);
         return;
       }
       setStatelist(data?.state);
     } catch (error) {
-      showAlert("Internal Server Error", msg.err);
+      showAlert(translate("error.ise"), msg.err);
       console.error("Signin error:", error);
     }
   };
@@ -58,12 +60,12 @@ const page = () => {
       });
       const { data } = response;
       if (!data?.success) {
-        showAlert(data.msg || "Something went wrong!", msg.err);
+        showAlert(data.msg || translate("error.swt"), msg.err);
         return;
       }
       setCitylist(data?.cities);
     } catch (error) {
-      showAlert("Internal Server Error", msg.err);
+      showAlert(translate("error.ise"), msg.err);
       console.error("Signin error:", error);
     }
   };
@@ -104,10 +106,10 @@ const page = () => {
     console.log("data", payload);
     if (isvalid === true) {
       if (userRole === "vendor") {
-        showAlert("Address Saved Successfully", msg.sucs);
+        showAlert(translate("long.addressSavedSuccessfully"), msg.sucs);
         router.push("/auth/securityQuestion");
       } else {
-        showAlert("Address Saved Successfully", msg.sucs);
+        showAlert(translate("long.addressSavedSuccessfully"), msg.sucs);
         router.push("/misc/dashboard");
       }
     }
@@ -122,30 +124,30 @@ const page = () => {
   return (
     <FormLayout image={images?.house}>
       <div className="flex flex-col">
-        <Heading heading="Add Your Address" />
+        <Heading heading={translate("sort.addYourAddress")} />
         <form onSubmit={handleSubmit}>
           <div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               <div id="zip">
                 <Input
                   type="text"
-                  label="Pincode/ZIP Code"
+                  label={translate("sort.pincodeZIPCode")}
                   name="zip"
                   value={form.zip}
                   onChange={handleChange}
                   required
-                  error={errors?.zip}
+                  error={errors?.zip ? translate(errors.zip) : ""}
                 />
               </div>
               <div id="house">
                 <Input
                   type="text"
-                  label="House/Flat No."
+                  label={translate("sort.houseFlatNo")}
                   name="house"
                   value={form.house}
                   onChange={handleChange}
                   required
-                  error={errors?.house}
+                  error={errors?.house ? translate(errors.house) : ""}
                 />
               </div>
             </div>
@@ -154,12 +156,12 @@ const page = () => {
               <TextArea
                 name="street"
                 type="text"
-                label="Street"
+                label={translate("sort.street")}
                 maxlength={50}
                 rows={3}
                 value={form.street}
                 onChange={handleChange}
-                error={errors?.street}
+                error={errors?.street ? translate(errors.street) : ""}
               />
             </div>
 
@@ -167,12 +169,11 @@ const page = () => {
               <div id="area">
                 <Input
                   type="text"
-                  label="Area/Sector"
-                  placeholder="Street Address"
+                  label={translate("sort.areaSector")}
                   name="area"
                   value={form.area}
                   onChange={handleChange}
-                  error={errors?.area}
+                  error={errors?.area ? translate(errors.area) : ""}
                   required
                 />
               </div>
@@ -180,7 +181,7 @@ const page = () => {
               <div id="landmark">
                 <Input
                   type="text"
-                  label="Landmark"
+                  label={translate("sort.landmark")}
                   name="landmark"
                   value={form.landmark}
                   onChange={handleChange}
@@ -194,11 +195,12 @@ const page = () => {
                   value={form.state}
                   onChange={handleChange}
                   name="state"
-                  label="State"
+                  label={translate("sort.state")}
+                  placeholder={translate('sort.selectOption')}
                   options={statelist}
                   optionValueKey="code"
                   optionLabelKey="name"
-                  error={errors?.state}
+                  error={errors?.state ? translate(errors.state) : ""}
                 />
               </div>
 
@@ -207,17 +209,18 @@ const page = () => {
                   value={form.city}
                   onChange={handleChange}
                   name="city"
-                  label="City"
+                  label={translate("sort.city")}
+                  placeholder={translate('sort.selectOption')}
                   options={citylist}
                   optionValueKey="name"
                   optionLabelKey="name"
-                  error={errors?.city}
+                  error={errors?.city ? translate(errors.city) : ""}
                 />
               </div>
             </div>
           </div>
           <Button className="w-full cursor-pointer mt-3" variant="primary">
-            Save
+            {translate("sort.save")}
           </Button>
         </form>
       </div>

@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { msg } from "@/utils/constaint";
 import { securityQuestionValidation } from "@/lib/authValidations";
 import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
-
+import useTranslator from "@/hooks/useTranslator";
 
 const Page = () => {
   const [form, setForm] = useState({
@@ -26,6 +26,7 @@ const Page = () => {
   const [errors, setErrors] = useState({});
   const showAlert = useAlert();
   const router = useRouter();
+  const { translate } = useTranslator();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -59,7 +60,7 @@ const Page = () => {
 
     console.log("ans", payload);
     if (isvalid == true) {
-      showAlert("Answer Saved Successfully", msg.sucs);
+      showAlert(translate("long.answerSavedSuccessfully"), msg.sucs);
       router.push("/auth/bankDetails");
     }
   };
@@ -67,10 +68,11 @@ const Page = () => {
   return (
     <FormLayout image={images?.securityImage}>
       <div className="flex flex-col ">
-          <Heading heading="Add Security Questions" />
+        <Heading heading={translate("sort.addSecurityQuestions")} />
         <p className="text-xs text-gray-700 my-1 mx-3">
-          In case you forget your password or contact customer support, choose 3
-          security questions. Make sure your answers are memorable.
+          {translate(
+            "long.inCaseForgetPasswordCustomerhooseThreeSecQuestAnsMemorable",
+          )}
         </p>
         <form className="space-y-2 w-full" onSubmit={handleSubmit}>
           <div id="question1">
@@ -78,9 +80,12 @@ const Page = () => {
               value={form.que1}
               onChange={handleChange}
               name="que1"
+              placeholder={translate("sort.selectOption")}
               options={securityquestion}
+              optionLabelKey="label"
+              optionValueKey="value"
               classNameInput="h-14"
-              error={errors?.que1}
+              error={errors?.que1 ? translate(errors.que1) : ""}
             />
           </div>
 
@@ -88,11 +93,11 @@ const Page = () => {
             <Input
               type="text"
               name="ans1"
-              placeholder="Answer 1"
+              placeholder={`${translate("sort.ans")} 1`}
               value={form.ans1}
               onChange={handleChange}
               required
-              error={errors?.ans1}
+              error={errors?.ans1 ? translate(errors.ans1) : ""}
             />
           </div>
 
@@ -101,9 +106,12 @@ const Page = () => {
               value={form.que2}
               onChange={handleChange}
               name="que2"
+              placeholder={translate("sort.selectOption")}
               options={securityquestion}
+              optionLabelKey="label"
+              optionValueKey="value"
               classNameInput="h-14"
-              error={errors?.que2}
+              error={errors?.que2 ? translate(errors.que2) : ""}
             />
           </div>
 
@@ -111,11 +119,11 @@ const Page = () => {
             <Input
               type="text"
               name="ans2"
-              placeholder="Answer 2"
+              placeholder={`${translate("sort.ans")} 2`}
               value={form.ans2}
               onChange={handleChange}
               required
-              error={errors?.ans2}
+              error={errors?.ans2 ? translate(errors.ans2) : ""}
             />
           </div>
 
@@ -124,9 +132,12 @@ const Page = () => {
               value={form.que3}
               onChange={handleChange}
               name="que3"
+              placeholder={translate("sort.selectOption")}
               options={securityquestion}
+              optionLabelKey="label"
+              optionValueKey="value"
               classNameInput="h-14"
-               error={errors?.que3}
+              error={errors?.que3 ? translate(errors.que3) : ""}
             />
           </div>
 
@@ -134,11 +145,11 @@ const Page = () => {
             <Input
               type="text"
               name="ans3"
-              placeholder="Answer 3"
+              placeholder={`${translate("sort.ans")} 3`}
               value={form.ans3}
               onChange={handleChange}
               required
-              error={errors?.ans3}
+              error={errors?.ans3 ? translate(errors.ans3) : ""}
             />
           </div>
 
@@ -147,7 +158,7 @@ const Page = () => {
             className="w-full cursor-pointer mt-3"
             variant="primary"
           >
-            Next
+            {translate("sort.next")}
           </Button>
         </form>
       </div>

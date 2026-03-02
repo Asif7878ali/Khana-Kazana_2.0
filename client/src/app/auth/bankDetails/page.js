@@ -15,6 +15,7 @@ import { bankDetailValidation } from "@/lib/authValidations";
 import { ErrorsMessage } from "@/components/reasuableComponents/Errors";
 import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
 import { Letters, Numbers } from "@/lib/filtrations";
+import useTranslator from "@/hooks/useTranslator";
 
 const page = () => {
   const [form, setForm] = useState({
@@ -28,6 +29,7 @@ const page = () => {
   const [errors, setErrors] = useState({});
   const showAlert = useAlert();
   const router = useRouter();
+  const { translate } = useTranslator();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -65,7 +67,7 @@ const page = () => {
     console.log("data", payload);
 
     if (isvalid == true) {
-      showAlert("Bank Details Saved Successfully", msg.sucs);
+      showAlert(translate("long.bankDetailsSavedSuccessfully"), msg.sucs);
       router.push("/auth/VerificationDocuments");
     }
   };
@@ -73,25 +75,29 @@ const page = () => {
   return (
     <FormLayout image={images?.bank}>
       <div className="flex flex-col h-full">
-        <Heading heading="Add Bank Details" />
+        <Heading heading={translate("long.addBankDetails")} />
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div id="accounholdername">
             <Input
               type="text"
-              label="Account Holder Name"
+              label={translate("long.accountHolderName")}
               name="acountHolderName"
               placeholder="Ex. Dash Mork"
               value={form.acountHolderName}
               onChange={handleChange}
               required
-              error={errors?.acountHolderName}
+              error={
+                errors?.acountHolderName
+                  ? translate(errors.acountHolderName)
+                  : ""
+              }
             />
           </div>
 
           <div id="accountNumber">
             <Input
               type="text"
-              label="Enter 16 Digit Account Number"
+              label={translate("long.enterSixteenDigitAccNumber")}
               name="accountNumber"
               placeholder="12345XXXX33XX"
               maxLength="16"
@@ -99,14 +105,16 @@ const page = () => {
               onChange={handleChange}
               copy={true}
               required
-              error={errors?.accountNumber}
+              error={
+                errors?.accountNumber ? translate(errors.accountNumber) : ""
+              }
             />
           </div>
 
           <div id="c_accountNumber">
             <Input
               type="text"
-              label="Confirm Account Number"
+              label={translate("long.confirmAccNum")}
               name="c_accountNumber"
               placeholder="Enter A/c no."
               maxLength="16"
@@ -117,7 +125,9 @@ const page = () => {
               matchingVal="Bank Account Number"
               originalInput={form.accountNumber}
               required
-              error={errors?.c_accountNumber}
+              error={
+                errors?.c_accountNumber ? translate(errors.c_accountNumber) : ""
+              }
             />
           </div>
 
@@ -126,29 +136,32 @@ const page = () => {
               value={form.bank}
               onChange={handleChange}
               name="bank"
-              label="Select Bank"
+              label={translate("long.selectBank")}
+              placeholder={translate("sort.selectOption")}
               options={banks}
-              error={errors?.bank}
+              optionLabelKey="label"
+              optionValueKey="value"
+              error={errors?.bank ? translate(errors.bank) : ""}
             />
           </div>
 
           <div id="idsc">
             <Input
               type="text"
-              label="Enter IFSC Code"
+              label={translate("long.enterIFSCCode")}
               name="ifsc"
               placeholder="ABCD023523"
               maxLength="11"
               value={form.ifsc}
               onChange={handleChange}
               required
-              error={errors?.ifsc}
+              error={errors?.ifsc ? translate(errors.ifsc) : ""}
             />
           </div>
 
           <div id="bankDocumentUpload">
             <FileUpload
-              label="Passbook/Cancelled cheque"
+              label={translate("long.passbookCancelledCheque")}
               onChange={(file) => {
                 setForm((prev) => ({ ...prev, bankDocumentUpload: file }));
                 setErrors((prevErrors) => ({
@@ -157,10 +170,18 @@ const page = () => {
                 }));
               }}
             />
-            {errors && <ErrorsMessage error={errors?.bankDocumentUpload} />}
+            {errors && (
+              <ErrorsMessage
+                error={
+                  errors?.bankDocumentUpload
+                    ? translate(errors.bankDocumentUpload)
+                    : ""
+                }
+              />
+            )}
           </div>
           <Button type="submit" className="w-full" variant="primary">
-            Save
+            {translate("sort.save")}
           </Button>
         </form>
       </div>

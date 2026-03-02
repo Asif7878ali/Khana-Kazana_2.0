@@ -67,7 +67,7 @@ export function addAdressValidate(formData) {
   if (!formData?.zip) {
     errors.zip = "error.pinReq";
   } else if (!/^\d{6}$/.test(formData?.zip)) {
-    errors.zip = "Pincode must be 6 digits";
+    errors.zip = "error.pincodeSixDigits";
   }
 
   if (!formData?.house) {

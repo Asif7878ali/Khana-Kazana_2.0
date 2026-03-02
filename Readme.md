@@ -19,6 +19,7 @@ Khana-Kazana 2.0 is a full-stack, responsive food ordering platform built with m
 - **Nextjs.js**: Built with  Next
 - **Styling** :  Tailwind CSS 🎨
 - **Responsiveness**: Fully Responsive Design 📱💻
+- **Language**: It Supoorts Local Languages like - Hindi
 - **Axios/Fetch API**: For making HTTP requests.
 - **State Management** : ReduxToolkit
 

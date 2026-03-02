@@ -55,7 +55,18 @@
     "Female": "महिला",
     "Other": "अन्य",
     "save": "सहेजें",
-    "verifyMobileOTP": "मोबाइल ओटीपी सत्यापित करें"
+    "verifyMobileOTP": "मोबाइल ओटीपी सत्यापित करें",
+    "addYourAddress": "अपना पता जोड़ें",
+    "pincodeZIPCode": "पिनकोड / ज़िप कोड",
+    "houseFlatNo": "मकान / फ़्लैट नंबर",
+    "street": "गली",
+    "areaSector": "क्षेत्र / सेक्टर",
+    "landmark": "नज़दीकी पहचान",
+    "state": "राज्य",
+    "city": "शहर",
+    "addSecurityQuestions": "सुरक्षा प्रश्न जोड़ें",
+    "ans": "उत्तर",
+    "next": "आगे"
   },
   "long": {
     "ExploreOurCulinaryExcellence": "हमारे बारीकी से तैयार किए गए मेन्यू का आनंद लें, जिसमें स्वादों की ऐसी अनोखी संगम प्रस्तुत है जहाँ हर व्यंजन हमारे कुशल शेफ की कला का प्रमाण है। लज़ीज़ स्टार्टर जो आपके स्वाद को जगाते हैं से लेकर मनमोहक डेज़र्ट तक जो आपके भोजन को मीठे समापन तक पहुँचाते हैं — हर एक निवाला पाक-कला की उत्कृष्टता का उत्सव है।",
@@ -77,7 +88,18 @@
     "signSuccessfully": "सफलतापूर्वक साइन इन हो गया!",
     "profileSavedSuccessfully": "प्रोफ़ाइल सफलतापूर्वक सहेज ली गई!",
     "weSentVerificationOTPMobile": "हमने आपके मोबाइल पर सत्यापन ओटीपी भेज दिया है",
-    "mobileOtpVerifySuccessfully": "मोबाइल ओटीपी सफलतापूर्वक सत्यापित हो गया!"
+    "mobileOtpVerifySuccessfully": "मोबाइल ओटीपी सफलतापूर्वक सत्यापित हो गया!",
+    "addressSavedSuccessfully": "पता सफलतापूर्वक सहेज लिया गया!",
+    "answerSavedSuccessfully": "उत्तर सफलतापूर्वक सहेज लिया गया!",
+    "inCaseForgetPasswordCustomerhooseThreeSecQuestAnsMemorable": "यदि आप अपना पासवर्ड भूल जाते हैं या कस्टमर सपोर्ट से संपर्क करते हैं, तो 3 सुरक्षा प्रश्न चुनें। सुनिश्चित करें कि आपके उत्तर याद रखने योग्य हों।",
+    "bankDetailsSavedSuccessfully": "बैंक विवरण सफलतापूर्वक सहेज लिए गए!",
+    "addBankDetails": "बैंक विवरण जोड़ें",
+    "accountHolderName": "खाता धारक का नाम",
+    "enterSixteenDigitAccNumber": "16 अंकों का खाता नंबर दर्ज करें",
+    "confirmAccNum": "खाता नंबर की पुष्टि करें",
+    "selectBank": "बैंक चुनें",
+    "enterIFSCCode": "IFSC कोड दर्ज करें",
+    "passbookCancelledCheque": "पासबुक / रद्द किया गया चेक"
   },
 
   "error": {
@@ -137,6 +159,7 @@
     "uploadPNGJPGJPEGfileUptoSize": "PNG, JPG या JPEG फ़ाइल अपलोड करें (अधिकतम 5 MB तक)",
     "userIDNotFound": "यूज़र आईडी नहीं मिली",
     "imageUploadFailedDueISE": "आंतरिक सर्वर त्रुटि के कारण इमेज अपलोड विफल हुआ",
-    "failedSaveUserProfile": "यूज़र प्रोफ़ाइल सहेजने में विफल"
+    "failedSaveUserProfile": "यूज़र प्रोफ़ाइल सहेजने में विफल",
+    "pincodeSixDigits": "पिनकोड 6 अंकों का होना चाहिए"
   }
 }
