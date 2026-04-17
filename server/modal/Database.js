@@ -5,7 +5,12 @@ dotenv.config();
 
 const Connection = async () => {
   const url = process.env.DBURL;
+
   try {
+    if (!url) {
+      throw new Error("Database URL is missing in .env file");
+    }
+
     const isConnect = await mongoose.connect(url);
     console.log("✅ Connect to the Database :", isConnect?.connection?.host);
   } catch (error) {

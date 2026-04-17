@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { msg } from "@/utils/constaint";
 import { ErrorsMessage } from "@/components/reasuableComponents/Errors";
 import { addAdressValidate } from "@/lib/authValidations";
-import { Numbers } from "@/lib/filtrations";
+import { getAuthenticatedUser, Numbers } from "@/lib/filtrations";
 import TextArea from "@/components/reasuableComponents/UI/TextArea";
 import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
 import { useFetchApi } from "@/hooks/useFetchApi";
@@ -93,6 +93,9 @@ const page = () => {
     const { errors, isvalid } = addAdressValidate(form);
     setErrors(errors);
 
+    const user = getAuthenticatedUser(showAlert, translate);
+    if (!user) return;
+
     const payload = {
       zip: form.zip,
       house: form.house,
@@ -104,6 +107,19 @@ const page = () => {
     };
 
     console.log("data", payload);
+
+    const response = await fetchapi({
+      endpoint: endPoint.address + "/" + user?.id,
+      method: "PUT",
+      payload: payload,
+    });
+    if (!response?.data?.success) {
+      showAlert(translate("error.failedSaveUserProfile"), msg.err);
+    }
+    showAlert(
+      response?.data?.msg || translate("long.profileSavedSuccessfully"),
+      msg.sucs,
+    );
     if (isvalid === true) {
       if (userRole === "vendor") {
         showAlert(translate("long.addressSavedSuccessfully"), msg.sucs);
@@ -116,8 +132,9 @@ const page = () => {
   };
 
   useEffect(() => {
-    const role = localStorage.getItem("user");
-    setUserRole(role);
+    const getlocalData = sessionStorage.getItem("user");
+    const localresponce = JSON.parse(getlocalData);
+    setUserRole(localresponce?.role);
     getState();
   }, []);
 
@@ -196,7 +213,7 @@ const page = () => {
                   onChange={handleChange}
                   name="state"
                   label={translate("sort.state")}
-                  placeholder={translate('sort.selectOption')}
+                  placeholder={translate("sort.selectOption")}
                   options={statelist}
                   optionValueKey="code"
                   optionLabelKey="name"
@@ -210,7 +227,7 @@ const page = () => {
                   onChange={handleChange}
                   name="city"
                   label={translate("sort.city")}
-                  placeholder={translate('sort.selectOption')}
+                  placeholder={translate("sort.selectOption")}
                   options={citylist}
                   optionValueKey="name"
                   optionLabelKey="name"

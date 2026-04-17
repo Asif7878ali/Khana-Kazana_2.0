@@ -106,3 +106,64 @@ export const profile_api = async (req, res) => {
     });
   }
 };
+
+
+export const address_api = async (req, res) => {
+  console.log("➡️ Address API hit");
+
+  try {
+    const userId = req.params.id;
+    const data = req.body;
+
+    if (!data || Object.keys(data).length === 0) {
+      return res.status(400).json({
+        msg: "No address data provided",
+        success: false,
+      });
+    }
+
+    const update = {
+      "address.zipcode": data.zipcode,
+      "address.house": data.house,
+      "address.street": data.street,
+      "address.area": data.area,
+      "address.landmark": data.landmark,
+      "address.state": data.state,
+      "address.city": data.city,
+    };
+
+    // remove undefined fields
+    Object.keys(update).forEach(
+      (key) => update[key] === undefined && delete update[key]
+    );
+
+    const user = await Users.findByIdAndUpdate(
+      userId,
+      {
+        $set: update,
+        $setOnInsert: {},
+        $max: { onboardingStep: 3 },
+      },
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({
+        msg: "User not found",
+        success: false,
+      });
+    }
+
+    return res.status(200).json({
+      msg: "Address saved successfully",
+      success: true,
+      data: user.address,
+    });
+  } catch (error) {
+    console.error("Address error:", error);
+    return res.status(500).json({
+      msg: "Failed to save address",
+      success: false,
+    });
+  }
+};

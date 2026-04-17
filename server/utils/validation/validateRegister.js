@@ -106,3 +106,121 @@ export const validateProfile = (req, res, next) => {
 
   next();
 };
+
+export const validateAddress = (req, res, next) => {
+  if (!req.body || Object.keys(req.body).length === 0) {
+    console.log("Request body is missing");
+    return res.status(400).json({
+      msg: "Request body is missing",
+      success: false,
+    });
+  }
+
+  const { zip, house, street, area, landmark, state, city } = req.body;
+
+  console.log(req.body);
+
+  // ZIP Code validation
+  if (!zip) {
+    console.log("Zipcode is required");
+    return res.status(400).json({
+      msg: "Zipcode is required.",
+      success: false,
+    });
+  } else if (
+    typeof zip !== "string" ||
+    !/^\d{6}$/.test(zip)
+  ) {
+    console.log("Invalid Zipcode");
+    return res.status(400).json({
+      msg: "Zipcode must be exactly 6 digits",
+      success: false,
+    });
+  }
+
+  // House validation
+  if (!house) {
+    console.log("House is required");
+    return res.status(400).json({
+      msg: "House is required.",
+      success: false,
+    });
+  } else if (typeof house !== "string") {
+    console.log("House is not valid");
+    return res.status(400).json({
+      msg: "House is not valid",
+      success: false,
+    });
+  }
+
+  // Street validation
+  if (!street) {
+    console.log("Street is required");
+    return res.status(400).json({
+      msg: "Street is required.",
+      success: false,
+    });
+  } else if (typeof street !== "string") {
+    console.log("Street is not valid");
+    return res.status(400).json({
+      msg: "Street is not valid",
+      success: false,
+    });
+  }
+
+  // Area validation
+  if (!area) {
+    console.log("Area is required");
+    return res.status(400).json({
+      msg: "Area is required.",
+      success: false,
+    });
+  } else if (typeof area !== "string") {
+    console.log("Area is not valid");
+    return res.status(400).json({
+      msg: "Area is not valid",
+      success: false,
+    });
+  }
+
+  // Landmark validation (optional)
+  if (landmark && typeof landmark !== "string") {
+    console.log("Landmark is not valid");
+    return res.status(400).json({
+      msg: "Landmark is not valid",
+      success: false,
+    });
+  }
+
+  // State validation
+  if (!state) {
+    console.log("State is required");
+    return res.status(400).json({
+      msg: "State is required.",
+      success: false,
+    });
+  } else if (typeof state !== "string") {
+    console.log("State is not valid");
+    return res.status(400).json({
+      msg: "State is not valid",
+      success: false,
+    });
+  }
+
+  // City validation
+  if (!city) {
+    console.log("City is required");
+    return res.status(400).json({
+      msg: "City is required.",
+      success: false,
+    });
+  } else if (typeof city !== "string") {
+    console.log("City is not valid");
+    return res.status(400).json({
+      msg: "City is not valid",
+      success: false,
+    });
+  }
+
+  next();
+};

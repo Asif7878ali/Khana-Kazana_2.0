@@ -13,6 +13,8 @@ import { msg } from "@/utils/constaint";
 import { securityQuestionValidation } from "@/lib/authValidations";
 import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
 import useTranslator from "@/hooks/useTranslator";
+import { getAuthenticatedUser } from "@/lib/filtrations";
+import endPoint from "@/utils/endpoints";
 
 const Page = () => {
   const [form, setForm] = useState({
@@ -43,6 +45,9 @@ const Page = () => {
     const { errors, isvalid } = securityQuestionValidation(form);
     setErrors(errors);
 
+    const user = getAuthenticatedUser(showAlert, translate);
+    if (!user) return;
+
     const payload = [
       {
         questionId: form.que1,
@@ -59,6 +64,19 @@ const Page = () => {
     ];
 
     console.log("ans", payload);
+
+    const response = await fetchapi({
+      endpoint: endPoint.address + "/" + user?.id,
+      method: "PUT",
+      payload: payload,
+    });
+    if (!response?.data?.success) {
+      showAlert(translate("error.failedSaveUserProfile"), msg.err);
+    }
+    showAlert(
+      response?.data?.msg || translate("long.profileSavedSuccessfully"),
+      msg.sucs,
+    );
     if (isvalid == true) {
       showAlert(translate("long.answerSavedSuccessfully"), msg.sucs);
       router.push("/auth/bankDetails");
