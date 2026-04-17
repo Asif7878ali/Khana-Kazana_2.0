@@ -76,7 +76,7 @@ export const profile_api = async (req, res) => {
 
     // Remove undefined fields to prevent overwriting keys with undefined:
     Object.keys(update).forEach(
-      (key) => update[key] === undefined && delete update[key]
+      (key) => update[key] === undefined && delete update[key],
     );
 
     const options = { new: true }; // Return the updated document
@@ -87,9 +87,9 @@ export const profile_api = async (req, res) => {
         $set: update,
         $inc: { onboardingStep: 1 },
       },
-      options
-    );  
-   console.log(updatedProfile);
+      options,
+    );
+    console.log(updatedProfile);
     if (!updatedProfile) {
       return res.status(404).json({ msg: "User not found", success: false });
     }
@@ -107,7 +107,7 @@ export const profile_api = async (req, res) => {
   }
 };
 
-
+// Address API
 export const address_api = async (req, res) => {
   console.log("➡️ Address API hit");
 
@@ -134,7 +134,7 @@ export const address_api = async (req, res) => {
 
     // remove undefined fields
     Object.keys(update).forEach(
-      (key) => update[key] === undefined && delete update[key]
+      (key) => update[key] === undefined && delete update[key],
     );
 
     const user = await Users.findByIdAndUpdate(
@@ -144,7 +144,7 @@ export const address_api = async (req, res) => {
         $setOnInsert: {},
         $max: { onboardingStep: 3 },
       },
-      { new: true }
+      { new: true },
     );
 
     if (!user) {
@@ -163,6 +163,100 @@ export const address_api = async (req, res) => {
     console.error("Address error:", error);
     return res.status(500).json({
       msg: "Failed to save address",
+      success: false,
+    });
+  }
+};
+// Bank Details API
+export const bankDetails_api = async (req, res) => {
+  console.log("➡️ Bank Details API hit");
+
+  try {
+    const userId = req.params.id;
+    const data = req.body;
+
+    const update = {
+      "bankDetails.acountHolderName": data.acountHolderName,
+      "bankDetails.accountNumber": data.accountNumber,
+      "bankDetails.bank": data.bank,
+      // "bankDetails.bankDocument": data.bankDocument,
+      "bankDetails.ifsc": data.ifsc,
+    };
+
+    // remove undefined fields
+    Object.keys(update).forEach(
+      (key) => update[key] === undefined && delete update[key],
+    );
+
+    const user = await Users.findByIdAndUpdate(
+      userId,
+      {
+        $set: update,
+        $max: { onboardingStep: 4 },
+      },
+      { new: true },
+    );
+
+    if (!user) {
+      return res.status(404).json({
+        msg: "User not found",
+        success: false,
+      });
+    }
+
+    return res.status(200).json({
+      msg: "Bank details saved successfully",
+      success: true,
+      data: user.bankDetails,
+    });
+  } catch (error) {
+    console.error("Bank details error:", error);
+    return res.status(500).json({
+      msg: "Failed to save bank details",
+      success: false,
+    });
+  }
+};
+
+// Security API
+export const securityQuestions_api = async (req, res) => {
+  console.log("➡️ Security Questions API hit");
+
+  try {
+    const userId = req.params.id;
+    const data = req.body;
+
+    // Map questionId → question (as per schema)
+    const formatted = data.map((item) => ({
+      question: item.questionId,
+      answer: item.answer,
+    }));
+
+    const user = await Users.findByIdAndUpdate(
+      userId,
+      {
+        $set: { securityQuestions: formatted },
+        $max: { onboardingStep: 6 },
+      },
+      { new: true },
+    );
+
+    if (!user) {
+      return res.status(404).json({
+        msg: "User not found",
+        success: false,
+      });
+    }
+
+    return res.status(200).json({
+      msg: "Security questions saved successfully",
+      success: true,
+      data: user.securityQuestions,
+    });
+  } catch (error) {
+    console.error("Security question error:", error);
+    return res.status(500).json({
+      msg: "Failed to save security questions",
       success: false,
     });
   }

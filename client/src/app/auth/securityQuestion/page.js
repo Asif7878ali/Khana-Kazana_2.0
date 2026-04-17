@@ -66,7 +66,7 @@ const Page = () => {
     console.log("ans", payload);
 
     const response = await fetchapi({
-      endpoint: endPoint.address + "/" + user?.id,
+      endpoint: endPoint.securityQuestion + "/" + user?.id,
       method: "PUT",
       payload: payload,
     });
@@ -77,10 +77,6 @@ const Page = () => {
       response?.data?.msg || translate("long.profileSavedSuccessfully"),
       msg.sucs,
     );
-    if (isvalid == true) {
-      showAlert(translate("long.answerSavedSuccessfully"), msg.sucs);
-      router.push("/auth/bankDetails");
-    }
   };
 
   return (

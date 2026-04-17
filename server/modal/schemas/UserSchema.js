@@ -45,7 +45,6 @@ const user_schema = new mongoose.Schema(
       acountHolderName: { type: String },
       accountNumber: { type: Number },
       bank: { type: String },
-      bankDocument: { type: String },
       ifsc: { type: String },
     },
 
@@ -75,7 +74,7 @@ const user_schema = new mongoose.Schema(
       default: 1,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 //Modal

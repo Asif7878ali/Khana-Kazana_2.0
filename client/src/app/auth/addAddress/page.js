@@ -123,7 +123,7 @@ const page = () => {
     if (isvalid === true) {
       if (userRole === "vendor") {
         showAlert(translate("long.addressSavedSuccessfully"), msg.sucs);
-        router.push("/auth/securityQuestion");
+        router.push("/auth/bankDetails");
       } else {
         showAlert(translate("long.addressSavedSuccessfully"), msg.sucs);
         router.push("/misc/dashboard");

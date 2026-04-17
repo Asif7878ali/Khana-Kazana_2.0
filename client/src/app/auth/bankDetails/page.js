@@ -14,8 +14,10 @@ import { msg } from "@/utils/constaint";
 import { bankDetailValidation } from "@/lib/authValidations";
 import { ErrorsMessage } from "@/components/reasuableComponents/Errors";
 import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
-import { Letters, Numbers } from "@/lib/filtrations";
+import { getAuthenticatedUser, Letters, Numbers } from "@/lib/filtrations";
 import useTranslator from "@/hooks/useTranslator";
+import endPoint from "@/utils/endpoints";
+import { useFetchApi } from "@/hooks/useFetchApi";
 
 const page = () => {
   const [form, setForm] = useState({
@@ -23,13 +25,14 @@ const page = () => {
     accountNumber: "",
     c_accountNumber: "",
     bank: "",
-    bankDocumentUpload: "",
+    // bankDocumentUpload: "",
     ifsc: "",
   });
   const [errors, setErrors] = useState({});
   const showAlert = useAlert();
   const router = useRouter();
   const { translate } = useTranslator();
+  const fetchapi = useFetchApi();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -51,20 +54,32 @@ const page = () => {
     }));
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { errors, isvalid } = bankDetailValidation(form);
     setErrors(errors);
 
+    const user = getAuthenticatedUser(showAlert, translate);
+    if (!user) return;
+
     const payload = {
       acountHolderName: form.acountHolderName,
       accountNumber: form.accountNumber,
       bank: form.bank,
-      bankDocumentUpload: form.bankDocumentUpload,
+      // bankDocument: form.bankDocumentUpload,
       ifsc: form.ifsc,
     };
     console.log("data", payload);
+
+    const response = await fetchapi({
+      endpoint: endPoint.bankDetails + "/" + user?.id,
+      method: "PUT",
+      payload: payload,
+    });
+    if (!response?.data?.success) {
+      showAlert(translate("error.failedSaveUserProfile"), msg.err);
+    }
 
     if (isvalid == true) {
       showAlert(translate("long.bankDetailsSavedSuccessfully"), msg.sucs);
@@ -159,7 +174,7 @@ const page = () => {
             />
           </div>
 
-          <div id="bankDocumentUpload">
+          {/* <div id="bankDocumentUpload">
             <FileUpload
               label={translate("long.passbookCancelledCheque")}
               onChange={(file) => {
@@ -179,7 +194,7 @@ const page = () => {
                 }
               />
             )}
-          </div>
+          </div> */}
           <Button type="submit" className="w-full" variant="primary">
             {translate("sort.save")}
           </Button>
