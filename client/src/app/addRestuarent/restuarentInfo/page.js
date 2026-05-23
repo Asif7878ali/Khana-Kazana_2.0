@@ -3,16 +3,16 @@
 import React, { useState } from "react";
 import FormLayout from "@/components/layouts/FormLayout";
 import { images } from "@/utils/imageConstant";
-import TextArea from "@/components/reasuableComponents/UI/TextArea";
-import Dropdown from "@/components/reasuableComponents/UI/Dropdown";
-import Input from "@/components/reasuableComponents/UI/Input";
+import TextArea from "@/components/reasuableComponents/TextArea";
+import Dropdown from "@/components/reasuableComponents/Dropdown";
+import Input from "@/components/reasuableComponents/Input";
 import { cuisine, foodtype } from "@/lib/homepageData";
-import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
-import Checkbox from "@/components/reasuableComponents/UI/Checkbox";
+import { Heading } from "@/features/auth/components/HeadingParagraph";
+import Checkbox from "@/components/reasuableComponents/Checkbox";
 import { restuarentInfoValidation } from "@/validation/restuarentValidation";
 import { msg } from "@/utils/constaint";
 import useAlert from "@/hooks/useAlert";
-import { Button } from "@/components/reasuableComponents/UI/Button";
+import { Button } from "@/components/reasuableComponents/Button";
 import { Letters } from "@/utils/helperfunction";
 
 const page = () => {

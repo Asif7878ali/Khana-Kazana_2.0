@@ -3,10 +3,10 @@
 import { images } from "@/utils/imageConstant";
 import FormLayout from "@/components/layouts/FormLayout";
 import React, { useState } from "react";
-import Input from "@/components/reasuableComponents/UI/Input";
-import Dropdown from "@/components/reasuableComponents/UI/Dropdown";
-import { Button } from "@/components/reasuableComponents/UI/Button";
-import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
+import Input from "@/components/reasuableComponents/Input";
+import Dropdown from "@/components/reasuableComponents/Dropdown";
+import { Button } from "@/components/reasuableComponents/Button";
+import { Heading } from "@/features/auth/components/HeadingParagraph";
 import { DeleviryRadius } from "@/lib/homepageData";
 import useAlert from "@/hooks/useAlert";
 import { restuarentLocationValidation } from "@/validation/restuarentValidation";

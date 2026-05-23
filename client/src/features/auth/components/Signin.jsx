@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import Input from "../reasuableComponents/UI/Input";
-import useAlert from "@/hooks/useAlert";
-import { msg } from "@/utils/constaint";
 import { useRouter } from "next/navigation";
-import Checkbox from "../reasuableComponents/UI/Checkbox";
-import { signInValidation } from "@/validation/authValidations";
-import Password from "../reasuableComponents/UI/Password";
-import { Button } from "../reasuableComponents/UI/Button";
+import React, { useState } from "react";
+import { Button } from "@/components/reasuableComponents/Button";
+import Checkbox from "@/components/reasuableComponents/Checkbox";
+import Input from "@/components/reasuableComponents/Input";
+import Password from "@/components/reasuableComponents/Password";
+import useAlert from "@/hooks/useAlert";
 import { useFetchApi } from "@/hooks/useFetchApi";
-import endPoint from "@/utils/endpoints";
 import useTranslator from "@/hooks/useTranslator";
+import { signInValidation } from "@/validation/authValidations";
+
+
 
 const Signin = ({ role }) => {
   const [formData, setFormData] = useState({

@@ -1,6 +1,6 @@
 import Icons from "@/utils/Icons";
 import React, { useState } from "react";
-import { ErrorsMessage } from "../Errors";
+import { ErrorsMessage } from "./Errors";
 
 const Checkbox = ({
   id = "custom-checkbox",

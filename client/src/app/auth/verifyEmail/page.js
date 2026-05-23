@@ -3,12 +3,12 @@
 import React, { useRef, useState } from "react";
 import FormLayout from "@/components/layouts/FormLayout";
 import { images } from "@/utils/imageConstant";
-import VerifyOtp from "@/components/forms/VerifyOtp";
+import VerifyOtp from "@/features/auth/components/VerifyOtp";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/reasuableComponents/UI/Button";
+import { Button } from "@/components/reasuableComponents/Button";
 import useAlert from "@/hooks/useAlert";
 import { msg } from "@/utils/constaint";
-import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
+import { Heading } from "@/features/auth/components/HeadingParagraph";
 import useTranslator from "@/hooks/useTranslator";
 
 const page = () => {

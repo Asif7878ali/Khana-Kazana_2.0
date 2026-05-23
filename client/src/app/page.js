@@ -3,8 +3,8 @@ import MainLayout from "@/components/layouts/MainLayout";
 import useTranslator from "@/hooks/useTranslator";
 import Image from "next/image";
 import { images } from "@/utils/imageConstant";
-import { Button } from "@/components/reasuableComponents/UI/Button";
-import { CategoiesTile } from "@/components/reasuableComponents/Cards";
+import { Button } from "@/components/reasuableComponents/Button";
+import { CategoiesTile } from "@/features/mainpage/components/Cards";
 import { categories, testimonials } from "@/lib/homepageData";
 import Icons from "@/utils/Icons";
 

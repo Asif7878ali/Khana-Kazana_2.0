@@ -2,7 +2,8 @@
 
 import { useSelector } from "react-redux";
 import GlobalAlert from "./GlobalAlert";
-import { LoaderApi } from "../reasuableComponents/UI/Loader";
+import { LoaderApi } from "../reasuableComponents/Loader";
+
 
 const GlobalWrapper = ({ children }) => {
 

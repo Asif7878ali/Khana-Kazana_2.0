@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Icons from "@/utils/Icons";
 import { weekdays } from "@/utils/constaint";
-import { ErrorsMessage } from "../Errors";
+import { ErrorsMessage } from "./Errors";
 
 
 const Calendar = ({ name, value, onChange, max, min, placeholder = "Select Date" , error }) => {

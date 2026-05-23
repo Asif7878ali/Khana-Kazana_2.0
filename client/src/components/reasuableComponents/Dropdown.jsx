@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import Icons from "@/utils/Icons";
-import { ErrorsMessage } from "../Errors";
+import { ErrorsMessage } from "./Errors";
+
 
 const debounce = (func, delay) => {
   let timeoutId;

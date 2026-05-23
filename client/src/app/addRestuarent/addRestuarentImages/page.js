@@ -4,12 +4,12 @@ import React, { useRef, useState } from "react";
 import FormLayout from "@/components/layouts/FormLayout";
 import { images } from "@/utils/imageConstant";
 import Icons from "@/utils/Icons";
-import Modal from "@/components/reasuableComponents/UI/Modal";
+import Modal from "@/components/reasuableComponents/Modal";
 import { restuarentImageCatogory } from "@/lib/homepageData";
-import Dropdown from "@/components/reasuableComponents/UI/Dropdown";
+import Dropdown from "@/components/reasuableComponents/Dropdown";
 import Image from "next/image";
-import { BlurButton } from "@/components/reasuableComponents/UI/Button";
-import ImageGalleryModal from "@/components/reasuableComponents/UI/ImageGalleryModal";
+import { BlurButton } from "@/components/reasuableComponents/Button";
+import ImageGalleryModal from "@/components/reasuableComponents/ImageGalleryModal";
 
 const page = () => {
   const [image, setImage] = useState({

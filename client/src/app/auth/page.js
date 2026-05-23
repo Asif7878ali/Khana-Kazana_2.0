@@ -1,11 +1,12 @@
 "use client";
 import FormLayout from "@/components/layouts/FormLayout";
 import React, { useState } from "react";
-import Login from "../../components/forms/Login";
-import Signin from "../../components/forms/Signin";
-import Dropdown from "@/components/reasuableComponents/UI/Dropdown";
+import Login from "@/features/auth/components/Login";
+import Signin from "@/features/auth/components/Signin";
+import Dropdown from "@/components/reasuableComponents/Dropdown";
 import { images } from "@/utils/imageConstant";
 import useTranslator from "@/hooks/useTranslator";
+
 
 const Page = () => {
   const [activeTab, setActiveTab] = useState("login");

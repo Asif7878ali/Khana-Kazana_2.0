@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Icons from "@/utils/Icons";
-import { ErrorsMessage } from "../Errors";
+import { ErrorsMessage } from "./Errors";
 import Tooltip from "./Tooltip";
 
 const Password = ({

@@ -3,14 +3,14 @@
 import React, { useEffect, useState } from "react";
 import FormLayout from "@/components/layouts/FormLayout";
 import { images } from "@/utils/imageConstant";
-import Dropdown from "@/components/reasuableComponents/UI/Dropdown";
-import Input from "@/components/reasuableComponents/UI/Input";
-import { Button } from "@/components/reasuableComponents/UI/Button";
+import Dropdown from "@/components/reasuableComponents/Dropdown";
+import Input from "@/components/reasuableComponents/Input";
+import { Button } from "@/components/reasuableComponents/Button";
 import useAlert from "@/hooks/useAlert";
 import { useRouter } from "next/navigation";
 import { msg } from "@/utils/constaint";
 import { securityQuestionValidation } from "@/validation/authValidations";
-import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
+import { Heading } from "@/features/auth/components/HeadingParagraph";
 import useTranslator from "@/hooks/useTranslator";
 import { getAuthenticatedUser } from "@/utils/helperfunction";
 import endPoint from "@/utils/endpoints";

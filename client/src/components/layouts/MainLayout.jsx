@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
-import Navbar from '../foundation/Navbar'
-import Footer from '../foundation/Footer'
+import Navbar from '@/features/mainpage/components/Navbar'
+import Footer from '@/features/mainpage/components/Footer'
 
 
 const MainLayout = ({ children }) => {

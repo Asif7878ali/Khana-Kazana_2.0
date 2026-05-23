@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ErrorsMessage } from "../Errors";
+import { ErrorsMessage } from "./Errors";
 
 const TextArea = ({
   label,

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { ErrorsMessage } from "../Errors";
+import { ErrorsMessage } from "./Errors";
 
 const Input = ({
   type = "text",

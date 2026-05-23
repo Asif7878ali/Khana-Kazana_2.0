@@ -3,7 +3,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { hideAlert } from '@/store/slices/alertSlice';
 import { useEffect } from 'react';
-import AlertNotification from '../reasuableComponents/UI/AlertNotification';
+import AlertNotification from '../reasuableComponents/AlertNotification';
+
 
 const GlobalAlert = () => {
   const { visible, message, alertType } = useSelector((state) => state.alert);

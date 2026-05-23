@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Input from "../reasuableComponents/UI/Input";
-import { Button } from "../reasuableComponents/UI/Button";
+import Input from "@/components/reasuableComponents/Input";
+import { Button } from "@/components/reasuableComponents/Button";
 import useTranslator from "@/hooks/useTranslator";
 
 const Login = ({ role }) => {

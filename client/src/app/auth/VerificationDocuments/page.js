@@ -3,16 +3,16 @@
 import React, { useState } from "react";
 import FormLayout from "@/components/layouts/FormLayout";
 import { images } from "@/utils/imageConstant";
-import Input from "@/components/reasuableComponents/UI/Input";
-import FileUpload from "@/components/reasuableComponents/UI/FileUpload";
-import { Button } from "@/components/reasuableComponents/UI/Button";
+import Input from "@/components/reasuableComponents/Input";
+import FileUpload from "@/components/reasuableComponents/FileUpload";
+import { Button } from "@/components/reasuableComponents/Button";
 import useAlert from "@/hooks/useAlert";
 import { useRouter } from "next/navigation";
 import { msg } from "@/utils/constaint";
 import { ErrorsMessage } from "@/components/reasuableComponents/Errors";
 import { verificationDocumentValidation } from "@/validation/authValidations";
 import { Numbers } from "@/utils/helperfunction";
-import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
+import { Heading } from "@/features/auth/components/HeadingParagraph";
 
 const page = () => {
   const [form, setForm] = useState({
