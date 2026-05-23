@@ -15,7 +15,7 @@ import {
 } from "../utils/validation/validateRegister.js";
 import { upload_user_image_api } from "../controller/ImagesUploadController.js";
 import { UserImageUpload } from "../middleware/UsersImage.js";
-import { city_api, state_api } from "../controller/GetStatesCityController.js";
+import { bank_api, city_api, state_api } from "../controller/GetDataController.js";
 
 const Route = express.Router();
 
@@ -28,6 +28,7 @@ Route.post(
 ); // first middleware then api
 Route.put("/auth/profile/:id", validateProfile, profile_api);
 Route.get("/indian/state", state_api);
+Route.get("/indian/bank", bank_api);
 Route.get("/indian/cities/:stateCode", city_api);
 Route.put("/auth/address/:id", validateAddress, address_api);
 Route.put("/auth/bank/:id", validateBankDetails, bankDetails_api);

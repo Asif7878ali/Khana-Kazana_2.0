@@ -1,3 +1,4 @@
+import Banks from "../data/IndianBanks.js";
 import Cities from "../data/IndianCity.js";
 import State from "../data/IndianStates.js";
 
@@ -26,5 +27,13 @@ export const city_api = async (req, res) => {
     success: true,
     stateCode: stateCode.toUpperCase(),
     cities: stateCities,
+  });
+};
+
+export const bank_api = async (req, res) => {
+  console.log("➡️ Bank API hit");
+  res.json({
+    success: true,
+    banks: Banks,
   });
 };

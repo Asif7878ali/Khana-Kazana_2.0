@@ -1,5 +1,5 @@
 import axios from "axios";
-import configCenter from "@/lib/config";
+import configCenter from "@/config/config";
 import endPoint from "./endpoints";
 import { setLoading } from "@/store/slices/loadingSlice";
 

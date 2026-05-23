@@ -10,11 +10,12 @@ import { Button } from "@/components/reasuableComponents/UI/Button";
 import useAlert from "@/hooks/useAlert";
 import { useRouter } from "next/navigation";
 import { msg } from "@/utils/constaint";
-import { securityQuestionValidation } from "@/lib/authValidations";
+import { securityQuestionValidation } from "@/validation/authValidations";
 import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
 import useTranslator from "@/hooks/useTranslator";
-import { getAuthenticatedUser } from "@/lib/filtrations";
+import { getAuthenticatedUser } from "@/utils/helperfunction";
 import endPoint from "@/utils/endpoints";
+
 
 const Page = () => {
   const [form, setForm] = useState({

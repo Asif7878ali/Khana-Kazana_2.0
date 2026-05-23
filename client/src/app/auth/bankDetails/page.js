@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormLayout from "@/components/layouts/FormLayout";
 import { images } from "@/utils/imageConstant";
 import useAlert from "@/hooks/useAlert";
@@ -9,12 +9,11 @@ import Input from "@/components/reasuableComponents/UI/Input";
 import Dropdown from "@/components/reasuableComponents/UI/Dropdown";
 import FileUpload from "@/components/reasuableComponents/UI/FileUpload";
 import { Button } from "@/components/reasuableComponents/UI/Button";
-import { banks } from "@/lib/homepageData";
 import { msg } from "@/utils/constaint";
-import { bankDetailValidation } from "@/lib/authValidations";
+import { bankDetailValidation } from "@/validation/authValidations";
 import { ErrorsMessage } from "@/components/reasuableComponents/Errors";
 import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
-import { getAuthenticatedUser, Letters, Numbers } from "@/lib/filtrations";
+import { Numbers, Letters, getAuthenticatedUser } from "@/utils/helperfunction";
 import useTranslator from "@/hooks/useTranslator";
 import endPoint from "@/utils/endpoints";
 import { useFetchApi } from "@/hooks/useFetchApi";
@@ -28,6 +27,7 @@ const page = () => {
     // bankDocumentUpload: "",
     ifsc: "",
   });
+  const [banklist, setBanklist] = useState([]);
   const [errors, setErrors] = useState({});
   const showAlert = useAlert();
   const router = useRouter();
@@ -86,6 +86,27 @@ const page = () => {
       router.push("/auth/VerificationDocuments");
     }
   };
+
+  useEffect(() => {
+    const getBanks = async () => {
+      try {
+        const response = await fetchapi({
+          endpoint: `${endPoint.getBanks}`,
+        });
+        const { data } = response;
+        if (!data?.success) {
+          showAlert(data.msg || translate("error.swt"), msg.err);
+          return;
+        }
+        setBanklist(data?.banks || []);
+      } catch (error) {
+        showAlert(translate("error.ise"), msg.err);
+        console.error("Signin error:", error);
+      }
+    };
+
+    getBanks();
+  }, []);
 
   return (
     <FormLayout image={images?.bank}>
@@ -153,7 +174,7 @@ const page = () => {
               name="bank"
               label={translate("long.selectBank")}
               placeholder={translate("sort.selectOption")}
-              options={banks}
+              options={banklist}
               optionLabelKey="label"
               optionValueKey="value"
               error={errors?.bank ? translate(errors.bank) : ""}

@@ -34,50 +34,7 @@ export const categories = [
     },
   ];
 
-  export  const indianStates = [
-    { id: 1, value: "AP", label: "Andhra Pradesh" },
-    { id: 2, value: "AR", label: "Arunachal Pradesh" },
-    { id: 3, value: "AS", label: "Assam" },
-    { id: 4, value: "BR", label: "Bihar" },
-    { id: 5, value: "CG", label: "Chhattisgarh" },
-    { id: 6, value: "GA", label: "Goa" },
-    { id: 7, value: "GJ", label: "Gujarat" },
-    { id: 8, value: "HR", label: "Haryana" },
-    { id: 9, value: "HP", label: "Himachal Pradesh" },
-    { id: 10, value: "JH", label: "Jharkhand" },
-    { id: 11, value: "KA", label: "Karnataka" },
-    { id: 12, value: "KL", label: "Kerala" },
-    { id: 13, value: "MP", label: "Madhya Pradesh" },
-    { id: 14, value: "MH", label: "Maharashtra" },
-    { id: 15, value: "MN", label: "Manipur" },
-    { id: 16, value: "ML", label: "Meghalaya" },
-    { id: 17, value: "MZ", label: "Mizoram" },
-    { id: 18, value: "NL", label: "Nagaland" },
-    { id: 19, value: "OD", label: "Odisha" },
-    { id: 20, value: "PB", label: "Punjab" },
-    { id: 21, value: "RJ", label: "Rajasthan" },
-    { id: 22, value: "SK", label: "Sikkim" },
-    { id: 23, value: "TN", label: "Tamil Nadu" },
-    { id: 24, value: "TG", label: "Telangana" },
-    { id: 25, value: "TR", label: "Tripura" },
-    { id: 26, value: "UP", label: "Uttar Pradesh" },
-    { id: 27, value: "UK", label: "Uttarakhand" },
-    { id: 28, value: "WB", label: "West Bengal" },
-    { id: 29, value: "AN", label: "Andaman and Nicobar Islands" },
-    { id: 30, value: "CH", label: "Chandigarh" },
-    { id: 31, value: "DN", label: "Dadra and Nagar Haveli and Daman and Diu" },
-    { id: 32, value: "DL", label: "Delhi" },
-    { id: 33, value: "JK", label: "Jammu and Kashmir" },
-    { id: 34, value: "LA", label: "Ladakh" },
-    { id: 35, value: "LD", label: "Lakshadweep" },
-    { id: 36, value: "PY", label: "Puducherry" },
-  ];
-
-  export  const indianCity = [
-    { id: 1, value: "noida", label: "Noida" },
-    { id: 2, value: "gzb", label: "Ghaziabad" }, 
-  ];
-
+ 
  export const foodtype = [
   { id: 1, value: "veg", label: "Veg" },
   { id: 2, value: "non-veg", label: "Non-Veg" }, 
@@ -96,24 +53,6 @@ export const categories = [
   {  value: "10", label: "10 km" },
   {  value: "20+", label: "20 km Above" }
  ]
-
- export  const banks = [
-  { value: "SBI", label: "State Bank of India" },
-  { value: "HDFC", label: "HDFC Bank" },
-  { value: "ICICI", label: "ICICI Bank" },
-  { value: "AXIS", label: "Axis Bank" },
-  { value: "PNB", label: "Punjab National Bank" },
-  { value: "BOB", label: "Bank of Baroda" },
-  { value: "CANARA", label: "Canara Bank" },
-  { value: "KOTAK", label: "Kotak Mahindra Bank" },
-  { value: "IDBI", label: "IDBI Bank" },
-  { value: "INDUSIND", label: "IndusInd Bank" },
-  { value: "BOI", label: "Bank of India" },
-  { value: "UBI", label: "Union Bank of India" },
-  { value: "IDFC", label: "IDFC First Bank" },
-  { value: "YES", label: "Yes Bank" },
-  { value: "IOB", label: "Indian Overseas Bank" }
-];
 
 export const securityquestion = [
   { id: 0, value: 'Question_1', label: 'What was the name of your first pet?' },

@@ -10,8 +10,8 @@ import useAlert from "@/hooks/useAlert";
 import { useRouter } from "next/navigation";
 import { msg } from "@/utils/constaint";
 import { ErrorsMessage } from "@/components/reasuableComponents/Errors";
-import { verificationDocumentValidation } from "@/lib/authValidations";
-import { Numbers } from "@/lib/filtrations";
+import { verificationDocumentValidation } from "@/validation/authValidations";
+import { Numbers } from "@/utils/helperfunction";
 import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
 
 const page = () => {

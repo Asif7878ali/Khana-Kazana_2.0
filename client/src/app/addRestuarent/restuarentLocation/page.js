@@ -7,11 +7,12 @@ import Input from "@/components/reasuableComponents/UI/Input";
 import Dropdown from "@/components/reasuableComponents/UI/Dropdown";
 import { Button } from "@/components/reasuableComponents/UI/Button";
 import { Heading } from "@/components/reasuableComponents/HeadingParagraph";
-import { DeleviryRadius, indianCity, indianStates } from "@/lib/homepageData";
+import { DeleviryRadius } from "@/lib/homepageData";
 import useAlert from "@/hooks/useAlert";
-import { restuarentLocationValidation } from "@/lib/restuarentValidation";
+import { restuarentLocationValidation } from "@/validation/restuarentValidation";
 import { msg } from "@/utils/constaint";
-import { Numbers } from "@/lib/filtrations";
+import { Numbers } from "@/utils/helperfunction";
+
 
 const page = () => {
   const [form, setForm] = useState({
@@ -122,7 +123,7 @@ const page = () => {
                 onChange={handleChange}
                 name="state"
                 label="State"
-                options={indianStates}
+                // options={indianStates}
                 error={error?.state}
               />
             </div>
@@ -133,7 +134,7 @@ const page = () => {
                 onChange={handleChange}
                 name="city"
                 label="City"
-                options={indianCity}
+                // options={indianCity}
                 error={error?.city}
               />
             </div>

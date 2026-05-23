@@ -4,7 +4,7 @@ import useAlert from "@/hooks/useAlert";
 import { msg } from "@/utils/constaint";
 import { useRouter } from "next/navigation";
 import Checkbox from "../reasuableComponents/UI/Checkbox";
-import { signInValidation } from "@/lib/authValidations";
+import { signInValidation } from "@/validation/authValidations";
 import Password from "../reasuableComponents/UI/Password";
 import { Button } from "../reasuableComponents/UI/Button";
 import { useFetchApi } from "@/hooks/useFetchApi";
