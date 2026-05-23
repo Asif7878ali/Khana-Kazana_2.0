@@ -54,22 +54,6 @@ export const categories = [
   {  value: "20+", label: "20 km Above" }
  ]
 
-export const securityquestion = [
-  { id: 0, value: 'Question_1', label: 'What was the name of your first pet?' },
-  { id: 1, value: 'Question_2', label: 'What is your mother\'s name?' },
-  { id: 2, value: 'Question_3', label: 'What was the name of your elementary school?' },
-  { id: 3, value: 'Question_4', label: 'What was the make and model of your first car?' },
-  { id: 4, value: 'Question_5', label: 'What is the name of the street you grew up on?' },
-  { id: 5, value: 'Question_6', label: 'What was your favorite food as a child?' },
-  { id: 6, value: 'Question_7', label: 'What is the name of your favorite childhood friend?' },
-  { id: 7, value: 'Question_8', label: 'What was the name of the first teacher you had a crush on?' },
-  { id: 8, value: 'Question_9', label: 'What is your favorite movie?' },
-  { id: 9, value: 'Question_10', label: 'What was the destination of your first vacation?' },
-  { id: 10, value: 'Question_11', label: 'Who is your favorite actor?' },
-  { id: 11, value: 'Question_12', label: 'Who is your favorite actress?' },
-];
-
-
 export const restuarentImageCatogory = [
     { value: 'kitchen', label: 'Kitchen' },
     { value: 'outdoor dining', label : 'Outdoor Dining'},

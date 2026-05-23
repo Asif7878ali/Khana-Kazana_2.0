@@ -1,13 +1,11 @@
-import Banks from "../data/IndianBanks.js";
-import Cities from "../data/IndianCity.js";
-import State from "../data/IndianStates.js";
+import { Banks, Cities, SecurityQuestion, States } from "../data/getdata.js";
 
 // STATE IN API
 export const state_api = async (req, res) => {
   console.log("➡️ State API hit");
   res.json({
     success: true,
-    state: State,
+    state: States,
   });
 };
 
@@ -30,6 +28,7 @@ export const city_api = async (req, res) => {
   });
 };
 
+// BANK IN API
 export const bank_api = async (req, res) => {
   console.log("➡️ Bank API hit");
   res.json({
@@ -37,3 +36,11 @@ export const bank_api = async (req, res) => {
     banks: Banks,
   });
 };
+
+export const security_question_api = async (req, res) => {
+  console.log("➡️ Security Question API hit");
+  res.json({
+    success: true,
+    securityQuestions: SecurityQuestion,
+  });
+}

@@ -5,6 +5,7 @@ const endPoint = {
   getStates: "/api/route/indian/state",
   getCity: "/api/route/indian/cities",
   getBanks: "/api/route/indian/bank",
+  getSecurityQuestion: "/api/route/securityQuestion",
   address: "/api/route/auth/address",
   bankDetails: "/api/route/auth/bank",
   securityQuestion: "/api/route/auth/securityQuestion",
