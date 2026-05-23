@@ -3,18 +3,19 @@ import { createSlice } from '@reduxjs/toolkit';
 const alertSlice = createSlice({
   name: 'alert',
   initialState: {
-    message: '',
-    alertType: '',
-    visible: false,
+    alerts: [],
   },
   reducers: {
     showAlert: (state, action) => {
-      state.message = action.payload.message;
-      state.alertType = action.payload.alertType;
-      state.visible = true;
+      state.alerts.push({
+        id: Date.now(),
+        message: action.payload.message || '',
+        severity: action.payload.severity || 'info',
+        position: action.payload.position || 'top-right',
+      });
     },
-    hideAlert: (state) => {
-      state.visible = false;
+    hideAlert: (state, action) => {
+      state.alerts = state.alerts.filter((alert) => alert.id !== action.payload);
     },
   },
 });

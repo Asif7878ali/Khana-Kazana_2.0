@@ -105,7 +105,7 @@ const Page = () => {
     console.log(imgresponce);
 
     if (!imgresponce?.data?.success) {
-      showAlert(translate("error.imageUploadFailedDueISE"), msg.err);
+      showAlert(translate("error.imageUploadFailedDueISE"));
     }
 
     const { id } = JSON.parse(user_id);
