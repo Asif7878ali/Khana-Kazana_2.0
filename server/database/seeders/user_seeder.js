@@ -3,13 +3,15 @@ import dotenv from "dotenv";
 import User from "../modals/user_modal.js";
 
 const userSeeder = async () => {
+  await User.deleteMany({});
   await User.create({
     role: "customer",
     email: "lara@example.com",
     password: "123456",
 
     info: {
-      profilePic: "profile.jpg",
+      profilePic:
+        "https://images.unsplash.com/photo-1644860704769-c61c84be7836?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHdvbWFuJTIwaGlqYWIlMjBmYWNlfGVufDB8fDB8fHww",
       firstName: "Lara",
       lastName: "Asin",
       phone: 9876543210,
@@ -51,7 +53,7 @@ const userSeeder = async () => {
     onboardingStep: 6,
   });
 
-  console.log("User Created by Seed ✅");
+  console.log("User Seeded Successfully ✅");
 };
 
 export default userSeeder;
