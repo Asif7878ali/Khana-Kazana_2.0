@@ -5,7 +5,7 @@ import {
   address_api,
   securityQuestions_api,
   bankDetails_api,
-} from "../controller/AuthController.js";
+} from "../controller/auth_controller.js";
 import {
   validateAddress,
   validateBankDetails,
@@ -13,9 +13,9 @@ import {
   validateRegister,
   validateSecurityQuestions,
 } from "../utils/validation/validateRegister.js";
-import { upload_user_image_api } from "../controller/ImagesUploadController.js";
-import { UserImageUpload } from "../middleware/UsersImage.js";
-import { bank_api, city_api, security_question_api, state_api } from "../controller/GetDataController.js";
+import { upload_user_image_api } from "../controller/images_upload_controller.js";
+import { UserImageUpload } from "../middleware/users_image.js";
+import { bank_api, city_api, security_question_api, state_api } from "../controller/get_data_controller.js";
 
 const Route = express.Router();
 

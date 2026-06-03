@@ -1,10 +1,10 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import Route from './route/Routes.js'
-import Connection from './modal/Database.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import Route from "./route/routes.js";
+import Connection from "./config/connection.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
@@ -15,25 +15,24 @@ const port = process.env.PORT || 2000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-//middleware 
+//middleware
 app.use(
-    cors({
-      origin : [process.env.ORIGIN],
-      methods : ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
-      credentials : true
-    })
+  cors({
+    origin: [process.env.ORIGIN],
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+    credentials: true,
+  }),
 );
 // required to read JSON body miidleware
-app.use(express.json({ limit: '10mb' }));
+app.use(express.json({ limit: "10mb" }));
 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 //routes
-app.use('/api/route', Route);
-
+app.use("/api/route", Route);
 
 Connection().then(() => {
-   app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-   });
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
 });

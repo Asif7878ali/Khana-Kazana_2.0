@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
-const user_schema = new mongoose.Schema(
-  {
+const userSchema = new mongoose.Schema({
     role: {
       type: String,
       enum: ["customer", "vendor"],
@@ -77,7 +76,5 @@ const user_schema = new mongoose.Schema(
   { timestamps: true },
 );
 
-//Modal
-const Users = mongoose.model("Users", user_schema);
 
-export default Users;
+export default userSchema;

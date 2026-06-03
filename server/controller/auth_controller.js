@@ -1,4 +1,4 @@
-import Users from "../modal/schemas/UserSchema.js";
+import User from "../database/modals/user_modal.js";
 
 // SIGN IN API
 export const register_api = async (req, res) => {
@@ -8,7 +8,7 @@ export const register_api = async (req, res) => {
     const { role, email, password } = req.body;
 
     // Check if user already exists
-    const exist = await Users.findOne({ email: email }).exec();
+    const exist = await User.findOne({ email: email }).exec();
 
     if (exist) {
       console.log("User already exists");
@@ -18,7 +18,7 @@ export const register_api = async (req, res) => {
     }
 
     // Create new user
-    const newUser = new Users({ role, email, password });
+    const newUser = new User({ role, email, password });
 
     const user = await newUser.save();
 
@@ -81,7 +81,7 @@ export const profile_api = async (req, res) => {
 
     const options = { new: true }; // Return the updated document
 
-    const updatedProfile = await Users.findOneAndUpdate(
+    const updatedProfile = await User.findOneAndUpdate(
       { _id: userId }, // Mongoose casts string to ObjectId automatically
       {
         $set: update,
@@ -137,7 +137,7 @@ export const address_api = async (req, res) => {
       (key) => update[key] === undefined && delete update[key],
     );
 
-    const user = await Users.findByIdAndUpdate(
+    const user = await User.findByIdAndUpdate(
       userId,
       {
         $set: update,
@@ -188,7 +188,7 @@ export const bankDetails_api = async (req, res) => {
       (key) => update[key] === undefined && delete update[key],
     );
 
-    const user = await Users.findByIdAndUpdate(
+    const user = await User.findByIdAndUpdate(
       userId,
       {
         $set: update,
@@ -232,7 +232,7 @@ export const securityQuestions_api = async (req, res) => {
       answer: item.answer,
     }));
 
-    const user = await Users.findByIdAndUpdate(
+    const user = await User.findByIdAndUpdate(
       userId,
       {
         $set: { securityQuestions: formatted },

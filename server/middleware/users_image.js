@@ -1,7 +1,7 @@
 import multer from 'multer';
 import path from "path";
 import fs from "fs";
-import { imageFilter, maxImageSize } from './ImageValidation.js';
+import { imageFilter, maxImageSize } from './image_validation.js';
 
 
 // Folder path
