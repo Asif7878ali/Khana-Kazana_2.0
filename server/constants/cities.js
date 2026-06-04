@@ -1,44 +1,3 @@
-export const States = [
-  // 🌏 States
-  { code: "AP", name: "Andhra Pradesh" },
-  { code: "AR", name: "Arunachal Pradesh" },
-  { code: "AS", name: "Assam" },
-  { code: "BR", name: "Bihar" },
-  { code: "CG", name: "Chhattisgarh" },
-  { code: "GA", name: "Goa" },
-  { code: "GJ", name: "Gujarat" },
-  { code: "HR", name: "Haryana" },
-  { code: "HP", name: "Himachal Pradesh" },
-  { code: "JH", name: "Jharkhand" },
-  { code: "KA", name: "Karnataka" },
-  { code: "KL", name: "Kerala" },
-  { code: "MP", name: "Madhya Pradesh" },
-  { code: "MH", name: "Maharashtra" },
-  { code: "MN", name: "Manipur" },
-  { code: "ML", name: "Meghalaya" },
-  { code: "MZ", name: "Mizoram" },
-  { code: "NL", name: "Nagaland" },
-  { code: "OD", name: "Odisha" },
-  { code: "PB", name: "Punjab" },
-  { code: "RJ", name: "Rajasthan" },
-  { code: "SK", name: "Sikkim" },
-  { code: "TN", name: "Tamil Nadu" },
-  { code: "TS", name: "Telangana" },
-  { code: "TR", name: "Tripura" },
-  { code: "UP", name: "Uttar Pradesh" },
-  { code: "UK", name: "Uttarakhand" },
-  { code: "WB", name: "West Bengal" },
-  // 🏛️ Union Territories
-  { code: "AN", name: "Andaman and Nicobar Islands" },
-  { code: "CH", name: "Chandigarh" },
-  { code: "DN", name: "Dadra and Nagar Haveli and Daman and Diu" },
-  { code: "DL", name: "Delhi" },
-  { code: "JK", name: "Jammu and Kashmir" },
-  { code: "LA", name: "Ladakh" },
-  { code: "LD", name: "Lakshadweep" },
-  { code: "PY", name: "Puducherry" },
-];
-
 export const Cities = {
   AN : [
     { name : 'Port Blair'}   
@@ -168,7 +127,6 @@ export const Cities = {
     { name: "Shenkottai" },
     { name: "Vadipatti" },
     { name: "Sholingur" },
-    { name: "Tirupathur" },
     { name: "Manachanallur" },
     { name: "Viswanatham" },
     { name: "Polur" },
@@ -281,7 +239,6 @@ export const Cities = {
     { name: "Rau" },
     { name: "Mhowgaon" },
     { name: "Vijaypur" },
-    { name: "Narsinghgarh" }
   ],
 
   JH: [
@@ -1124,7 +1081,6 @@ export const Cities = {
     { name: "Rawatsar" },
     { name: "Rajakhera" },
     { name: "Shahpura" },
-    { name: "Shahpura" },
     { name: "Raisinghnagar" },
     { name: "Malpura" },
     { name: "Nadbai" },
@@ -1361,36 +1317,3 @@ export const Cities = {
     { name: "Adra" }
   ]
 };
-
-export const Banks = [
-  { value: "SBI", label: "State Bank of India" },
-  { value: "HDFC", label: "HDFC Bank" },
-  { value: "ICICI", label: "ICICI Bank" },
-  { value: "AXIS", label: "Axis Bank" },
-  { value: "PNB", label: "Punjab National Bank" },
-  { value: "BOB", label: "Bank of Baroda" },
-  { value: "CANARA", label: "Canara Bank" },
-  { value: "KOTAK", label: "Kotak Mahindra Bank" },
-  { value: "IDBI", label: "IDBI Bank" },
-  { value: "INDUSIND", label: "IndusInd Bank" },
-  { value: "BOI", label: "Bank of India" },
-  { value: "UBI", label: "Union Bank of India" },
-  { value: "IDFC", label: "IDFC First Bank" },
-  { value: "YES", label: "Yes Bank" },
-  { value: "IOB", label: "Indian Overseas Bank" }
-];
-
-export const SecurityQuestion = [
-  { id: 0, value: 'Question_1', label: 'What was the name of your first pet?' },
-  { id: 1, value: 'Question_2', label: 'What is your mother\'s name?' },
-  { id: 2, value: 'Question_3', label: 'What was the name of your elementary school?' },
-  { id: 3, value: 'Question_4', label: 'What was the make and model of your first car?' },
-  { id: 4, value: 'Question_5', label: 'What is the name of the street you grew up on?' },
-  { id: 5, value: 'Question_6', label: 'What was your favorite food as a child?' },
-  { id: 6, value: 'Question_7', label: 'What is the name of your favorite childhood friend?' },
-  { id: 7, value: 'Question_8', label: 'What was the name of the first teacher you had a crush on?' },
-  { id: 8, value: 'Question_9', label: 'What is your favorite movie?' },
-  { id: 9, value: 'Question_10', label: 'What was the destination of your first vacation?' },
-  { id: 10, value: 'Question_11', label: 'Who is your favorite actor?' },
-  { id: 11, value: 'Question_12', label: 'Who is your favorite actress?' },
-];
