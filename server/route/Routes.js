@@ -15,11 +15,16 @@ import {
 } from "../utils/validation/validateRegister.js";
 import { upload_user_image_api } from "../controller/images_upload_controller.js";
 import { UserImageUpload } from "../middleware/users_image.js";
-import { bank_api, city_api, security_question_api, state_api } from "../controller/get_data_controller.js";
+import {
+  bank_api,
+  city_api,
+  security_question_api,
+  state_api,
+} from "../controller/get_data_controller.js";
 
 const Route = express.Router();
 
-//All Routes
+//   Auth Routes start here
 Route.post("/auth/register", validateRegister, register_api); // first is validation next is api
 Route.post(
   "/users/profile/image",
@@ -27,10 +32,6 @@ Route.post(
   upload_user_image_api,
 ); // first middleware then api
 Route.put("/auth/profile/:id", validateProfile, profile_api);
-Route.get("/indian/state", state_api);
-Route.get("/indian/bank", bank_api);
-Route.get("/indian/cities/:stateCode", city_api);
-Route.get("/securityQuestion", security_question_api);
 Route.put("/auth/address/:id", validateAddress, address_api);
 Route.put("/auth/bank/:id", validateBankDetails, bankDetails_api);
 Route.put(
@@ -38,5 +39,13 @@ Route.put(
   validateSecurityQuestions,
   securityQuestions_api,
 );
+//   Auth Routes end here
+
+// Get Data Routes start here
+Route.get("/indian/state", state_api);
+Route.get("/indian/bank", bank_api);
+Route.get("/indian/cities/:stateCode", city_api);
+Route.get("/securityQuestion", security_question_api);
+// Get Data Routes end here
 
 export default Route;
