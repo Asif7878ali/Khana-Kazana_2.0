@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userSeeder from "../database/seeders/user_seeder.js";
 import securityQuestionSeeder from "../database/seeders/security_question_seeder.js";
+import bankSeeder from "../database/seeders/banks_seeder.js";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ const runSeeders = async () => {
   }
   try {
     await mongoose.connect(url);
+    await bankSeeder();
     await securityQuestionSeeder();
     await userSeeder();
     console.log("All Seeders Executed Successfully");
