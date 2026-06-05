@@ -19,7 +19,7 @@ import useTranslator from "@/hooks/useTranslator";
 
 const page = () => {
   const [form, setForm] = useState({
-    zip: "",
+    zipcode: "",
     house: "",
     street: "",
     area: "",
@@ -74,7 +74,7 @@ const page = () => {
     const { name, value } = e.target;
     let filteredValue = value;
     // Allow only digits
-    if (name === "zip") {
+    if (name === "zipcode") {
       filteredValue = Numbers(value).slice(0, 6);
     }
     setForm((prev) => ({ ...prev, [name]: filteredValue }));
@@ -97,7 +97,7 @@ const page = () => {
     if (!user) return;
 
     const payload = {
-      zip: form.zip,
+      zipcode: form.zip,
       house: form.house,
       street: form.street,
       area: form.area,
@@ -153,7 +153,7 @@ const page = () => {
                   value={form.zip}
                   onChange={handleChange}
                   required
-                  error={errors?.zip ? translate(errors.zip) : ""}
+                  error={errors?.zipcode ? translate(errors.zipcode) : ""}
                 />
               </div>
               <div id="house">

@@ -45,8 +45,16 @@ const userSeeder = async () => {
 
     securityQuestions: [
       {
-        question: "What is your pet name?",
-        answer: "Tommy",
+        questionId: "Question_1",
+        answer: "Cat",
+      },
+      {
+        questionId: "Question_2",
+        answer: "Chennai",
+      },
+      {
+        questionId: "Question_3",
+        answer: "Red",
       },
     ],
 

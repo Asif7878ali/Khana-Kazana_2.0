@@ -136,18 +136,18 @@ export const validateAddress = (req, res, next) => {
     });
   }
 
-  const { zip, house, street, area, landmark, state, city } = req.body;
+  const { zipcode, house, street, area, landmark, state, city } = req.body;
 
   console.log(req.body);
 
   // ZIP Code validation
-  if (!zip) {
+  if (!zipcode) {
     console.log("Zipcode is required");
     return res.status(400).json({
       msg: "Zipcode is required.",
       success: false,
     });
-  } else if (typeof zip !== "string" || !/^\d{6}$/.test(zip)) {
+  } else if (typeof zipcode !== "string" || !/^\d{6}$/.test(zipcode)) {
     console.log("Invalid Zipcode");
     return res.status(400).json({
       msg: "Zipcode must be exactly 6 digits",
