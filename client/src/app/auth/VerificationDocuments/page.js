@@ -13,6 +13,7 @@ import { ErrorsMessage } from "@/components/reasuableComponents/Errors";
 import { verificationDocumentValidation } from "@/validation/authValidations";
 import { Numbers } from "@/utils/helperfunction";
 import { Heading } from "@/features/auth/components/HeadingParagraph";
+import useTranslator from "@/hooks/useTranslator";
 
 const page = () => {
   const [form, setForm] = useState({
@@ -31,6 +32,7 @@ const page = () => {
   const [errors, setErrors] = useState({});
   const showAlert = useAlert();
   const router = useRouter();
+  const { translate } = useTranslator();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -54,6 +56,10 @@ const page = () => {
 
     const { errors, isvalid } = verificationDocumentValidation(form);
     setErrors(errors);
+
+    if (!isvalid) {
+      return;
+    }
 
     const payload = {
       aadhar: form.aadhar,
@@ -88,7 +94,7 @@ const page = () => {
               copy={true}
               maxLength="12"
               required
-              error={errors?.aadhar}
+              error={errors?.aadhar ? translate(errors.aadhar) : ""}
             />
           </div>
 
@@ -106,7 +112,7 @@ const page = () => {
               paste={true}
               maxLength="12"
               required
-              error={errors?.c_aadhar}
+              error={errors?.c_aadhar ? translate(errors.c_aadhar) : ""}
             />
           </div>
           <div id="aaahardocument">
@@ -131,7 +137,7 @@ const page = () => {
               copy={true}
               maxLength="10"
               required
-              error={errors?.pancard}
+              error={errors?.pancard ? translate(errors.pancard) : ""}
             />
           </div>
 
@@ -149,7 +155,7 @@ const page = () => {
               originalInput={form.pancard}
               maxLength="10"
               required
-              error={errors?.c_pancard}
+              error={errors?.c_pancard ? translate(errors.c_pancard) : ""}
             />
           </div>
 
@@ -175,7 +181,7 @@ const page = () => {
               copy={true}
               maxLength="14"
               required
-              error={errors?.fssai}
+              error={errors?.fssai ? translate(errors.fssai) : ""}
             />
           </div>
 
@@ -193,7 +199,7 @@ const page = () => {
               originalInput={form.fssai}
               maxLength="14"
               required
-              error={errors?.c_fssai}
+              error={errors?.c_fssai ? translate(errors.c_fssai) : ""}
             />
           </div>
 
@@ -219,7 +225,7 @@ const page = () => {
               copy={true}
               required
               maxLength="15"
-              error={errors?.gst}
+              error={errors?.gst ? translate(errors.gst) : ""}
             />
           </div>
 
@@ -237,7 +243,7 @@ const page = () => {
               originalInput={form.gst}
               required
               maxLength="15"
-              error={errors?.c_gst}
+              error={errors?.c_gst ? translate(errors.c_gst) : ""}
             />
           </div>
 

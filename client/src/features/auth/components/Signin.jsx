@@ -11,8 +11,6 @@ import { signInValidation } from "@/validation/authValidations";
 import { msg } from "@/utils/constaint";
 import endPoint from "@/utils/endpoints";
 
-
-
 const Signin = ({ role }) => {
   const [formData, setFormData] = useState({
     email: "",
@@ -26,7 +24,7 @@ const Signin = ({ role }) => {
   const fetchapi = useFetchApi();
   const { translate } = useTranslator();
 
-  const handleChange = (e) => {
+  function handleChange(e) {
     const { name, type, checked, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -36,7 +34,7 @@ const Signin = ({ role }) => {
       ...prevErrors,
       [name]: "",
     }));
-  };
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,34 +47,36 @@ const Signin = ({ role }) => {
       return;
     }
 
+    if (!isvalid) {
+      return;
+    }
+
     const collectform = {
       role,
       email: formData.email,
       password: formData.password,
     };
 
-    if (isvalid == true) {
-      try {
-        const response = await fetchapi({
-          endpoint: endPoint.signin,
-          method: "POST",
-          payload: collectform,
-        });
+    try {
+      const response = await fetchapi({
+        endpoint: endPoint.signin,
+        method: "POST",
+        payload: collectform,
+      });
 
-        const { data } = response;
+      const { data } = response;
 
-        if (!data?.success) {
-          showAlert(data.msg || translate('error.swt'), msg.err);
-          return;
-        }
-
-        sessionStorage.setItem("user", JSON.stringify(data.user));
-        showAlert(data?.msg || translate('long.signSuccessfully'), msg.sucs);
-        router.push("/auth/verifyEmail");
-      } catch (error) {
-        showAlert(translate('error.ise'), msg.err);
-        console.error("Signin error:", error);
+      if (!data?.success) {
+        showAlert(data.msg || translate("error.swt"), msg.err);
+        return;
       }
+
+      sessionStorage.setItem("user", JSON.stringify(data.user));
+      showAlert(data?.msg || translate("long.signSuccessfully"), msg.sucs);
+      router.push("/auth/verifyEmail");
+    } catch (error) {
+      showAlert(translate("error.ise"), msg.err);
+      console.error("Signin error:", error);
     }
   };
 

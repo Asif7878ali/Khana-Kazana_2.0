@@ -59,6 +59,9 @@ const page = () => {
 
     const { errors, isvalid } = bankDetailValidation(form);
     setErrors(errors);
+    if (!isvalid) {
+      return;
+    }
 
     const user = getAuthenticatedUser(showAlert, translate);
     if (!user) return;
@@ -81,10 +84,8 @@ const page = () => {
       showAlert(translate("error.failedSaveUserProfile"), msg.err);
     }
 
-    if (isvalid == true) {
-      showAlert(translate("long.bankDetailsSavedSuccessfully"), msg.sucs);
-      router.push("/auth/VerificationDocuments");
-    }
+    showAlert(translate("long.bankDetailsSavedSuccessfully"), msg.sucs);
+    router.push("/auth/VerificationDocuments");
   };
 
   useEffect(() => {

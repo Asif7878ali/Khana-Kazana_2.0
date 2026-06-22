@@ -46,7 +46,7 @@ const page = () => {
         showAlert(data.msg || translate("error.swt"), msg.err);
         return;
       }
-      setStatelist(data?.state);
+      setStatelist(data?.data);
     } catch (error) {
       showAlert(translate("error.ise"), msg.err);
       console.error("Signin error:", error);
@@ -93,6 +93,10 @@ const page = () => {
     const { errors, isvalid } = addAdressValidate(form);
     setErrors(errors);
 
+    if (!isvalid) {
+      return;
+    }
+
     const user = getAuthenticatedUser(showAlert, translate);
     if (!user) return;
 
@@ -120,14 +124,13 @@ const page = () => {
       response?.data?.msg || translate("long.profileSavedSuccessfully"),
       msg.sucs,
     );
-    if (isvalid === true) {
-      if (userRole === "vendor") {
-        showAlert(translate("long.addressSavedSuccessfully"), msg.sucs);
-        router.push("/auth/bankDetails");
-      } else {
-        showAlert(translate("long.addressSavedSuccessfully"), msg.sucs);
-        router.push("/misc/dashboard");
-      }
+
+    if (userRole === "vendor") {
+      showAlert(translate("long.addressSavedSuccessfully"), msg.sucs);
+      router.push("/auth/bankDetails");
+    } else {
+      showAlert(translate("long.addressSavedSuccessfully"), msg.sucs);
+      router.push("/misc/dashboard");
     }
   };
 
