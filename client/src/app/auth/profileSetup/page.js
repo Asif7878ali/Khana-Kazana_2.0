@@ -114,7 +114,7 @@ const Page = () => {
       profilePic: imgresponce?.data?.url,
       firstName: form.fname,
       lastName: form.lname,
-      phoneNumber: form.number,
+      phone: form.number,
       dob: form.dob,
       gender: form.gender,
     };

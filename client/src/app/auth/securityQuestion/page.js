@@ -79,6 +79,7 @@ const Page = () => {
       response?.data?.msg || translate("long.profileSavedSuccessfully"),
       msg.sucs,
     );
+     router.push("/misc/dashboard");
   };
 
   useEffect(() => {

@@ -62,14 +62,13 @@ export const profile_api = async (req, res) => {
         .json({ msg: "No profile data provided", success: false });
     }
     console.log(profileData);
-    const { profilePic, firstName, lastName, phoneNumber, dob, gender } =
-      profileData;
+    const { profilePic, firstName, lastName, phone, dob, gender } = profileData;
     // Update object matching your schema nested 'info' fields:
     const update = {
       "info.profilePic": profilePic,
       "info.firstName": firstName,
       "info.lastName": lastName,
-      "info.phone": phoneNumber,
+      "info.phone": phone,
       "info.dob": dob,
       "info.gender": gender,
     };
@@ -79,15 +78,10 @@ export const profile_api = async (req, res) => {
       (key) => update[key] === undefined && delete update[key],
     );
 
-    const options = { new: true }; // Return the updated document
-
-    const updatedProfile = await User.findOneAndUpdate(
-      { _id: userId }, // Mongoose casts string to ObjectId automatically
-      {
-        $set: update,
-        $inc: { onboardingStep: 2 },
-      },
-      options,
+    const updatedProfile = await User.findByIdAndUpdate(
+      userId,
+      { $set: update, $max: { onboardingStep: 2 } },
+      { new: true },
     );
     console.log(updatedProfile);
     if (!updatedProfile) {
@@ -139,11 +133,7 @@ export const address_api = async (req, res) => {
 
     const user = await User.findByIdAndUpdate(
       userId,
-      {
-        $set: update,
-        $setOnInsert: {},
-        $max: { onboardingStep: 3 },
-      },
+      { $set: update, $max: { onboardingStep: 3 } },
       { new: true },
     );
 
@@ -176,7 +166,7 @@ export const bankDetails_api = async (req, res) => {
     const data = req.body;
 
     const update = {
-      "bankDetails.acountHolderName": data.acountHolderName,
+      "bankDetails.accountHolderName": data.accountHolderName,
       "bankDetails.accountNumber": data.accountNumber,
       "bankDetails.bank": data.bank,
       // "bankDetails.bankDocument": data.bankDocument,
@@ -190,10 +180,7 @@ export const bankDetails_api = async (req, res) => {
 
     const user = await User.findByIdAndUpdate(
       userId,
-      {
-        $set: update,
-        $max: { onboardingStep: 4 },
-      },
+      { $set: update, $max: { onboardingStep: 4 } },
       { new: true },
     );
 
@@ -240,10 +227,7 @@ export const document_api = async (req, res) => {
 
     const user = await User.findByIdAndUpdate(
       userId,
-      {
-        $set: update,
-        $max: { onboardingStep: 5 },
-      },
+      { $set: update, $max: { onboardingStep: 5 } },
       { new: true },
     );
 
@@ -284,11 +268,8 @@ export const securityQuestions_api = async (req, res) => {
 
     const user = await User.findByIdAndUpdate(
       userId,
-      {
-        $set: { securityQuestions: formatted },
-        $max: { onboardingStep: 6 },
-      },
-      { new: true },
+      { $set: { securityQuestions: formatted }, $max: { onboardingStep: 6 } },
+      { new: true }
     );
 
     if (!user) {

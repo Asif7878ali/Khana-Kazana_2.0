@@ -8,6 +8,7 @@ const endPoint = {
   getSecurityQuestion: "/api/route/securityQuestion",
   address: "/api/route/auth/address",
   bankDetails: "/api/route/auth/bank",
+  document : "/api/route/auth/document",
   securityQuestion: "/api/route/auth/securityQuestion",
 };
 

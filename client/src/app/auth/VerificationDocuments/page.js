@@ -11,20 +11,22 @@ import { useRouter } from "next/navigation";
 import { msg } from "@/utils/constaint";
 import { ErrorsMessage } from "@/components/reasuableComponents/Errors";
 import { verificationDocumentValidation } from "@/validation/authValidations";
-import { Numbers } from "@/utils/helperfunction";
+import { getAuthenticatedUser, Numbers } from "@/utils/helperfunction";
 import { Heading } from "@/features/auth/components/HeadingParagraph";
 import useTranslator from "@/hooks/useTranslator";
+import { useFetchApi } from "@/hooks/useFetchApi";
+import endPoint from "@/utils/endpoints";
 
 const page = () => {
   const [form, setForm] = useState({
     aadhar: "",
     c_aadhar: "",
-    aadharfile: "",
+    // aadharfile: "",
     pancard: "",
     c_pancard: "",
-    pancardfile: "",
+    // pancardfile: "",
     fssai: "",
-    fssaifile: "",
+    // fssaifile: "",
     c_fssai: "",
     gst: "",
     c_gst: "",
@@ -33,6 +35,7 @@ const page = () => {
   const showAlert = useAlert();
   const router = useRouter();
   const { translate } = useTranslator();
+  const fetchapi = useFetchApi();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -51,7 +54,7 @@ const page = () => {
     }));
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { errors, isvalid } = verificationDocumentValidation(form);
@@ -61,21 +64,31 @@ const page = () => {
       return;
     }
 
+    const user = getAuthenticatedUser(showAlert, translate);
+    if (!user) return;
+
     const payload = {
-      aadhar: form.aadhar,
-      aadharfile: form.aadharfile,
-      pancard: form.pancard,
-      pancardfile: form.pancardfile,
+      aadharCard: form.aadhar,
+      // aadharfile: form.aadharfile,
+      panCard: form.pancard,
+      // pancardfile: form.pancardfile,
       fssai: form.fssai,
-      fssaifile: form.fssaifile,
+      // fssaifile: form.fssaifile,
       gst: form.gst,
     };
     console.log("data", payload);
 
-    if (isvalid == true) {
-      showAlert("Documents Saved Succesfully", msg.sucs);
-      router.push("/misc/dashboard");
+    const response = await fetchapi({
+      endpoint: endPoint.document + "/" + user?.id,
+      method: "PUT",
+      payload: payload,
+    });
+    if (!response?.data?.success) {
+      showAlert(translate("error.failedSaveUserProfile"), msg.err);
     }
+
+    showAlert(translate("long.bankDetailsSavedSuccessfully"), msg.sucs);
+    router.push("/auth/securityQuestion");
   };
 
   return (
@@ -115,7 +128,7 @@ const page = () => {
               error={errors?.c_aadhar ? translate(errors.c_aadhar) : ""}
             />
           </div>
-          <div id="aaahardocument">
+          {/* <div id="aaahardocument">
             <FileUpload
               label="Addhar Card"
               onChange={(file) => {
@@ -124,7 +137,7 @@ const page = () => {
               }}
             />
             {errors && <ErrorsMessage error={errors?.aadharfile} />}
-          </div>
+          </div> */}
 
           <div id="pancard">
             <Input
@@ -159,7 +172,7 @@ const page = () => {
             />
           </div>
 
-          <div id="pancarddocument">
+          {/* <div id="pancarddocument">
             <FileUpload
               label="Pan Card"
               onChange={(file) => {
@@ -168,7 +181,7 @@ const page = () => {
               }}
             />
             {errors && <ErrorsMessage error={errors?.pancardfile} />}
-          </div>
+          </div> */}
 
           <div id="fssai">
             <Input
@@ -203,7 +216,7 @@ const page = () => {
             />
           </div>
 
-          <div id="fssaidocument">
+          {/* <div id="fssaidocument">
             <FileUpload
               label="Fssai"
               onChange={(file) => {
@@ -212,7 +225,7 @@ const page = () => {
               }}
             />
             {errors && <ErrorsMessage error={errors?.fssaifile} />}
-          </div>
+          </div> */}
 
           <div id="gst">
             <Input

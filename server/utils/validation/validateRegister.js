@@ -51,7 +51,7 @@ export const validateProfile = (req, res, next) => {
       .json({ msg: "Request body is missing", success: false });
   }
 
-  const { profilePic, firstName, lastName, phoneNumber, dob, gender } =
+  const { profilePic, firstName, lastName, phone, dob, gender } =
     req.body;
   console.log(req.body);
 
@@ -88,12 +88,12 @@ export const validateProfile = (req, res, next) => {
   }
 
   // Mobile Number validation
-  if (!phoneNumber) {
+  if (!phone) {
     console.log("Mobile Number is required");
     return res
       .status(400)
       .json({ msg: "Mobile Number is required.", success: false });
-  } else if (typeof phoneNumber !== "string" || !/^\d{10}$/.test(phoneNumber)) {
+  } else if (typeof phone !== "string" || !/^\d{10}$/.test(phone)) {
     console.log("Mobile Number must be exactly 10 digits");
     return res.status(400).json({
       msg: "Mobile Number must be exactly 10 digits and contain only numbers",
@@ -250,17 +250,17 @@ export const validateBankDetails = (req, res, next) => {
     });
   }
 
-  const { acountHolderName, accountNumber, bank, ifsc } = req.body;
+  const { accountHolderName, accountNumber, bank, ifsc } = req.body;
 
   // Account Holder Name
-  if (!acountHolderName) {
+  if (!accountHolderName) {
     return res.status(400).json({
       msg: "Account Holder Name is required",
       success: false,
     });
   }
 
-  if (typeof acountHolderName !== "string") {
+  if (typeof accountHolderName !== "string") {
     return res.status(400).json({
       msg: "Invalid Account Holder Name",
       success: false,

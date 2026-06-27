@@ -137,10 +137,10 @@ export function securityQuestionValidation(formData) {
 export function bankDetailValidation(formData) {
   const errors = {};
 
-  if (!formData?.acountHolderName) {
-    errors.acountHolderName = "error.accHolderNameReq";
-  } else if (formData?.acountHolderName?.length < 3) {
-    errors.acountHolderName = "error.accHolderNameThreeCharLong";
+  if (!formData?.accountHolderName) {
+    errors.accountHolderName = "error.accHolderNameReq";
+  } else if (formData?.accountHolderName?.length < 3) {
+    errors.accountHolderName = "error.accHolderNameThreeCharLong";
   }
 
   if (!formData?.accountNumber) {
@@ -185,9 +185,9 @@ export function bankDetailValidation(formData) {
     }
   }
 
-  if (!formData?.bankDocumentUpload) {
-    errors.bankDocumentUpload = "error.bankDocReq";
-  }
+  // if (!formData?.bankDocumentUpload) {
+  //   errors.bankDocumentUpload = "error.bankDocReq";
+  // }
 
   const isvalid = Object.keys(errors).length === 0;
   return { errors, isvalid };
@@ -207,9 +207,9 @@ export function verificationDocumentValidation(formData) {
     errors.c_aadhar = "";
   }
 
-  if (!formData?.aadharfile) {
-    errors.aadharfile = "error.aadharDocReq";
-  }
+  // if (!formData?.aadharfile) {
+  //   errors.aadharfile = "error.aadharDocReq";
+  // }
   if (!formData?.pancard) {
     errors.pancard = "error.panNumReq";
   } else if (!/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(formData.pancard)) {
@@ -222,9 +222,9 @@ export function verificationDocumentValidation(formData) {
     errors.c_pancard = "";
   }
 
-  if (!formData?.pancardfile) {
-    errors.pancardfile = "error.panDocReq";
-  }
+  // if (!formData?.pancardfile) {
+  //   errors.pancardfile = "error.panDocReq";
+  // }
 
   if (!formData?.fssai) {
     errors.fssai = "error.fssaiNumReq";
@@ -238,9 +238,9 @@ export function verificationDocumentValidation(formData) {
     errors.c_fssai = "";
   }
 
-  if (!formData?.fssaifile) {
-    errors.fssaifile = "error.fssaiDocReq";
-  }
+  // if (!formData?.fssaifile) {
+  //   errors.fssaifile = "error.fssaiDocReq";
+  // }
 
   if (!formData?.gst) {
     errors.gst = "error.gstNumReq";

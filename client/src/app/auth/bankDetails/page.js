@@ -20,7 +20,7 @@ import { useFetchApi } from "@/hooks/useFetchApi";
 
 const page = () => {
   const [form, setForm] = useState({
-    acountHolderName: "",
+    accountHolderName: "",
     accountNumber: "",
     c_accountNumber: "",
     bank: "",
@@ -38,7 +38,7 @@ const page = () => {
     const { name, value } = e.target;
     let filteredValue = value;
 
-    if (name === "acountHolderName") {
+    if (name === "accountHolderName") {
       filteredValue = Letters(value);
     } else if (name === "accountNumber") {
       filteredValue = Numbers(value);
@@ -67,7 +67,7 @@ const page = () => {
     if (!user) return;
 
     const payload = {
-      acountHolderName: form.acountHolderName,
+      accountHolderName: form.accountHolderName,
       accountNumber: form.accountNumber,
       bank: form.bank,
       // bankDocument: form.bankDocumentUpload,
@@ -118,14 +118,14 @@ const page = () => {
             <Input
               type="text"
               label={translate("long.accountHolderName")}
-              name="acountHolderName"
+              name="accountHolderName"
               placeholder="Ex. Dash Mork"
-              value={form.acountHolderName}
+              value={form.accountHolderName}
               onChange={handleChange}
               required
               error={
-                errors?.acountHolderName
-                  ? translate(errors.acountHolderName)
+                errors?.accountHolderName
+                  ? translate(errors.accountHolderName)
                   : ""
               }
             />
