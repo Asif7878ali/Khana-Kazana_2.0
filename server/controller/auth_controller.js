@@ -85,7 +85,7 @@ export const profile_api = async (req, res) => {
       { _id: userId }, // Mongoose casts string to ObjectId automatically
       {
         $set: update,
-        $inc: { onboardingStep: 1 },
+        $inc: { onboardingStep: 2 },
       },
       options,
     );
@@ -213,6 +213,56 @@ export const bankDetails_api = async (req, res) => {
     console.error("Bank details error:", error);
     return res.status(500).json({
       msg: "Failed to save bank details",
+      success: false,
+    });
+  }
+};
+
+// Docuument API
+export const document_api = async (req, res) => {
+  console.log("➡️ Document API hit");
+
+  try {
+    const userId = req.params.id;
+    const data = req.body;
+
+    const update = {
+      "documents.aadharCard": data.aadharCard,
+      "documents.panCard": data.panCard,
+      "documents.fssai": data.fssai,
+      "documents.gst": data.gst,
+    };
+
+    // remove undefined fields
+    Object.keys(update).forEach(
+      (key) => update[key] === undefined && delete update[key],
+    );
+
+    const user = await User.findByIdAndUpdate(
+      userId,
+      {
+        $set: update,
+        $max: { onboardingStep: 5 },
+      },
+      { new: true },
+    );
+
+    if (!user) {
+      return res.status(404).json({
+        msg: "User not found",
+        success: false,
+      });
+    }
+
+    return res.status(200).json({
+      msg: "Document saved successfully",
+      success: true,
+      data: user.documents,
+    });
+  } catch (error) {
+    console.error("Document error:", error);
+    return res.status(500).json({
+      msg: "Failed to save document",
       success: false,
     });
   }

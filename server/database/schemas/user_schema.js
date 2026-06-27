@@ -109,7 +109,7 @@ const userSchema = new mongoose.Schema(
         maxlength: [14, "FSSAI number cannot exceed 14 digits"],
       },
       gst: {
-        type: Number,
+        type: String,
         trim: true,
         minlength: [15, "GST number must be at least 15 digits long"],
         maxlength: [15, "GST number cannot exceed 15 digits"],

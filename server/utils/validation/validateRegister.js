@@ -308,7 +308,83 @@ export const validateBankDetails = (req, res, next) => {
   next();
 };
 
+export const validateDocument = (req, res, next) => {
+  if (!req.body || Object.keys(req.body).length === 0) {
+    console.log("Request body is missing");
+    return res.status(400).json({
+      msg: "Request body is missing",
+      success: false,
+    });
+  }
+   const { aadharCard, panCard, fssai, gst } = req.body;
+
+  // Aadhar Card validation
+  if (!aadharCard) {
+    console.log("Aadhar Card is required");
+    return res.status(400).json({
+      msg: "Aadhar Card is required.",
+      success: false,
+    });
+  }
+
+  // Adhar Card format validation (12 digits)
+  if (!/^\d{12}$/.test(aadharCard)) {
+    console.log("Aadhar Card must be exactly 12 digits");
+    return res.status(400).json({
+      msg: "Aadhar Card must be exactly 12 digits.",
+      success: false,
+    });
+  }
+
+  // PAN Card validation
+  if (!panCard) {
+    console.log("PAN Card is required");
+    return res.status(400).json({
+      msg: "PAN Card is required.",
+      success: false,
+    });
+  }
+
+  // PAN Card format validation (5 letters, 4 digits, 1 letter)
+  if (!/^[A-Z]{5}\d{4}[A-Z]$/.test(panCard)) {
+    console.log("PAN Card format is invalid");
+    return res.status(400).json({
+      msg: "PAN Card format is invalid.",
+      success: false,
+    });
+  }
+
+  // FSSAI validation
+  if (!fssai) {
+    console.log("FSSAI is required");
+    return res.status(400).json({
+      msg: "FSSAI is required.",
+      success: false,
+    });
+  }
+
+  // GST validation
+  if (!gst) {
+    console.log("GST is required");
+    return res.status(400).json({
+      msg: "GST is required.",
+      success: false,
+    });
+  }
+
+  next();
+
+};
+
 export const validateSecurityQuestions = (req, res, next) => {
+  if (!req.body || Object.keys(req.body).length === 0) {
+    console.log("Request body is missing");
+    return res.status(400).json({
+      msg: "Request body is missing",
+      success: false,
+    });
+  }
+
   const data = req.body;
 
   if (!data || !Array.isArray(data)) {

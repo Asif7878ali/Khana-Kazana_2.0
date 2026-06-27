@@ -7,7 +7,7 @@ const userSeeder = async () => {
   await User.create({
     role: "customer",
     email: "lara@example.com",
-    password: "123456",
+    password: "Pass@123",
 
     info: {
       profilePic:
@@ -16,7 +16,7 @@ const userSeeder = async () => {
       lastName: "Asin",
       phone: 9876543210,
       dob: new Date("1999-05-10"),
-      gender: "Male",
+      gender: "male",
     },
 
     address: {
@@ -37,10 +37,10 @@ const userSeeder = async () => {
     },
 
     documents: {
-      aadharCard: 123412341234,
+      aadharCard: 11221332000001,
       panCard: "ABCDE1234F",
       fssai: 12345678901234,
-      gst: 123456789,
+      gst: "29ABCDE1234F1Z5",
     },
 
     securityQuestions: [

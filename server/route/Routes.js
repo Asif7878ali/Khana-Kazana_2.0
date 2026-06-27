@@ -1,44 +1,21 @@
 import express from "express";
-import {
-  register_api,
-  profile_api,
-  address_api,
-  securityQuestions_api,
-  bankDetails_api,
-} from "../controller/auth_controller.js";
-import {
-  validateAddress,
-  validateBankDetails,
-  validateProfile,
-  validateRegister,
-  validateSecurityQuestions,
-} from "../utils/validation/validateRegister.js";
+import { register_api, profile_api, address_api, securityQuestions_api, bankDetails_api, document_api} from "../controller/auth_controller.js";
+import { validateAddress, validateBankDetails, validateDocument, validateProfile, validateRegister, validateSecurityQuestions } from "../utils/validation/validateRegister.js";
 import { upload_user_image_api } from "../controller/images_upload_controller.js";
 import { UserImageUpload } from "../middleware/users_image.js";
-import {
-  bank_api,
-  city_api,
-  security_question_api,
-  state_api,
-} from "../controller/get_data_controller.js";
+import { bank_api, city_api, security_question_api, state_api } from "../controller/get_data_controller.js";
+import { checkOnboardingStep } from "../middleware/check_onboarding_step.js";
 
 const Route = express.Router();
 
 //   Auth Routes start here
 Route.post("/auth/register", validateRegister, register_api); // first is validation next is api
-Route.post(
-  "/users/profile/image",
-  UserImageUpload.single("profileImage"),
-  upload_user_image_api,
-); // first middleware then api
-Route.put("/auth/profile/:id", validateProfile, profile_api);
-Route.put("/auth/address/:id", validateAddress, address_api);
-Route.put("/auth/bank/:id", validateBankDetails, bankDetails_api);
-Route.put(
-  "/auth/securityQuestion/:id",
-  validateSecurityQuestions,
-  securityQuestions_api,
-);
+Route.post("/users/profile/image", UserImageUpload.single("profileImage"), upload_user_image_api); // first middleware then api
+Route.put("/auth/profile/:id", checkOnboardingStep(1), validateProfile, profile_api);
+Route.put("/auth/address/:id", checkOnboardingStep(2), validateAddress, address_api);
+Route.put("/auth/bank/:id", checkOnboardingStep(3), validateBankDetails, bankDetails_api);
+Route.put("/auth/document/:id", checkOnboardingStep(4), validateDocument, document_api);
+Route.put("/auth/securityQuestion/:id", checkOnboardingStep(5), validateSecurityQuestions, securityQuestions_api);
 //   Auth Routes end here
 
 // Get Data Routes start here
