@@ -10,6 +10,7 @@ const endPoint = {
   bankDetails: "/api/route/auth/bank",
   document : "/api/route/auth/document",
   securityQuestion: "/api/route/auth/securityQuestion",
+  login: "/api/route/auth/login",
 };
 
 export default endPoint;

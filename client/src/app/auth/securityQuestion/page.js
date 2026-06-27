@@ -67,19 +67,24 @@ const Page = () => {
 
     console.log("ans", payload);
 
-    const response = await fetchapi({
-      endpoint: endPoint.securityQuestion + "/" + user?.id,
-      method: "PUT",
-      payload: payload,
-    });
-    if (!response?.data?.success) {
+    try {
+      const response = await fetchapi({
+        endpoint: endPoint.securityQuestion + "/" + user?.id,
+        method: "PUT",
+        payload: payload,
+      });
+      if (!response?.data?.success) {
+        showAlert(translate("error.failedSaveUserProfile"), msg.err);
+      }
+      showAlert(
+        response?.data?.msg || translate("long.profileSavedSuccessfully"),
+        msg.sucs,
+      );
+      router.push("/misc/dashboard");
+    } catch (error) {
+      console.error("❌ Security Question Error:", error);
       showAlert(translate("error.failedSaveUserProfile"), msg.err);
     }
-    showAlert(
-      response?.data?.msg || translate("long.profileSavedSuccessfully"),
-      msg.sucs,
-    );
-     router.push("/misc/dashboard");
   };
 
   useEffect(() => {

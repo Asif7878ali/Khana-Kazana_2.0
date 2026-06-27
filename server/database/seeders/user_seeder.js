@@ -5,7 +5,7 @@ import User from "../modals/user_modal.js";
 const userSeeder = async () => {
   await User.deleteMany({});
   await User.create({
-    role: "customer",
+    role: "vendor",
     email: "lara@example.com",
     password: "Pass@123",
 

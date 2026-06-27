@@ -269,7 +269,7 @@ export const securityQuestions_api = async (req, res) => {
     const user = await User.findByIdAndUpdate(
       userId,
       { $set: { securityQuestions: formatted }, $max: { onboardingStep: 6 } },
-      { new: true }
+      { new: true },
     );
 
     if (!user) {
@@ -288,6 +288,50 @@ export const securityQuestions_api = async (req, res) => {
     console.error("Security question error:", error);
     return res.status(500).json({
       msg: "Failed to save security questions",
+      success: false,
+    });
+  }
+};
+
+export const login_api = async (req, res) => {
+  console.log("➡️ Login API hit");
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email }).exec();
+    if (!user) {
+      return res.status(404).json({
+        msg: "User not found",
+        success: false,
+      });
+    }
+
+    const isMatch = password === user.password;
+    if (!isMatch) {
+      return res.status(401).json({
+        msg: "Invalid credentials",
+        success: false,
+      });
+    }
+
+    
+    // Check account is active
+    if (!user.isActive) {
+      return res.status(403).json({
+        msg: "Account is deactivated. Please contact support",
+        success: false,
+      });
+    }
+
+    return res.status(200).json({
+      msg: "Login successful",
+      success: true,
+      user,
+    });
+  } catch (error) {
+    console.error("❌ Login Error:", error);
+    return res.status(500).json({
+      msg: "Internal server error",
       success: false,
     });
   }

@@ -437,3 +437,33 @@ export const validateSecurityQuestions = (req, res, next) => {
 
   next();
 };
+
+export const validateLogin = (req, res, next) => {
+  if (!req.body || Object.keys(req.body).length === 0) {
+    console.log("Request body is missing");
+    return res.status(400).json({
+      msg: "Request body is missing",
+      success: false,
+    });
+  }
+
+  const { email, password } = req.body;
+
+  // Email validation
+  if (!email) {
+    console.log("Email is required");
+    return res.status(400).json({
+      msg: "Email is required.",
+      success: false,
+    });
+  }
+   // Password validation
+  if (!password) {
+    console.log("Password is required");
+    return res.status(400).json({
+      msg: "Password is required.",
+      success: false,
+    });
+  }
+  next();
+}

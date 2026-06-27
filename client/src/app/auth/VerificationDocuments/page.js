@@ -78,17 +78,22 @@ const page = () => {
     };
     console.log("data", payload);
 
-    const response = await fetchapi({
-      endpoint: endPoint.document + "/" + user?.id,
-      method: "PUT",
-      payload: payload,
-    });
-    if (!response?.data?.success) {
+    try {
+      const response = await fetchapi({
+        endpoint: endPoint.document + "/" + user?.id,
+        method: "PUT",
+        payload: payload,
+      });
+      if (!response?.data?.success) {
+        showAlert(translate("error.failedSaveUserProfile"), msg.err);
+      }
+
+      showAlert(translate("long.bankDetailsSavedSuccessfully"), msg.sucs);
+      router.push("/auth/securityQuestion");
+    } catch (error) {
+      console.error("❌ Document Error:", error);
       showAlert(translate("error.failedSaveUserProfile"), msg.err);
     }
-
-    showAlert(translate("long.bankDetailsSavedSuccessfully"), msg.sucs);
-    router.push("/auth/securityQuestion");
   };
 
   return (
