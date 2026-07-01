@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import Route from "./route/routes.js";
 import Connection from "./config/connection.js";
 import path from "path";
@@ -23,6 +24,10 @@ app.use(
     credentials: true,
   }),
 );
+
+// required to read cookies middleware
+app.use(cookieParser());
+
 // required to read JSON body miidleware
 app.use(express.json({ limit: "10mb" }));
 

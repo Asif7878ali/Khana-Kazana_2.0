@@ -1,4 +1,5 @@
 import User from "../database/modals/user_modal.js";
+import JWT from "jsonwebtoken";
 
 // SIGN IN API
 export const register_api = async (req, res) => {
@@ -301,7 +302,7 @@ export const login_api = async (req, res) => {
     const user = await User.findOne({ email }).exec();
     if (!user) {
       return res.status(404).json({
-        msg: "User not found",
+        msg: "Invalid Credentials",
         success: false,
       });
     }
@@ -309,12 +310,11 @@ export const login_api = async (req, res) => {
     const isMatch = password === user.password;
     if (!isMatch) {
       return res.status(401).json({
-        msg: "Invalid credentials",
+        msg: "Invalid Credentials",
         success: false,
       });
     }
 
-    
     // Check account is active
     if (!user.isActive) {
       return res.status(403).json({
@@ -323,10 +323,13 @@ export const login_api = async (req, res) => {
       });
     }
 
-    return res.status(200).json({
-      msg: "Login successful",
+    const token = await JWT.sign({ id: user._id }, process.env.JWTSECRET, {
+      expiresIn: "1d",
+    });
+
+    return res.cookie("token", token, { httpOnly: true }).status(200).json({
+      msg: "Login Successfully",
       success: true,
-      user,
     });
   } catch (error) {
     console.error("❌ Login Error:", error);
