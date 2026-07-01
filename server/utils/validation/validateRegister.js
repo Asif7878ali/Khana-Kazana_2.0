@@ -51,8 +51,7 @@ export const validateProfile = (req, res, next) => {
       .json({ msg: "Request body is missing", success: false });
   }
 
-  const { profilePic, firstName, lastName, phone, dob, gender } =
-    req.body;
+  const { profilePic, firstName, lastName, phone, dob, gender } = req.body;
   console.log(req.body);
 
   // Profile Image validation
@@ -316,7 +315,7 @@ export const validateDocument = (req, res, next) => {
       success: false,
     });
   }
-   const { aadharCard, panCard, fssai, gst } = req.body;
+  const { aadharCard, panCard, fssai, gst } = req.body;
 
   // Aadhar Card validation
   if (!aadharCard) {
@@ -373,7 +372,6 @@ export const validateDocument = (req, res, next) => {
   }
 
   next();
-
 };
 
 export const validateSecurityQuestions = (req, res, next) => {
@@ -457,7 +455,7 @@ export const validateLogin = (req, res, next) => {
       success: false,
     });
   }
-   // Password validation
+  // Password validation
   if (!password) {
     console.log("Password is required");
     return res.status(400).json({
@@ -466,4 +464,62 @@ export const validateLogin = (req, res, next) => {
     });
   }
   next();
-}
+};
+
+export const validateAdminRegister = (req, res, next) => {
+  if (!req.body || Object.keys(req.body).length === 0) {
+    console.log("Request body is missing");
+    return res.status(400).json({
+      msg: "Request body is missing",
+      success: false,
+    });
+  }
+
+  const { name, email, password } = req.body;
+
+  if (!name) {
+    return res.status(400).json({
+      msg: "Name is required",
+      success: false,
+    });
+  }
+
+  if (name.length < 4 || name.length > 50) {
+    return res.status(400).json({
+      msg: "Name must be between 4 and 50 characters",
+      success: false,
+    });
+  }
+
+  if (!email) {
+    return res.status(400).json({
+      msg: "Email is required",
+      success: false,
+    });
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({
+      msg: "Invalid email format",
+      success: false,
+    });
+  }
+
+  if (!password) {
+    return res.status(400).json({
+      msg: "Password is required",
+      success: false,
+    });
+  }
+
+  if (password.length < 8) {
+    return res.status(400).json({
+      msg: "Password must be at least 8 characters",
+      success: false,
+    });
+  }
+
+  next();
+};

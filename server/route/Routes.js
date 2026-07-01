@@ -1,12 +1,13 @@
 import express from "express";
 import { register_api, profile_api, address_api, securityQuestions_api, bankDetails_api, document_api, login_api} from "../controller/auth_controller.js";
-import { validateAddress, validateBankDetails, validateDocument, validateLogin, validateProfile, validateRegister, validateSecurityQuestions } from "../utils/validation/validateRegister.js";
+import { validateAddress, validateAdminRegister, validateBankDetails, validateDocument, validateLogin, validateProfile, validateRegister, validateSecurityQuestions } from "../utils/validation/validateRegister.js";
 import { upload_user_image_api } from "../controller/images_upload_controller.js";
 import { UserImageUpload } from "../middleware/users_image.js";
 import { bank_api, city_api, security_question_api, state_api } from "../controller/get_data_controller.js";
 import { checkOnboardingStep } from "../middleware/check_onboarding_step.js";
 import { authenticateToken } from "../middleware/auth_middleware.js";
 import { get_profile_api } from "../controller/user_controller.js";
+import { admin_register_api } from "../controller/admin_controller.js";
 
 
 const Route = express.Router();
@@ -32,5 +33,10 @@ Route.get("/indian/bank", bank_api);
 Route.get("/indian/cities/:stateCode", city_api);
 Route.get("/securityQuestion", security_question_api);
 // Get Data Routes end here
+
+
+// Admin Routes start here
+Route.post("/admin/register", authenticateToken, validateAdminRegister, admin_register_api);
+// Admin Routes end her
 
 export default Route;

@@ -5,6 +5,7 @@ import securityQuestionSeeder from "../database/seeders/security_question_seeder
 import bankSeeder from "../database/seeders/banks_seeder.js";
 import stateSeeder from "../database/seeders/states_seeder.js";
 import citySeeder from "../database/seeders/city_seeder.js";
+import adminSeeder from "../database/seeders/admin_seeder.js";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ const runSeeders = async () => {
     await citySeeder();
     await bankSeeder();
     await securityQuestionSeeder();
+    await adminSeeder();
     await userSeeder();
     console.log("All Seeders Executed Successfully");
     process.exit(0);

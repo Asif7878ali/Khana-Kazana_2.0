@@ -294,12 +294,13 @@ export const securityQuestions_api = async (req, res) => {
   }
 };
 
+// Login API
 export const login_api = async (req, res) => {
   console.log("➡️ Login API hit");
   try {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email }).exec();
+    const user = await User.findOne({ email }).select("+password").exec();
     if (!user) {
       return res.status(404).json({
         msg: "Invalid Credentials",
